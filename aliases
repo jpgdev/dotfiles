@@ -1,0 +1,3 @@
+alias aliases="$EDITOR $HOME/dotfiles/aliases"
+alias archey=archey3
+alias atom=/usr/share/atom/atom
