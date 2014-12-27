@@ -47,6 +47,7 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 source $HOME/dotfiles/aliases
+source $HOME/dotfiles/functions
 
 # source $HOME/dotfiles/autostart
 

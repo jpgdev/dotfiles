@@ -1,5 +1,7 @@
 [user]
-	name = jpgdev
+	name = Jean-Philippe Goulet
 	email = jp.goulet17@gmail.com
 [push]
 	default = matching
+[core]
+	editor = nano
