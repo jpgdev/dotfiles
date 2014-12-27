@@ -1,0 +1,146 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+background yes
+use_xft yes
+xftfont 123:size=8
+xftalpha 0.1
+update_interval 0.3
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 250 5
+maximum_width 300
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no #yes
+default_color gray
+default_shade_color red
+default_outline_color green
+alignment top_right
+gap_x 10
+gap_y 10
+no_buffers yes #set to 'no' to show the RAM + cached memory
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 1
+override_utf8_locale yes
+update_interval 1
+update_interval_on_battery 5
+#use_spacer yes
+text_buffer_size 256
+TEXT
+
+${font Arial:size=20}${color white}$alignr${nodename}
+#${font Arial:size=20}${color white}$alignr${tztime UTC %d %B %Y}
+
+${voffset -105}
+
+#${font Arial:size=12}
+#${execpi 300 gcalcli --conky agenda}
+#${execpi 300 ~/bin/gcal.sh}
+#${voffset -80}
+#${color LightGray}
+# SYSTEM
+${font Arial:bold:size=10}${color Tan1}SYSTEM ${color LightGray} ${hr 2}
+$font${color LightGray}Hostname $alignr  $nodename
+$font${color LightGray}$sysname $kernel $alignr $machine
+# $font${color LightGray}Processes: $alignr $processes
+# $font${color LightGray}Running: $alignr $running_processes
+$font${color LightGray}Uptime $alignr${uptime}
+$font${color LightGray}File System $alignr${fs_type}
+# ${font Arial:bold:size=10}${color Tan2}BATTERY ${color LightGray}${hr 2}
+# ${battery BAT1} 
+# ${color LightGray}${battery_bar 10,0 BAT1}
+
+# CPU
+${font Arial:bold:size=10}${color Tan1}CPU ${color LightGray}${hr 2}$font${color LightGray}
+${font Arial:bold:size=10}${color LightGray}Intel Core i7-3630Q $alignr${freq_g cpu0}Ghz$font
+# ${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26} $alignr${freq_g cpu0}Ghz
+
+${cpugraph cpu1 10, 170}  $alignc${hwmon temp 2}°C  $alignr${cpu cpu1}%
+${cpugraph cpu2 10, 170} $alignr${cpu cpu2}%
+${cpugraph cpu3 10, 170}  $alignc${hwmon temp 3}°C  $alignr${cpu cpu3}%
+${cpugraph cpu4 10, 170} $alignr${cpu cpu4}%
+${cpugraph cpu5 10, 170}  $alignc${hwmon temp 4}°C  $alignr${cpu cpu5}%
+${cpugraph cpu6 10, 170} $alignr${cpu cpu6}%
+${cpugraph cpu7 10, 170}  $alignc${hwmon temp 5}°C  $alignr${cpu cpu7}%
+${cpugraph cpu8 10, 170} $alignr${cpu cpu8}%
+
+# CPU USAGE
+#${font Arial:bold:size=10}${color Tan1}CPU USAGE ${color LightGray}${hr 2}
+${color ddaa00}${top name 1} ${goto 120} ${top pid 1}${alignr}${top cpu 1}%
+${color LightGray}${top name 2} ${goto 120} ${top pid 2}${alignr}${top cpu 2}%
+${color LightGray}${top name 3} ${goto 120} ${top pid 3}${alignr}${top cpu 3}%
+${color LightGray}${top name 4} ${goto 120} ${top pid 4}${alignr}${top cpu 4}%
+${color LightGray}${top name 5} ${goto 120} ${top pid 5}${alignr}${top cpu 5}%
+
+#RAM
+${font Arial:bold:size=10}${color Tan1}MEMORY ${color LightGray}${hr 2}
+
+$font${color LightGray}RAM $alignc $mem / $memmax $alignr $memperc%
+# ${if_match $memperc > 80}${color red}$else${if_match $memperc > 60}${color Orange}$else${color LightGray}${endif}${endif}${membar 10}
+${membar 10}
+
+${color ddaa00}$font${top_mem name 1} ${goto 120} ${top_mem pid 1} $alignr ${top_mem mem_res 1}
+${color LightGray}${top_mem name 2} ${goto 120} ${top_mem pid 2} $alignr ${top_mem mem_res 2}
+${color LightGray}${top_mem name 3} ${goto 120} ${top_mem pid 3} $alignr ${top_mem mem_res 3}
+${color LightGray}${top_mem name 4} ${goto 120} ${top_mem pid 4} $alignr ${top_mem mem_res 4}
+${color LightGray}${top_mem name 5} ${goto 120} ${top_mem pid 5} $alignr ${top_mem mem_res 5}
+
+# STORAGE
+${font Arial:bold:size=10}${color Tan1}STORAGE ${color LightGray}${hr 2}
+# ${diskiograph /dev/sda}
+
+$font${color LightGray}/root $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${fs_bar /}
+# ${font Arial:bold:size=10}${color Tan1}HDD ${color LightGray}${hr 2}
+# ${diskiograph /dev/sdb}
+/var $alignc ${fs_used /var} / ${fs_size /var} $alignr ${fs_used_perc /var}%
+${fs_bar /var}
+/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
+${fs_bar /home}
+
+#GPU
+${font Arial:bold:size=10}${color Tan2}GPU ${color LightGray}${hr 2}
+
+#NETWORK
+${font Arial:bold:size=10}${color Tan2}NETWORK ${color LightGray}${hr 2}
+
+${font Arial:bold:size=10}${color #ffffff}wlp3s0: ${color LightGray}$font${color LightGray} $alignr ${addr wlp3s0}
+# ${if_match $wireless_link > 80}${color LightGreen}${else}${if_match $wireless_link > 50}${color Orange}${else}${color Red}${endif}­${endif}${wireless_link_bar 5, 0 wlp3s0}  
+${wireless_link_bar 5, 0 wlp3s0}  
+
+${font Arial:size=10}${color Tan2}▲ ${upspeedf wlp3s0} ${goto 65}${upspeedgraph wlp3s0 10}  
+${font Arial:size=10}${color 33CCFF}▼ ${downspeedf wlp3s0} ${goto 65}${downspeedgraph wlp3s0 10} 
+
+${font Arial:bold:size=10}${color #ffffff}enp2s0: ${color LightGray}$font${color LightGray} $alignr ${addr enp2s0}
+
+${font Arial:size=10}${color Tan2}▲ ${upspeedf enp2s0} ${goto 65}${upspeedgraph enp2s0 10}  
+${font Arial:size=10}${color 33CCFF}▼ ${downspeedf enp2s0} ${goto 65}${downspeedgraph enp2s0 10}

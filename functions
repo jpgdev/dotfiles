@@ -1,0 +1,19 @@
+
+
+# Change directory and list it
+cdl()
+{
+	cd $1
+	ls
+}
+
+
+# Change directory and lists it with hidden files
+cdla()
+{
+	cd $1
+	ls -la
+}
+
+
+
