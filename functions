@@ -15,5 +15,13 @@ cdla()
 	ls -la
 }
 
+tarinc()
+{
+	ssh $1@tarin.dinf.usherbrooke.ca
+}
 
-
+fixntfs()
+{
+        sudo ntfsfix $1
+	sudo ntfs-3g $1 $2
+}
