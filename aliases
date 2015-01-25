@@ -7,8 +7,8 @@ alias lsd="ls -d */"
 alias malias="$EDITOR $HOME/dotfiles/aliases"
 
 
+##### NAVIGATION SHORTCUTS 
 
-# Navigation shortcuts
 alias dbdir="cd /mnt/data/Dropbox"
 alias docs="cd $HOME/Documents"
 alias pj="cd $HOME/Projects"
@@ -17,6 +17,6 @@ alias pjl="cd $HOME/Projects & ls -l $HOME/Projects"
 
 ##### APPLICATIONS SHORTCUTS
 
-alias archey=archey3
-alias atom=/usr/share/atom/atom
-alias mpad=mousepad
+alias archey="archey3"
+alias atom="/usr/share/atom/atom"
+alias mpad="mousepad"
