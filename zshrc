@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export EDITOR=vim
 
 # Set name of the theme to load from ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
