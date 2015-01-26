@@ -1,4 +1,5 @@
 " .vimrc
+" Jean-Philippe Goulet
 
 " ======== Plugins (with Vundle) {{{
 
@@ -9,17 +10,18 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 
-" ======== Add plugins here 
+" ======== Add plugins here
 
 " Vim config plugins
-Plugin 'bling/vim-airline'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'bling/vim-airline' "The statusbar plugin
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/rainbow_parentheses.vim'
 
+"Plugin 'maciakl/vim-neatstatus'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
@@ -39,35 +41,47 @@ call vundle#end()
 " vim-markdown
 let g:vim_markdown_folding_disabled=1 " disable the collapse
 
+" vim-airline
+set laststatus=2
 
+" ======== Generic Settings
 
 " Tabulation related settings
 set autoindent
 set smarttab
 
 " 2 spaces
-set shiftwidth=2 
+set shiftwidth=2
 set tabstop=2
 
 " Line numbering
 set number
 
+" Highlight trailing whitespace
+match ErrorMsg '\s\+$'
+
+set splitbelow
+set splitright
 
 " ======== Custom Keybind mapping
 
 :imap jj <Esc>
 
+" Splits
+noremap <C-J> <C-W><C-J>
+noremap <C-K> <C-W><C-K>
+noremap <C-L> <C-W><C-L>
+noremap <C-H> <C-W><C-H>
 
 " ======== Set theme and colorscheme
 
 set t_Co=256
 let g:rehash256 = 1
 
-syntax on 
+syntax on
 set background=dark
 
 colorscheme molokai
 
 filetype indent plugin on
-
 
