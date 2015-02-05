@@ -1,6 +1,9 @@
 " .vimrc
 " Jean-Philippe Goulet
 
+" Get OS
+let os = substitute(system('uname'), "\n", "", "")
+
 " ======== Plugins (with Vundle) {{{
 
 set nocompatible
@@ -18,7 +21,12 @@ Plugin 'bling/vim-airline' "The statusbar plugin
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'Valloric/YouCompleteMe'
+
+if os == "Linux"
+	Plugin 'Valloric/YouCompleteMe'
+endif
+
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/rainbow_parentheses.vim'
 
 "Plugin 'maciakl/vim-neatstatus'
