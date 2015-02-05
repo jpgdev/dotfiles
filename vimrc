@@ -17,7 +17,7 @@ call vundle#begin()
 
 " Vim config plugins
 Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline' "The statusbar plugin
+Plugin 'bling/vim-airline' " The statusbar plugin
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
@@ -26,10 +26,8 @@ if os == "Linux"
 	Plugin 'Valloric/YouCompleteMe'
 endif
 
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/rainbow_parentheses.vim'
 
-"Plugin 'maciakl/vim-neatstatus'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
@@ -50,7 +48,7 @@ call vundle#end()
 let g:vim_markdown_folding_disabled=1 " disable the collapse
 
 " vim-airline
-set laststatus=2
+set laststatus=2 "Is required or the status bar does not appear in th first vim split opened
 
 " ======== Generic Settings
 
@@ -76,6 +74,7 @@ set splitright
 :imap jj <Esc>
 
 " Splits
+" Moving around splits
 noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
 noremap <C-L> <C-W><C-L>

@@ -5,7 +5,7 @@
 alias reload="source ~/.zshrc"
 alias lsd="ls -d */"
 alias malias="$EDITOR $HOME/dotfiles/aliases"
-
+alias open="xdg-open"
 
 ##### NAVIGATION SHORTCUTS 
 
