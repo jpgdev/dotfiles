@@ -7,7 +7,7 @@ alias lsd="ls -d */"
 alias malias="$EDITOR $HOME/dotfiles/aliases"
 alias open="xdg-open"
 
-##### NAVIGATION SHORTCUTS 
+##### NAVIGATION SHORTCUTS
 
 alias dbdir="cd /mnt/data/Dropbox"
 alias docs="cd $HOME/Documents"
@@ -21,3 +21,4 @@ alias archey="archey3"
 alias atom="/usr/share/atom/atom"
 alias mpad="mousepad"
 alias tmux="tmux -2"
+alias sublime="/opt/sublime-text/sublime_text"

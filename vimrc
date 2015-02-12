@@ -24,6 +24,7 @@ Plugin 'tomtom/tcomment_vim'
 
 if os == "Linux"
 	Plugin 'Valloric/YouCompleteMe'
+	Plugin 'marijnh/tern_for_vim' " JS smarter autocompletion with YCM
 endif
 
 Plugin 'kien/rainbow_parentheses.vim'
@@ -35,8 +36,17 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'tomasr/molokai'
 Plugin 'altercation/vim-colors-solarized'
 
+" Language specific plugins
+Plugin 'jelera/vim-javascript-syntax'
+
+" Plugin 'garbas/vim-snipmate'
+
 " GIT Related plugins
-Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter' " Shows git diff in the left panel
+Plugin 'tpope/vim-fugitive' " Allows multiple GIT operation from inside vim
+
+Plugin 'mattn/gist-vim' " Allow to post gist easily
+
 
 call vundle#end()
 
@@ -49,7 +59,8 @@ let g:vim_markdown_folding_disabled=1 " disable the collapse
 
 " vim-airline
 set laststatus=2 "Is required or the status bar does not appear in th first vim split opened
-
+let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+let g:airline#extensions#tabline#fnamemod = ':t'
 " ======== Generic Settings
 
 " Tabulation related settings
@@ -68,6 +79,31 @@ match ErrorMsg '\s\+$'
 
 set splitbelow
 set splitright
+
+
+" ======== Buffers related options
+
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
 
 " ======== Custom Keybind mapping
 
