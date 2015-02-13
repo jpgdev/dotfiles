@@ -4,6 +4,7 @@
 
 alias reload="source ~/.zshrc"
 alias lsd="ls -d */"
+alias ll="ls -l"
 alias malias="$EDITOR $HOME/dotfiles/aliases"
 alias open="xdg-open"
 
@@ -22,3 +23,4 @@ alias atom="/usr/share/atom/atom"
 alias mpad="mousepad"
 alias tmux="tmux -2"
 alias sublime="/opt/sublime-text/sublime_text"
+alias sublime3="/opt/sublime_text_3/sublime_text"

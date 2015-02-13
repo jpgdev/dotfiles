@@ -1,5 +1,3 @@
-
-
 # Change directory and list it
 cdl()
 {
@@ -30,3 +28,9 @@ refreshx()
 {
 	xrefresh
 }
+
+# Find a file using locate and FuZzyFind and start it with xdg-open
+fzf-start() { xdg-open "$(fzf-locate)" ;}
+fzf-locate() { locate "*" | fzf -e;}
+
+vim-open() { vim "$(fzf-locate)"}
