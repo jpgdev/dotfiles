@@ -12,7 +12,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-
 " ======== Add plugins here
 
 " Vim config plugins
@@ -28,27 +27,35 @@ if os == "Linux"
 endif
 
 Plugin 'kien/rainbow_parentheses.vim'
-
+Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+" Plugin 'suan/vim-instant-markdown'
 
 " Themes
-Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'tomasr/molokai'
+" Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes' " Adds lots of themes
 
 " Language specific plugins
 Plugin 'jelera/vim-javascript-syntax'
-
-" Plugin 'garbas/vim-snipmate'
 
 " GIT Related plugins
 Plugin 'airblade/vim-gitgutter' " Shows git diff in the left panel
 Plugin 'tpope/vim-fugitive' " Allows multiple GIT operation from inside vim
 
 Plugin 'mattn/gist-vim' " Allow to post gist easily
+Plugin 'mattn/webapi-vim' " WEBAPI used by gist-vim
 
+" Snipmate required plugins
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'honza/vim-snippets'
+"
 
 call vundle#end()
+
 
 "}}}
 
@@ -59,8 +66,19 @@ let g:vim_markdown_folding_disabled=1 " disable the collapse
 
 " vim-airline
 set laststatus=2 "Is required or the status bar does not appear in th first vim split opened
-let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers at the top
+let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
+
+" Enable Rainbow Parentheses at startup
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" Change snipmate keybind
+" imap <C-Space> <Plug>snipMateNextOrTrigger
+" smap <C-Space> <Plug>snipMateNextOrTrigger
+
 " ======== Generic Settings
 
 " Tabulation related settings
@@ -80,6 +98,12 @@ match ErrorMsg '\s\+$'
 set splitbelow
 set splitright
 
+set showcmd " Show the current command on the lower right, like the  <leader> key
+
+let mapleader=","  " Set the <leader> to , instead of \
+
+set undofile " tell it to use an undo file
+set undodir=/home/jp/.vim_undo/ " set a directory to store the undo history
 
 " ======== Buffers related options
 
@@ -104,7 +128,6 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
-
 " ======== Custom Keybind mapping
 
 :imap jj <Esc>
@@ -125,6 +148,10 @@ syntax on
 set background=dark
 
 colorscheme molokai
+
+" Transparent background
+" highlight Normal ctermbg=none
+" highlight NonText ctermbg=none
 
 filetype indent plugin on
 

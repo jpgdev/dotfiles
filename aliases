@@ -1,10 +1,11 @@
-
+# Jean-Philippe Goulet
 
 ##### COMMANDS
 
 alias reload="source ~/.zshrc"
-alias lsd="ls -d */"
+alias lsd="ls -ld */"
 alias ll="ls -l"
+alias lf="ls | fzf"
 alias malias="$EDITOR $HOME/dotfiles/aliases"
 alias open="xdg-open"
 
@@ -13,8 +14,9 @@ alias open="xdg-open"
 alias dbdir="cd /mnt/data/Dropbox"
 alias docs="cd $HOME/Documents"
 alias pj="cd $HOME/Projects"
-alias pjl="cd $HOME/Projects & ls -l $HOME/Projects"
-
+alias pjl="cd $HOME/Projects ; ls -l"
+alias gdr="cd '$HOME/Google Drive/'"
+alias uni="gdr ; cd Université"
 
 ##### APPLICATIONS SHORTCUTS
 
