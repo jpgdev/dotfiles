@@ -1,16 +1,28 @@
 " .vimrc
 " Jean-Philippe Goulet
 
-" Get OS
-let os = substitute(system('uname'), "\n", "", "")
+" ======== Get current OS
+
+let os = ""
+if has("win32")
+	let os = "win"
+else
+	let os = substitute(system('uname'), "\n", "", "")
+endif
 
 " ======== Plugins (with Vundle) {{{
 
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if os == "win"
+	set rtp+=~/vimfiles/bundle/Vundle.vim/
+	let path='~/vimfiles/bundle'
+	call vundle#begin(path)
+else
+	set rtp+=~/.vim/bundle/Vundle.vim/
+	call vundle#begin()
+endif
 
 " ======== Add plugins here
 
@@ -141,8 +153,17 @@ noremap <C-H> <C-W><C-H>
 
 " ======== Set theme and colorscheme
 
+if os == "win"
+	" Witchcraft to fix the 256 colors scheme in Windows
+	set term=xterm
+	let &t_AB="\e[48;5;%dm"
+	let &t_AF="\e[38;5;%dm"
+endif
+
+" To be able to have 256 color sceme
 set t_Co=256
 let g:rehash256 = 1
+
 
 syntax on
 set background=dark
