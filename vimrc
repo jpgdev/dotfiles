@@ -3,7 +3,7 @@
 
 " ======== Get current OS
 
-" let os = ""
+let os = ""
 if has("win32")
 	let os = "win"
 else
