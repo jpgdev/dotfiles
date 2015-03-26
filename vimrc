@@ -1,6 +1,8 @@
 " .vimrc
 " Jean-Philippe Goulet
 
+" Inspired by : https://github.com/cabouffard/dotfiles
+
 " ======== Get current OS
 
 let os = ""
@@ -43,6 +45,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Plugin 'suan/vim-instant-markdown'
+Plugin 'rking/ag.vim'
 
 " Themes
 " Plugin 'tomasr/molokai'
@@ -91,13 +94,30 @@ au Syntax * RainbowParenthesesLoadBraces
 " imap <C-Space> <Plug>snipMateNextOrTrigger
 " smap <C-Space> <Plug>snipMateNextOrTrigger
 
+" Use Ag (the_silver_surfer)
+if executable('ag')
+
+	" Use Ag instead of grep
+	set grepprg=ag\ --nogroup\ --nocolor
+
+	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+
+endif
+
 " ======== Generic Settings
+
+" Highlight the current line
+set cursorline
 
 " Tabulation related settings
 set autoindent
 set smarttab
 
-" 2 spaces
+" 2 spaces for tabulations
 set shiftwidth=2
 set tabstop=2
 
@@ -107,6 +127,7 @@ set number
 " Highlight trailing whitespace
 match ErrorMsg '\s\+$'
 
+" When opening a new split, it opens below & on the right
 set splitbelow
 set splitright
 
@@ -122,7 +143,6 @@ endif
 " ======== Buffers related options
 
 " This allows buffers to be hidden if you've modified a buffer.
-" This is almost a must if you wish to use buffers in this way.
 set hidden
 
 " To open a new empty buffer
