@@ -18,11 +18,11 @@ set nocompatible
 filetype off
 
 if os == "win"
-	set rtp+=~/vimfiles/bundle/Vundle.vim/
-	let path='~/vimfiles/bundle'
+	set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+	let path=$HOME.'~/vimfiles/bundle'
 	call vundle#begin(path)
 else
-	set rtp+=~/.vim/bundle/Vundle.vim/
+	set rtp+=$HOME/.vim/bundle/Vundle.vim/
 	call vundle#begin()
 endif
 
@@ -38,23 +38,23 @@ Plugin 'tomtom/tcomment_vim'
 if os == "Linux"
 	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'marijnh/tern_for_vim' " JS smarter autocompletion with YCM
+	Plugin 'suan/vim-instant-markdown' " Markdown previewer (require the npm package instant-markdown-d)
 endif
 
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-" Plugin 'suan/vim-instant-markdown'
-Plugin 'rking/ag.vim'
+Plugin 'rking/ag.vim' " Better search tool than grep (requires AG package installed)
+" Plugin 'neilagabriel/vim-geeknote' " Integrate geeknote with vim (not working currently)
 
 " Themes
-" Plugin 'tomasr/molokai'
-" Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes' " Adds lots of themes
 
 " Language specific plugins
 Plugin 'jelera/vim-javascript-syntax'
 
+Plugin 'ntpeters/vim-better-whitespace' " Show & Remove Whitespaces command
 " GIT Related plugins
 Plugin 'airblade/vim-gitgutter' " Shows git diff in the left panel
 Plugin 'tpope/vim-fugitive' " Allows multiple GIT operation from inside vim
@@ -67,10 +67,8 @@ Plugin 'mattn/webapi-vim' " WEBAPI used by gist-vim
 " Plugin 'tomtom/tlib_vim'
 " Plugin 'garbas/vim-snipmate'
 " Plugin 'honza/vim-snippets'
-"
 
 call vundle#end()
-
 
 "}}}
 
@@ -78,6 +76,9 @@ call vundle#end()
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1 " disable the collapse
+
+" vim-instant-markdown
+let g:instant_markdown_slow = 1 " Update the preview less often
 
 " vim-airline
 set laststatus=2 "Is required or the status bar does not appear in th first vim split opened
@@ -125,7 +126,7 @@ set tabstop=2
 set number
 
 " Highlight trailing whitespace
-match ErrorMsg '\s\+$'
+" match ErrorMsg '\s\+$'
 
 " When opening a new split, it opens below & on the right
 set splitbelow
@@ -137,7 +138,7 @@ let mapleader=","  " Set the <leader> to , instead of \
 
 if os == "Linux"
 	set undofile " tell it to use an undo file
-	set undodir=/home/jp/.vim_undo/ " set a directory to store the undo history
+	set undodir=$HOME/.vim_undo/ " set a directory to store the undo history
 endif
 
 " ======== Buffers related options

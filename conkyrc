@@ -36,7 +36,7 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 
 alignment top_right
 gap_x 10
-gap_y 10
+gap_y 20
 minimum_size 250 5
 maximum_width 300
 
@@ -50,30 +50,29 @@ draw_borders no
 draw_graph_borders no #yes
 
 default_color LightGray
- 
+
 color0 LightGray
 color1 Tan1
 color2 white
 color3 33CCFF
 color4 white
 
-##############
-# - TEXT START- #
-##############
+##################
+# - TEXT START - #
+##################
 TEXT
-
 ##############
 # - System - #
 ##############
-${font Arial:bold:size=10}${color1}SYSTEM ${color0} ${hr 2}
-$font${color0}Hostname $alignr  $nodename
-$font${color0}$sysname $kernel $alignr $machine
-$font${color0}Uptime $alignr${uptime}
-$font${color0}Processes: $alignr $processes ($running_processes)
-$font${color0}File System $alignr${fs_type}
-#${font Arial:bold:size=10}${color Tan2}BATTERY ${color0}${hr 2}
-#${battery BAT1} 
-#${color0}${battery_bar 10,0 BAT1}
+# ${font Arial:bold:size=10}${color1}SYSTEM ${color0} ${hr 2}
+# $font${color0}Hostname $alignr  $nodename
+# $font${color0}$sysname $kernel $alignr $machine
+# $font${color0}Uptime $alignr${uptime}
+# $font${color0}Processes: $alignr $processes ($running_processes)
+# $font${color0}File System $alignr${fs_type}
+# ${font Arial:bold:size=10}${color Tan2}BATTERY ${color0}${hr 2}
+# ${battery BAT1}
+# ${color0}${battery_bar 10,0 BAT1}
 
 ###########
 # - CPU - #
@@ -82,13 +81,13 @@ ${font Arial:bold:size=10}${color1}CPU ${color0}${hr 2}$font${color0}
 #${font Arial:bold:size=10}${color0}Intel Core i7-3630Q $alignr${freq_g cpu0}Ghz$font
 ${font Arial:bold:size=10}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26} $alignr${freq_g cpu0}Ghz$font
 
-${cpugraph cpu1 10, 170}  $alignc${hwmon temp 2}°C  $alignr${cpu cpu1}%
+${cpugraph cpu1 10, 170} $alignc${hwmon temp 2}°C  $alignr${cpu cpu1}%
 ${cpugraph cpu2 10, 170} $alignr${cpu cpu2}%
-${cpugraph cpu3 10, 170}  $alignc${hwmon temp 3}°C  $alignr${cpu cpu3}%
+${cpugraph cpu3 10, 170} $alignc${hwmon temp 3}°C  $alignr${cpu cpu3}%
 ${cpugraph cpu4 10, 170} $alignr${cpu cpu4}%
-${cpugraph cpu5 10, 170}  $alignc${hwmon temp 4}°C  $alignr${cpu cpu5}%
+${cpugraph cpu5 10, 170} $alignc${hwmon temp 4}°C  $alignr${cpu cpu5}%
 ${cpugraph cpu6 10, 170} $alignr${cpu cpu6}%
-${cpugraph cpu7 10, 170}  $alignc${hwmon temp 5}°C  $alignr${cpu cpu7}%
+${cpugraph cpu7 10, 170} $alignc${hwmon temp 5}°C  $alignr${cpu cpu7}%
 ${cpugraph cpu8 10, 170} $alignr${cpu cpu8}%
 
 #################
@@ -122,23 +121,19 @@ ${font Arial:bold:size=10}${color1}STORAGE ${color0}${hr 2}
 
 $font${color0}/root $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${fs_bar /}
-
 /var $alignc ${fs_used /var} / ${fs_size /var} $alignr ${fs_used_perc /var}%
 ${fs_bar /var}
-
 /home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
 ${fs_bar /home}
-
 /mnt/data $alignc ${fs_used /mnt/data} / ${fs_size /mnt/data} $alignr ${fs_used_perc /mnt/data}%
 ${fs_bar /mnt/data}
-
 /mnt/jeux $alignc ${fs_used /mnt/jeux} / ${fs_size /mnt/jeux} $alignr ${fs_used_perc /mnt/jeux}%
 ${fs_bar /mnt/jeux}
 
 ###########
 # - GPU - #
 ###########
-${font Arial:bold:size=10}${color Tan2}GPU ${color0}${hr 2}
+# ${font Arial:bold:size=10}${color Tan2}GPU ${color0}${hr 2}
 
 ###############
 # - Network - #
@@ -146,9 +141,9 @@ ${font Arial:bold:size=10}${color Tan2}GPU ${color0}${hr 2}
 ${font Arial:bold:size=10}${color Tan2}NETWORK ${color0}${hr 2}
 
 ${font Arial:bold:size=10}${color2}wlp3s0: ${color0} $alignr ${addr wlp3s0}${color0}$font
-# ${if_match $wireless_link > 80}${color LightGreen}${else}${if_match $wireless_link > 50}${color Orange}${else}${color Red}${endif}­${endif}${wireless_link_bar 5, 0 wlp3s0}  
-Connected to: ${wireless_essid wlp3s0} 
-${wireless_link_bar 10, 0 wlp3s0}  
+# ${if_match $wireless_link > 80}${color LightGreen}${else}${if_match $wireless_link > 50}${color Orange}${else}${color Red}${endif}­${endif}${wireless_link_bar 5, 0 wlp3s0}
+Connected to: ${wireless_essid wlp3s0}
+${wireless_link_bar 10, 0 wlp3s0}
 
 ${font Arial:size=10}${color Tan2}▲ ${upspeedf wlp3s0} ${goto 65}${upspeedgraph wlp3s0 10,110} $alignr${totalup wlp3s0}
 ${font Arial:size=10}${color3}▼ ${downspeedf wlp3s0} ${goto 65}${downspeedgraph wlp3s0 10,110} $alignr${totaldown wlp3s0}
