@@ -51,6 +51,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/dotfiles/aliases
 source $HOME/dotfiles/functions
 
+# Adds autocompletion for grunt
+eval "$(grunt --completion=zsh)"
 # source $HOME/dotfiles/autostart
 
-# archey
