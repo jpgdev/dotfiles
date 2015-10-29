@@ -1,6 +1,16 @@
 #!/bin/bash
 # setup_vim - Download and install correctly all vim plugins using Vundle
 
+
+#####################################
+# Create undo folder
+#####################################
+undo_path="$HOME/.vim_undo"
+if [ ! -d $undo_path ]; then
+	echo "Create the vim undo directory ($undo_path)."
+	mkdir $undo_path
+fi
+
 #####################################
 # Acquiring Vundle to setup our plugins
 #####################################
@@ -9,7 +19,7 @@
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
 then
 	echo "Vundle was not found, getting it from github"
-	git clone https://github.com/VundleVim/vundle.vim.git ~/.vim/bundle/Vundle.vim
+	git clone https://github.com/VundleVim/vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
 fi
 
@@ -19,13 +29,13 @@ fi
 
 vim +PluginInstall +qall
 
-########################################### 
+###########################################
 # Compile YouCompleteMe
-# NOTE : We need 'cmake' for YCM
+# NOTE : We need cmake & python2 for YCM
 ###########################################
 
 
-# Find python2 
+# Find python2
 py2="python"
 
 case "$(python -V 2>&1)" in
@@ -59,7 +69,6 @@ esac
 
 # Making sure we have 'cmake'
 
-echo "Setup YouCompleteMe plugin... "
 if [ ! -x "$(command -v cmake)" ]; then
 	if [ -x "$(command -v pacman)" ]; then
 		echo "'cmake' not found, installing it via pacman..."
