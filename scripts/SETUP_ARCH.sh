@@ -8,6 +8,7 @@ script_vim="setup_vim.sh"
 script_pacman="pacman-backup-tool.sh"
 script_aur="setup_aur.sh"
 script_lightdm="setup_lightdm.sh"
+script_dev="setup_dev.sh"
 
 # Setup some colors
 
@@ -49,7 +50,7 @@ fi
 
 
 # Setup X Server
-xpkgs="gnome-keyring networkmanager network-manager-applet mesa-libgl lib32-mesa-libgl xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xterm"
+xpkgs="gnome-keyring gvfs networkmanager network-manager-applet mesa-libgl lib32-mesa-libgl p7zip pulseaudio pulseaudio-alsa pavucontrol skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xterm"
 
 echo -e "${blue}Now downloading & installing packages for X Server.${end}"
 echo -e "Packages : ${green}$xpkgs${end}"
@@ -82,7 +83,7 @@ fi
 
 # Adding the user to the bumblebee group
 curr_user="$USER"
-read -p "${yellow}Adding the user '$curr_user' to the 'bumblebee' group. (Y/n)${end} (Y/n)" -n 1 option
+read -p "${yellow}Adding the user '$curr_user' to the 'bumblebee' group.${end} (Y/n)" -n 1 option
 if [[  $option != n ]] && [[ $option != N ]]; then
 	sudo gpasswd -a $curr_user bumblebee
 fi
@@ -100,16 +101,42 @@ if [[ $option != n ]] && [[ $option != N ]]; then
 fi
 
 # Install AUR packages
-aur_pkgs="dockbarx google-chrome visual-studio-code xfce4-volumed xfce4-dockbarx-plugin-git"
+aur_pkgs="dockbarx fzf grive grive-tools google-chrome spotify visual-studio-code xfce4-volumed xfce4-dockbarx-plugin-git xfce4-pulseaudio-plugin xfce4-indicator-plugin "
 
 echo -e "${blue}Now downloading & installing packages from the AUR using Yaourt.${end}"
 echo -e "Packages : ${green}$aur_pkgs${end}"
-read -p "${yellow}Press a key to start.${end}(Y/n)\n" -n 1 option
-
+read -p "${yellow}Press a key to start.${end}(Y/n)" -n 1 option
 
 if [[ $option != n ]] && [[ $option != N ]]; then
 	yaourt -S  $aur_pkgs --needed --noconfirm
 fi
+
+# Install Theme packages
+theme_pkgs="dorian-theme numix-icon-theme-git numix-circle-icon-theme-git"
+echo "Installing theme related packages ($theme_pkgs)"
+echo -e "${blue}Now downloading & installing theme related packages from the AUR using Yaourt.${end}"
+echo -e "Packages : ${green}$theme_pkgs${end}"
+read -p "${yellow}Press a key to start.${end}(Y/n)n" -n 1 option
+
+if [[ $option != n ]] && [[ $option != N ]]; then
+	yaourt -S  $theme_pkgs --needed --noconfirm
+fi
+
+# Install some other required packages
+pkgs2="ntfs-3g"
+read -p "${yellow}Press a key to install some other required packages.${end} ($pkgs2)(Y/n)" -n 1 option
+if [[ $option != n ]] && [[ $option != N ]]; then
+	sudo pacman -S $pkgs2 --needed --noconfirm
+fi
+
+# Setup DEV environement
+read -p "${yellow}Press a key to setup the development environment.${end} ($script_dev) (Y/n)" -n 1 option
+if [[ $option != n ]] && [[ $option != N ]]; then
+	$script_path/$script_dev
+fi
+
+
+
 
 # Restore packages from the backup
 read -p "${yellow}Press a key to restore pacman packages from backup.${end} ($script_pacman)(Y/n)" -n 1 option

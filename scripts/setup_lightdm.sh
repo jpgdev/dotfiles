@@ -23,6 +23,7 @@ if [ ! -x $ld_path ]; then
 	sudo chmod +x $ld_path
 fi
 
+# Generate the xflock4 file for light-locker
 
 # Get a greeter
 greeter_name="lightdm-webkit-greeter"
