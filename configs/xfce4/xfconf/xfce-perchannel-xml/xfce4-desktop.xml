@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-desktop" version="1.0">
+  <property name="backdrop" type="empty">
+    <property name="screen0" type="empty">
+      <property name="monitor0" type="empty">
+        <property name="image-path" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/breaking-bad-walter-white.jpg"/>
+        <property name="last-single-image" type="string" value="/home/jp/Pictures/backgrounds/DIablo III - Archangel.jpg"/>
+        <property name="image-show" type="bool" value="true"/>
+        <property name="last-image-list" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        <property name="image-style" type="int" value="0"/>
+        <property name="brightness" type="int" value="0"/>
+        <property name="saturation" type="double" value="1.000000"/>
+        <property name="backdrop-cycle-enable" type="bool" value="true"/>
+        <property name="backdrop-cycle-timer" type="uint" value="10"/>
+        <property name="color1" type="array">
+          <value type="uint" value="0"/>
+          <value type="uint" value="4318"/>
+          <value type="uint" value="33443"/>
+          <value type="uint" value="65535"/>
+        </property>
+        <property name="color-style" type="int" value="1"/>
+        <property name="workspace0" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace1" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace2" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace3" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+      </property>
+      <property name="monitor1" type="empty">
+        <property name="image-path" type="string" value="/home/jp/Images/backgrounds/space.jpg"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-blue.jpg"/>
+        <property name="last-single-image" type="string" value="/home/jp/Images/backgrounds/space.jpg"/>
+      </property>
+      <property name="monitorLVDS1" type="empty">
+        <property name="workspace0" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/Los_Pollos_Hermanos.jpg"/>
+          <property name="backdrop-cycle-enable" type="bool" value="true"/>
+          <property name="backdrop-cycle-random-order" type="bool" value="true"/>
+        </property>
+        <property name="workspace1" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/Blue-Line-a-black-background-vladstudio.jpg"/>
+          <property name="backdrop-cycle-enable" type="bool" value="false"/>
+        </property>
+        <property name="workspace2" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/dark_souls.jpg"/>
+        </property>
+        <property name="workspace3" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace4" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace5" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace6" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace7" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace8" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace9" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace10" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace11" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace12" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace13" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace14" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace15" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace16" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace17" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace18" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace19" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace20" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace21" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace22" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace23" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace24" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace25" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace26" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace27" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace28" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace29" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace30" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace31" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace32" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace33" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace34" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace35" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace36" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace37" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+      </property>
+      <property name="monitorHDMI1" type="empty">
+        <property name="workspace0" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/arch-theme-osx-wallpaper.jpg"/>
+          <property name="backdrop-cycle-enable" type="bool" value="true"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+        </property>
+        <property name="workspace1" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/the_witcher_3_wallpapers/Witcher 3 Wild Hunt, The -  wallpaper 4.jpg"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+        </property>
+        <property name="workspace2" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/jp/Images/backgrounds/space.jpg"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+        </property>
+        <property name="workspace3" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/jp/Images/backgrounds/space.jpg"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+        </property>
+      </property>
+      <property name="monitorVGA1" type="empty">
+        <property name="workspace0" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/breaking-bad-walter-white.jpg"/>
+        </property>
+        <property name="workspace1" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace2" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+        <property name="workspace3" type="empty">
+          <property name="color-style" type="int" value="1"/>
+          <property name="color1" type="array">
+            <value type="uint" value="0"/>
+            <value type="uint" value="4318"/>
+            <value type="uint" value="33443"/>
+            <value type="uint" value="65535"/>
+          </property>
+          <property name="image-style" type="int" value="3"/>
+          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+        </property>
+      </property>
+    </property>
+    <property name="single-workspace-mode" type="bool" value="true"/>
+    <property name="single-workspace-number" type="int" value="1"/>
+  </property>
+  <property name="desktop-icons" type="empty">
+    <property name="icon-size" type="uint" value="32"/>
+    <property name="style" type="int" value="2"/>
+    <property name="use-custom-font-size" type="bool" value="false"/>
+    <property name="single-click" type="bool" value="false"/>
+    <property name="file-icons" type="empty">
+      <property name="show-removable" type="bool" value="false"/>
+      <property name="show-trash" type="bool" value="false"/>
+      <property name="show-filesystem" type="bool" value="false"/>
+      <property name="show-home" type="bool" value="false"/>
+    </property>
+    <property name="show-hidden-files" type="bool" value="false"/>
+  </property>
+  <property name="windowlist-menu" type="empty">
+    <property name="show-sticky-once" type="bool" value="false"/>
+    <property name="show-submenus" type="bool" value="false"/>
+  </property>
+  <property name="last" type="empty">
+    <property name="window-width" type="int" value="750"/>
+    <property name="window-height" type="int" value="713"/>
+  </property>
+</channel>

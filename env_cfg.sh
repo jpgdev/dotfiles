@@ -1,3 +1,3 @@
-export GPODDER_DOWNLOAD_DIR=~/Music/Podcasts
-export GPODDER_HOME=~/.config/gPodder
-export PGDATA=~/Postgres/data
+# export GPODDER_DOWNLOAD_DIR=~/Music/Podcasts
+# export GPODDER_HOME=~/.config/gPodder
+# export PGDATA=~/Postgres/data

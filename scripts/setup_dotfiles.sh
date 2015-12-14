@@ -10,7 +10,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim zshrc oh-my-zsh gitconfig gitignore_global conkyrc xinitrc"    # list of files/folders to symlink in homedir
+files="archey3.cfg bashrc vimrc vim zshrc oh-my-zsh gitconfig gitignore_global conkyrc xinitrc"    # list of files/folders to symlink in homedir
 
 ##########
 

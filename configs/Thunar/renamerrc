@@ -1,0 +1,13 @@
+[Configuration]
+LastActiveMode=THUNAR_RENAMER_MODE_NAME
+LastActiveRenamer=ThunarSbrCaseRenamer
+
+[ThunarSbrReplaceRenamer]
+Regexp=FALSE
+Replacement=\ 
+CaseSensitive=FALSE
+Pattern=_
+
+[ThunarSbrCaseRenamer]
+Mode=THUNAR_SBR_CASE_RENAMER_MODE_CAMEL
+

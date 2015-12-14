@@ -1,0 +1,10 @@
+[Xfce4DockbarX]
+config=true
+mode=0
+color=#464646464646
+alpha=50
+image=/home/jp/Images/backgrounds/recycled_texture.jpg
+offset=0
+max_size=0
+orient=top
+expand=false

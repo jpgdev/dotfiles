@@ -1,0 +1,72 @@
+{
+	/*
+	 // Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+	"Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log(${1:message});"
+		],
+		"description": "Log output to console"
+	},
+	"Callback function": {
+		"prefix": "callback",
+		"body": [
+			"function (err, ${1:result}) {",
+			"	if(err){",
+			"		${2}",
+			"	}",
+			"	${3}",
+			"}"
+		],
+		"description": "Generate a callback function"
+	},
+	"Routing Callback function": {
+		"prefix": "cbroute",
+		"body": [
+			"function (err, res) {",
+			"	${2}",
+			"	done();",
+			"}"
+		],
+		"description": "Generate a callback function"
+	},
+	"Function": {
+		"prefix": "fn",
+		"body": [
+			"function (${1:params}) {",
+			"	${2}",
+			"}"
+		],
+		"description": "Generate an anonymous function"
+	},
+	"Named Function": {
+		"prefix": "fn2",
+		"body": [
+			"function ${1:fnName}(${2:params}) {",
+			"	${3}",
+			"}"
+		],
+		"description": "Generate a named function"
+	},
+	"Saved & Named Function": {
+		"prefix": "fn3",
+		"body": [
+			"var ${1:fnName} = function ${1:fnName}(${2:params}) {",
+			"	${3}",
+			"}"
+		],
+		"description": "Generate a saved named function"
+	}
+}
