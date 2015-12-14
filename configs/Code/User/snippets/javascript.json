@@ -52,7 +52,7 @@
 		"description": "Generate an anonymous function"
 	},
 	"Named Function": {
-		"prefix": "fn2",
+		"prefix": "fnn",
 		"body": [
 			"function ${1:fnName}(${2:params}) {",
 			"	${3}",
@@ -61,12 +61,70 @@
 		"description": "Generate a named function"
 	},
 	"Saved & Named Function": {
-		"prefix": "fn3",
+		"prefix": "fnn2",
 		"body": [
 			"var ${1:fnName} = function ${1:fnName}(${2:params}) {",
 			"	${3}",
-			"}"
+			"};"
 		],
 		"description": "Generate a saved named function"
-	}
+	},
+	"Named prototype Function": {
+		"prefix": "fnproto",
+		"body": [
+			"${1:ObjName}.prototype.${2:fnName} = function ${2:fnName}(${3}) {",
+			"	${4}",
+			"};"
+		],
+		"description": "Generate a named prototype function"
+	},
+	/* Mocha tests snippets */
+	"Mocha Test Case": {
+		"prefix": "itMocha",
+		"body": [
+			"it('should ${1:do something}', function (done) {",
+			"	${2}",
+			"	done()",
+			"});"
+		],
+		"description": "Generate a new mocha test case (it)"
+	},
+	"Mocha Test Suite": {
+		"prefix": "descMocha",
+		"body": [
+			"describe('${1:Section Name}', function () {",
+			"	${2}",
+			"});"
+		],
+		"description": "Generate a new mocha test suite (describe)"
+	},
+	"Mocha Test Suite Full": {
+		"prefix": "descFullMocha",
+		"body": [
+			"describe('${1:Section Name}', function () {",
+			"	before(function (done){",
+			"		${2}",
+			"		done();",
+			"	});",
+			"	it('should ${3:do something}', function (done) {",
+			"		${4}",
+			"		done()",
+			"	});",
+			"	after(function (done){",
+			"		${5}",
+			"		done();",
+			"	});",
+			"});"
+		],
+		"description": "Generate a new full mocha test suite (describe)"
+	},
+	"Mocha Function": {
+		"prefix": "fnMocha",
+		"body": [
+			"${1:functionName}(function (${2}) {",
+			"	${3}",
+			"});"
+		],
+		"description": "Generate a mocha function"
+	},
 }
