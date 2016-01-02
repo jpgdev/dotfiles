@@ -33,7 +33,7 @@
 		"description": "Generate a callback function"
 	},
 	"Routing Callback function": {
-		"prefix": "cbroute",
+		"prefix": "callbackroute",
 		"body": [
 			"function (err, res) {",
 			"	${2}",
@@ -126,5 +126,5 @@
 			"});"
 		],
 		"description": "Generate a mocha function"
-	},
+	}
 }

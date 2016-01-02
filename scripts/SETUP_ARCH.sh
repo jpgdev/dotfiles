@@ -50,7 +50,7 @@ fi
 
 
 # Setup X Server
-xpkgs="gnome-keyring gvfs networkmanager network-manager-applet mesa-libgl lib32-mesa-libgl p7zip pulseaudio pulseaudio-alsa pavucontrol skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xterm"
+xpkgs="bluez bluez-utils blueman gnome-keyring gvfs gvfs-mtp networkmanager network-manager-applet mesa-libgl lib32-mesa-libgl p7zip pulseaudio pulseaudio-alsa pavucontrol skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xterm"
 
 echo -e "${blue}Now downloading & installing packages for X Server.${end}"
 echo -e "Packages : ${green}$xpkgs${end}"
@@ -63,6 +63,13 @@ read -p "${yellow}Press a key to enable the NetworkManager service.${end} (Y/n)"
 if [[  $option != n ]] && [[ $option != N ]]; then
 	sudo systemctl enable NetworkManager.service
 fi
+
+read -p "${yellow}Press a key to enable the Bluetooth service.${end} (Y/n)" -n 1 option
+if [[  $option != n ]] && [[ $option != N ]]; then
+	sudo systemctl enable bluetooth
+	sudo systemctl start bluetooth
+fi
+
 
 # Setup for LightDM & xfce4
 read -p "${yellow}Press a key to setup LightDM.${end}($script_lightdm) (Y/n)" -n 1 option

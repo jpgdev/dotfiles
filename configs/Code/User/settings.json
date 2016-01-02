@@ -1,9 +1,14 @@
 // Place your settings in this file to overwrite the default settings
 {
-	"editor.wrappingColumn": 0,
-	
-	"search.exclude": {
-		"**/node_modules": true,
-		"**/bower_components": true,
-	}
+    // Wraps with the editor width
+    "editor.wrappingColumn": 0,
+    // Better fuzzy search
+    "filePicker.alternateFileNameMatching": true,
+    
+    // Javascript validation settings
+    
+    // Missing semicolon.
+    "javascript.validate.lint.missingSemicolon": "warning",
+    // Use '!==' and '===' instead of '!=' and '=='.
+    "javascript.validate.lint.comparisonOperatorsNotStrict": "warning"
 }

@@ -1,3 +1,15 @@
 // Place your key bindings in this file to overwrite the defaults
 [
+    // Put the cursor at the end of the line
+    {
+        "key": "ctrl+;",
+        "command": "cursorEnd",
+        "when": "editorTextFocus"
+    },
+    // Put the cursor at the end of the line
+    {
+        "key": "alt+;",
+        "command": "cursorEnd",
+        "when": "editorTextFocus"
+    }
 ]

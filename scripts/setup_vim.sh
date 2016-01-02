@@ -90,3 +90,32 @@ echo "Compiling YouCompleteMe..."
 # See documentation at : http://github.com/Valloric/YouCompleteMe#installation
 $py2  $HOME/.vim/bundle/YouCompleteMe/install.py
 
+###########################################
+# Install 'jshint' globally with NPM for linting
+###########################################
+
+if [ ! -x "$(command -v jshint)" ]; then
+	echo "Install JSHINT globally with npm for 'scrooloose/syntastic' linting"
+	sudo npm install -g jshint
+fi
+
+##########################################
+# Install ctags to use tagbar plugin
+##########################################
+
+
+if [ ! -x "$(command -v ctags)" ]; then
+	if [ -x "$(command -v pacman)" ]; then
+		echo "'ctags' not found, installing it via pacman..."
+		sudo pacman -S ctags
+
+		if [ ! -x "$(command -v ctags)" ]; then
+			echo "'ctags' not installed correctly, need to install it to use 'tagbar' plugin."
+			exit
+		fi
+
+	else
+		echo "'ctags' not found, need to install it to use 'tagbar' plugin."
+		exit
+	fi
+fi
