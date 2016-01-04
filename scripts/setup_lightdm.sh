@@ -24,6 +24,10 @@ if [ ! -x $ld_path ]; then
 fi
 
 # Generate the xflock4 file for light-locker
+echo "Add the light-locker-command entry to the '/usr/bin/xflock4' to enable locking with xfce4"
+# Adds the line before the 'xfcreensaver-command' with 4 spaces for indentation
+sudo sed -i '/xscreensaver-command -lock/i  \    "light-locker-command --lock" \\' /usr/bin/xflock4
+
 
 # Get a greeter
 greeter_name="lightdm-webkit-greeter"
