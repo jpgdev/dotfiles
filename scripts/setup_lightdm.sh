@@ -28,7 +28,6 @@ echo "Add the light-locker-command entry to the '/usr/bin/xflock4' to enable loc
 # Adds the line before the 'xfcreensaver-command' with 4 spaces for indentation
 sudo sed -i '/xscreensaver-command -lock/i  \    "light-locker-command --lock" \\' /usr/bin/xflock4
 
-
 # Get a greeter
 greeter_name="lightdm-webkit-greeter"
 if [ ! -x "$(command -v yaourt)" ]; then

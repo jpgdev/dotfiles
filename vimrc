@@ -32,20 +32,18 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline' " The statusbar plugin
 " Plugin 'mkitt/tabline.vim' " Better tab line (top)
 Plugin 'scrooloose/nerdtree' " File explorer
-Plugin 'kien/ctrlp.vim' " fuzzy find a file in the project
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy find a file in the current folder
 Plugin 'tomtom/tcomment_vim' " shortcut to comment code
 " Plugin 'easymotion/vim-easymotion' " movement that behaves like the chrome vim plugin (when F is clicked)
 
 if os == "Linux"
 	Plugin 'Valloric/YouCompleteMe' " auto-completion
 	Plugin 'marijnh/tern_for_vim' " JS smarter autocompletion with YCM
-	Plugin 'suan/vim-instant-markdown' " Markdown previewer (requires the npm package instant-markdown-d)
 endif
 
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround' " adds commands to modify surrounding characters
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'godlygeek/tabular' " toll to align text
 
 " if ag (the_silver_searcher) is installed
 if executable('ag')
@@ -68,6 +66,11 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ntpeters/vim-better-whitespace' " Show & Remove Whitespaces command
 Plugin 'moll/vim-node' " Node.js
 Plugin 'tmux-plugins/vim-tmux' " offers syntax highlight in tmux.conf file
+
+" Markdown specific
+Plugin 'plasticboy/vim-markdown'
+Plugin 'mzlogin/vim-markdown-toc' " generate a ToC in a single command
+Plugin 'suan/vim-instant-markdown' " Markdown previewer (requires the npm package instant-markdown-d)
 
 " GIT Related plugins
 Plugin 'airblade/vim-gitgutter' " Shows git diff in the left panel
@@ -120,7 +123,6 @@ au Syntax * RainbowParenthesesLoadBraces
 " vim-dispatch
 " Set the compiler for vim-dispatch from the language
 autocmd FileType javascript let b:dispatch = 'node %'
-
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -227,6 +229,7 @@ nmap <leader>bl :ls<CR>
 
 " ======== Custom Keybind mapping
 
+" Easier to press ESC with 'jj'
 :imap jj <Esc>
 
 " Splits
@@ -247,11 +250,16 @@ nnoremap <F5> :Dispatch<cr>
 
 " vim-fugitive
 nnoremap <leader>gd :Gdiff<cr>
+
 " close the left-most split (normally the diff file)
 nnoremap <leader>gD <c-w>h<c-w>c
 "
 " un-map the Q key which opens the not used exec mode
 map Q <Nop>
+
+" toggle pastemode easily
+set pastetoggle=<F2>
+
 
 " ====== Grep & Ag commands
 
