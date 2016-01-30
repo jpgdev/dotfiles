@@ -29,6 +29,13 @@ fi
 
 vim +PluginInstall +qall
 
+########################################
+# Install the patched font
+#######################################
+patchedFont="ttf-dejavu-sans-mono-powerline-git"
+echo "Installing the patched font for 'vim-airline' symbols ($patchedFont)"
+sudo yaourt -S $patchedFont --needed
+
 ###########################################
 # Compile YouCompleteMe
 # NOTE : We need cmake & python2 for YCM
@@ -103,7 +110,6 @@ fi
 # Install ctags to use tagbar plugin
 ##########################################
 
-
 if [ ! -x "$(command -v ctags)" ]; then
 	if [ -x "$(command -v pacman)" ]; then
 		echo "'ctags' not found, installing it via pacman..."
@@ -119,3 +125,5 @@ if [ ! -x "$(command -v ctags)" ]; then
 		exit
 	fi
 fi
+
+

@@ -50,7 +50,7 @@ fi
 
 
 # Setup X Server
-xpkgs="bluez bluez-utils blueman gnome-keyring gvfs gvfs-mtp networkmanager network-manager-applet mesa-libgl lib32-mesa-libgl p7zip pulseaudio pulseaudio-alsa pavucontrol skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xterm"
+xpkgs="bluez bluez-utils blueman gnome-keyring gvfs gvfs-mtp networkmanager network-manager-applet mesa-libgl lib32-mesa-libgl p7zip pulseaudio pulseaudio-alsa pavucontrol lib32-alsa-plugins lib32-libpulse skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xorg-xrefresh xterm"
 
 echo -e "${blue}Now downloading & installing packages for X Server.${end}"
 echo -e "Packages : ${green}$xpkgs${end}"

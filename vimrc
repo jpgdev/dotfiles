@@ -3,7 +3,8 @@
 
 " Inspired by : https://github.com/cabouffard/dotfiles
 
-" ======== Get current OS
+"{============ Get current OS ============
+
 let os = ""
 if has("win32")
 	let os = "win"
@@ -11,7 +12,7 @@ else
 	let os = substitute(system('uname'), "\n", "", "")
 endif
 
-" ======== Plugins (with Vundle) {{{
+"}{============ Plugins (with Vundle) ============
 
 set nocompatible
 filetype off
@@ -25,7 +26,7 @@ else
 	call vundle#begin()
 endif
 
-" ======== Add plugins here
+"}{============ Add plugins here ============
 
 " Vim config plugins
 Plugin 'gmarik/Vundle.vim'
@@ -44,6 +45,7 @@ endif
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround' " adds commands to modify surrounding characters
 Plugin 'godlygeek/tabular' " toll to align text
+Plugin 'Chiel92/vim-autoformat' " Auto-format code
 
 " if ag (the_silver_searcher) is installed
 if executable('ag')
@@ -66,6 +68,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ntpeters/vim-better-whitespace' " Show & Remove Whitespaces command
 Plugin 'moll/vim-node' " Node.js
 Plugin 'tmux-plugins/vim-tmux' " offers syntax highlight in tmux.conf file
+Plugin 'heavenshell/vim-jsdoc' " helper to generate JSDoc comments
 
 " Markdown specific
 Plugin 'plasticboy/vim-markdown'
@@ -82,33 +85,31 @@ Plugin 'mattn/webapi-vim' " WEBAPI used by gist-vim
 " Plugin 'sirver/ultisnips' " ultisnips engine
 " Plugin 'honza/vim-snippets' "ultisnips default snippets
 
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'tomtom/tlib_vim'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'honza/vim-snippets'
-
 call vundle#end()
-
-"}}}
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('bundle/matchit.vim', &rtp) ==# ''
 	runtime! macros/matchit.vim
 endif
 
-" ======== Plugins configs
+"}{============ Plugins configs ============
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1 " disable the collapse
 
 " vim-instant-markdown
 let g:instant_markdown_slow = 1 " Update the preview less often
+let g:instant_markdown_autostart = 0 " Don't open a preview on file open, use :InstantMarkdownPreview instead
 
 " vim-airline
 set laststatus=2 "Is required or the status bar does not appear in the first vim split opened
+
+let g:airline#extensions#tagbar#enabled = 0 "Disable tagbar integration (show current function) 
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers at the top
 let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
+" let g:airline#extensions#tabline#buffer_idx_mode = 1 " Adds a tab number
 " let g:airline_theme='onedark'
+let g:airline_powerline_fonts = 1 " Enable the patched fonts
 
 " Enable Rainbow Parentheses at startup
 au VimEnter * RainbowParenthesesToggle
@@ -130,6 +131,9 @@ nmap <F8> :TagbarToggle<CR>
 " scrooloose/syntastic (linting)
 let g:syntastic_check_on_open=1 "Run linting on file open on top of when the file is saved
 
+" vim-autoformat
+let g:autoformat_autoindent = 0
+
 " Use Ag (the_silver_surfer)
 if executable('ag')
 
@@ -144,9 +148,13 @@ if executable('ag')
 
 endif
 
+" vim-jsdoc
+let g:jsdoc_allow_input_prompt=1 " helper prompt to generate the JSDoc
+let g:jsdoc_input_description=1 " include descritpion generation with the helper
+
 " UltiSnips configs
 " let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsForwardTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 " let g:ulti_expand_or_jump_res = 0
 " " Function to be able to use snippets with YCM (press enter it generate the
@@ -159,17 +167,17 @@ endif
 " 		return "\<CR>"
 " 	endif
 " endfunction
-"
 
-" ======== Generic Settings
+"}{============ Generic Settings ============
+
 " Highlight the current line
 set cursorline
 
 " Tabulation related settings
 set autoindent
 set smarttab
-set shiftwidth=2 " spaces for tabulations
-set tabstop=2
+set shiftwidth=4 " spaces for tabulations
+set tabstop=4
 
 " Case related settings
 set ignorecase " ignore case by default
@@ -189,6 +197,8 @@ set wildmenu " better autocompletion for : menu, adds a list of possible options
 set number
 " set relativenumber
 
+set mouse=a " enable the mouse (usefull to copy & paste out of vim)
+
 " Highlight trailing whitespace
 " match ErrorMsg '\s\+$'
 
@@ -205,7 +215,7 @@ if os == "Linux"
 	set undodir=$HOME/.vim_undo/ " set a directory to store the undo history
 endif
 
-" ======== Buffers related options
+"}{============ Buffers related options ============
 
 " This allows buffers to be hidden if you've modified a buffer.
 set hidden
@@ -227,7 +237,7 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
-" ======== Custom Keybind mapping
+"}{============ Custom Keybind mapping ============
 
 " Easier to press ESC with 'jj'
 :imap jj <Esc>
@@ -248,6 +258,10 @@ nnoremap <leader>sr <ESC>:so $MYVIMRC<cr>
 " vim-dispatch
 nnoremap <F5> :Dispatch<cr>
 
+" Search and replace word under cursor using F4
+" Source : http://stackoverflow.com/a/5543793
+nnoremap <F4> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
+
 " vim-fugitive
 nnoremap <leader>gd :Gdiff<cr>
 
@@ -260,8 +274,7 @@ map Q <Nop>
 " toggle pastemode easily
 set pastetoggle=<F2>
 
-
-" ====== Grep & Ag commands
+"}{============ Grep & Ag commands ============
 
 " search for the current word in the current directory
 nnoremap <leader>J :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -274,7 +287,7 @@ if executable('ag')
 	" nmap <leader>j :grep <cword> %<cr>
 endif
 
-" ======== Set theme and colorscheme
+"}{============ Set theme and colorscheme ============
 
 if os == "win"
 	set term=xterm
@@ -286,6 +299,8 @@ endif
 set t_Co=256
 let g:rehash256 = 1
 
+" The patched font to add symbols to powerline
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10.5
 
 syntax on
 set background=dark
@@ -293,10 +308,13 @@ set background=dark
 " colorscheme onedark
 " colorscheme Tomorrow-Night-Eighties
 " colorscheme Tomorrow-Night
-colorscheme molokai
+" colorscheme molokai
+colorscheme gruvbox
 
 " Transparent background
 " highlight Normal ctermbg=none
 " highlight NonText ctermbg=none
 
 filetype indent plugin on
+
+"}=============================

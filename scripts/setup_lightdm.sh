@@ -25,6 +25,7 @@ fi
 
 # Generate the xflock4 file for light-locker
 echo "Add the light-locker-command entry to the '/usr/bin/xflock4' to enable locking with xfce4"
+# TODO : Add a check to see if the line is already there
 # Adds the line before the 'xfcreensaver-command' with 4 spaces for indentation
 sudo sed -i '/xscreensaver-command -lock/i  \    "light-locker-command --lock" \\' /usr/bin/xflock4
 
@@ -41,10 +42,10 @@ yaourt -S $greeter_name --needed
 # Set lightdm greeter
 conf_file="/etc/lightdm/lightdm.conf"
 echo "Replacing the current LightDM greeter to '$greeter_name'"
+# TODO : Add a check to see if the line is already there
 sudo sed -i '/greeter-session=/c\greeter-session='"$greeter_name" $conf_file
 
 # Get a greeter theme
-# theme_url="http://github.com/shosca/lightdm-webkit-archlinux-theme"
 theme_url="http://github.com/jpgdev/lightdm-webkit-archlinux-theme"
 theme_folder_name="arch"
 theme_folder="/usr/share/lightdm-webkit/themes/"
@@ -56,4 +57,5 @@ fi
 # Set greeter theme
 greeter_conf="/etc/lightdm/lightdm-webkit-greeter.conf"
 echo "Setting the theme name in the '$greeter_name' config file."
+# TODO : Add a check to see if the line is already there
 sudo sed -i '/webkit-theme=/c\webkit-theme='"$theme_folder_name" $greeter_conf
