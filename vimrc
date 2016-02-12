@@ -69,6 +69,7 @@ Plugin 'ntpeters/vim-better-whitespace' " Show & Remove Whitespaces command
 Plugin 'moll/vim-node' " Node.js
 Plugin 'tmux-plugins/vim-tmux' " offers syntax highlight in tmux.conf file
 Plugin 'heavenshell/vim-jsdoc' " helper to generate JSDoc comments
+Plugin 'lervag/vimtex'
 
 " Markdown specific
 Plugin 'plasticboy/vim-markdown'
@@ -151,6 +152,9 @@ endif
 " vim-jsdoc
 let g:jsdoc_allow_input_prompt=1 " helper prompt to generate the JSDoc
 let g:jsdoc_input_description=1 " include descritpion generation with the helper
+
+" latex
+let g:tex_flavor='latex' " to set the .tex files as latex and not plaintext
 
 " UltiSnips configs
 " let g:UltiSnipsExpandTrigger="<tab>"
