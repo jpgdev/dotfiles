@@ -179,6 +179,7 @@ set cursorline
 
 " Tabulation related settings
 set autoindent
+set expandtab " use spaces instead of tab characters
 set smarttab
 set shiftwidth=4 " spaces for tabulations
 set tabstop=4
@@ -200,6 +201,10 @@ set wildmenu " better autocompletion for : menu, adds a list of possible options
 " Line numbering
 set number
 " set relativenumber
+
+" Faster redraw, for diffs mostly which are really slow without this
+set lazyredraw
+set ttyfast
 
 set mouse=a " enable the mouse (usefull to copy & paste out of vim)
 
@@ -252,6 +257,10 @@ noremap <C-J> <C-W><C-J>
 noremap <C-K> <C-W><C-K>
 noremap <C-L> <C-W><C-L>
 noremap <C-H> <C-W><C-H>
+
+" Move vertically by column
+nnoremap j gj
+nnoremap k gk
 
 " Nerdtree shortcut
 nmap <leader>k :NERDTreeToggle<cr>
