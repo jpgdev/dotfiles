@@ -1,0 +1,45 @@
+snippet ngdirective "Angular directive definition"
+(function (){
+	'use strict';
+
+	angular
+		.module('${1:module}')
+		.directive('${2:directive}', $2);
+
+	function $2(){
+		var directive = {
+			restrict : 'E',
+			templateUrl : '${4}',
+			scope : {
+			},
+			link : postLink,
+			controller : ${2/.*/\u$0/}Controller,
+			controllerAs : '${5:vm}',
+			bindToController : true
+		};
+
+		return directive;
+
+		//////////////
+
+		function postLink(scope, element, attrs){
+		}
+	}
+
+	${2/.*/\u$0/}Controller.$inject = ['${6:dependencies}'];
+
+	function ${2/.*/\u$0/}Controller($6){
+		var $5 = this;
+
+
+		activate();
+
+		////////////
+
+		function activate(){
+
+		}
+	}
+
+})();
+endsnippet

@@ -7,9 +7,9 @@
 
 let os = ""
 if has("win32")
-	let os = "win"
+    let os = "win"
 else
-	let os = substitute(system('uname'), "\n", "", "")
+    let os = substitute(system('uname'), "\n", "", "")
 endif
 
 "}{============ Plugins (with Vundle) ============
@@ -18,12 +18,12 @@ set nocompatible
 filetype off
 
 if os == "win"
-	set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-	let path=$HOME.'~/vimfiles/bundle'
-	call vundle#begin(path)
+    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+    let path=$HOME.'~/vimfiles/bundle'
+    call vundle#begin(path)
 else
-	set rtp+=$HOME/.vim/bundle/Vundle.vim/
-	call vundle#begin()
+    set rtp+=$HOME/.vim/bundle/Vundle.vim/
+    call vundle#begin()
 endif
 
 "}{============ Add plugins here ============
@@ -38,8 +38,8 @@ Plugin 'tomtom/tcomment_vim' " shortcut to comment code
 " Plugin 'easymotion/vim-easymotion' " movement that behaves like the chrome vim plugin (when F is clicked)
 
 if os == "Linux"
-	Plugin 'Valloric/YouCompleteMe' " auto-completion
-	Plugin 'marijnh/tern_for_vim' " JS smarter autocompletion with YCM
+    Plugin 'Valloric/YouCompleteMe' " auto-completion
+    Plugin 'marijnh/tern_for_vim' " JS smarter autocompletion with YCM
 endif
 
 Plugin 'kien/rainbow_parentheses.vim'
@@ -49,7 +49,7 @@ Plugin 'Chiel92/vim-autoformat' " Auto-format code
 
 " if ag (the_silver_searcher) is installed
 if executable('ag')
-	Plugin 'rking/ag.vim' " Better search tool than grep (requires AG package installed)
+    Plugin 'rking/ag.vim' " Better search tool than grep (requires AG package installed)
 endif
 
 " Plugin 'neilagabriel/vim-geeknote' " Integrate geeknote with vim (not working currently)
@@ -70,6 +70,7 @@ Plugin 'moll/vim-node' " Node.js
 Plugin 'tmux-plugins/vim-tmux' " offers syntax highlight in tmux.conf file
 Plugin 'heavenshell/vim-jsdoc' " helper to generate JSDoc comments
 Plugin 'lervag/vimtex'
+Plugin 'slim-template/vim-slim' " Syntax highlight for 'slim'
 
 " Markdown specific
 Plugin 'plasticboy/vim-markdown'
@@ -82,15 +83,15 @@ Plugin 'tpope/vim-fugitive' " Allows multiple GIT operation from inside vim
 Plugin 'mattn/gist-vim' " Allow to post gist easily
 Plugin 'mattn/webapi-vim' " WEBAPI used by gist-vim
 
-" Snipmate required plugins
-" Plugin 'sirver/ultisnips' " ultisnips engine
-" Plugin 'honza/vim-snippets' "ultisnips default snippets
+" Ultisnips required plugins
+Plugin 'sirver/ultisnips' " ultisnips engine
+Plugin 'honza/vim-snippets' "ultisnips default snippets
 
 call vundle#end()
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('bundle/matchit.vim', &rtp) ==# ''
-	runtime! macros/matchit.vim
+    runtime! macros/matchit.vim
 endif
 
 "}{============ Plugins configs ============
@@ -118,10 +119,6 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" Change snipmate keybind
-" imap <C-Space> <Plug>snipMateNextOrTrigger
-" smap <C-Space> <Plug>snipMateNextOrTrigger
-
 " vim-dispatch
 " Set the compiler for vim-dispatch from the language
 autocmd FileType javascript let b:dispatch = 'node %'
@@ -133,19 +130,19 @@ nmap <F8> :TagbarToggle<CR>
 let g:syntastic_check_on_open=1 "Run linting on file open on top of when the file is saved
 
 " vim-autoformat
-let g:autoformat_autoindent = 0
+" let g:autoformat_autoindent = 0 " Don't defaults back to vim indent
 
 " Use Ag (the_silver_surfer)
 if executable('ag')
 
-	" Use Ag instead of grep
-	set grepprg=ag\ --nogroup\ --nocolor
+    " Use Ag instead of grep
+    set grepprg=ag\ --nogroup\ --nocolor
 
-	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-	" ag is fast enough that CtrlP doesn't need to cache
-	let g:ctrlp_use_caching = 0
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
 
 endif
 
@@ -156,26 +153,33 @@ let g:jsdoc_input_description=1 " include descritpion generation with the helper
 " latex
 let g:tex_flavor='latex' " to set the .tex files as latex and not plaintext
 
-" UltiSnips configs
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" YouCompletMe (YCM)
+" Source : https://github.com/cabouffard/dotfiles/blob/master/.vimrc
+let g:ycm_key_list_select_completion=["<tab>"]
+let g:ycm_key_list_previous_completion=["<S-tab>"]
 
-" let g:ulti_expand_or_jump_res = 0
-" " Function to be able to use snippets with YCM (press enter it generate the
-" " snippet)
-" function! <SID>ExpandSnippetOrReturn()
-" 	let snippet = UltiSnips#ExpandSnippetOrJump()
-" 	if g:ulti_expand_or_jump_res > 0
-" 		return snippet
-" 	else
-" 		return "\<CR>"
-" 	endif
-" endfunction
+" UltiSnips
+" Allows UltiSnips to co-exist with YCM
+" Source : https://github.com/cabouffard/dotfiles/blob/master/.vimrc
+
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsExpandTrigger="<nop>"
+let g:ulti_expand_or_jump_res = 0
+
+function! <SID>ExpandSnippetOrReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
 
 "}{============ Generic Settings ============
 
-" Highlight the current line
-set cursorline
+set cursorline " Highlight the current line
 
 " Tabulation related settings
 set autoindent
@@ -183,6 +187,9 @@ set expandtab " use spaces instead of tab characters
 set smarttab
 set shiftwidth=4 " spaces for tabulations
 set tabstop=4
+
+" Language specific tab settings
+au FileType ruby setl shiftwidth=2 tabstop=2
 
 " Case related settings
 set ignorecase " ignore case by default
@@ -220,8 +227,8 @@ set showcmd " Show the current command on the lower right, like the  <leader> ke
 let mapleader = "\<Space>" " Set the <leader> to SPACE instead of \
 
 if os == "Linux"
-	set undofile " tell it to use an undo file
-	set undodir=$HOME/.vim_undo/ " set a directory to store the undo history
+    set undofile " tell it to use an undo file
+    set undodir=$HOME/.vim_undo/ " set a directory to store the undo history
 endif
 
 "}{============ Buffers related options ============
@@ -293,19 +300,19 @@ set pastetoggle=<F2>
 nnoremap <leader>J :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 if executable('ag')
-	nnoremap \ :Ag <cword><SPACE>
-	" search for the current word in the current file & open in the location-list
-	nnoremap <leader>j :LAg <cword> % <cr>
-	" map <silent><leader>j :Ag <cword><cr>
-	" nmap <leader>j :grep <cword> %<cr>
+    nnoremap \ :Ag <cword><SPACE>
+    " search for the current word in the current file & open in the location-list
+    nnoremap <leader>j :LAg <cword> % <cr>
+    " map <silent><leader>j :Ag <cword><cr>
+    " nmap <leader>j :grep <cword> %<cr>
 endif
 
 "}{============ Set theme and colorscheme ============
 
 if os == "win"
-	set term=xterm
-	let &t_AB="\e[48;5;%dm"
-	let &t_AF="\e[38;5;%dm"
+    set term=xterm
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
 endif
 
 " To be able to have 256 color sceme
