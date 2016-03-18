@@ -1,32 +1,32 @@
 # Change directory and list it
 cdl()
 {
-	cd $1
-	ls
+    cd $1
+    ls
 }
 
 
 # Change directory and lists it with hidden files
 cdla()
 {
-	cd $1
-	ls -la
+    cd $1
+    ls -la
 }
 
 tarinc()
 {
-	ssh $1@tarin.dinf.usherbrooke.ca
+    ssh $1@tarin.dinf.usherbrooke.ca
 }
 
 fixntfs()
 {
-        sudo ntfsfix $1
-	sudo ntfs-3g $1 $2
+    sudo ntfsfix $1
+    sudo ntfs-3g $1 $2
 }
 
 refreshx()
 {
-	xrefresh
+    xrefresh
 }
 
 # Find a file using locate and FuZzyFind and start it with xdg-open
