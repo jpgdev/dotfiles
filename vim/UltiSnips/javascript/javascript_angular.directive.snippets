@@ -9,12 +9,11 @@ snippet ngdirective "Angular directive definition"
 	function $2(){
 		var directive = {
 			restrict : 'E',
-			templateUrl : '${4}',
-			scope : {
-			},
+			templateUrl : 'modules/$1/views/${2/([a-z])([A-Z])/$1-\l$2/g}.client.view.html',
+			scope : {},
 			link : postLink,
 			controller : ${2/.*/\u$0/}Controller,
-			controllerAs : '${5:vm}',
+			controllerAs : 'vm',
 			bindToController : true
 		};
 
@@ -29,7 +28,7 @@ snippet ngdirective "Angular directive definition"
 	${2/.*/\u$0/}Controller.$inject = ['${6:dependencies}'];
 
 	function ${2/.*/\u$0/}Controller($6){
-		var $5 = this;
+		var vm = this;
 
 
 		activate();

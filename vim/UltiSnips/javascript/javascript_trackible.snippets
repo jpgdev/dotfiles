@@ -1,0 +1,21 @@
+snippet facadefactory "Generate a ResourceFacadeFactory"
+(function (){
+	'use strict';
+
+	angular
+		.module('${1:module}')
+		.factory('${2:factory}Service', $2Service);
+
+    $2Service.$inject = ['ResourceFacadeFactory', '$2', 'logger'];
+
+	function $2Service(ResourceFacadeFactory, $2, logger){
+
+        var service = ResourceFacadeFactory.generate($2, '${2/(^[A-Z])([a-zA-Z]*)(s$)/\l$1$2/g}');
+
+		$0
+
+		return service;
+	}
+
+})();
+endsnippet
