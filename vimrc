@@ -19,7 +19,7 @@ filetype off
 
 if os == "win"
     set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-    let path=$HOME.'~/vimfiles/bundle'
+    let path=$HOME.'/vimfiles/bundle'
     call vundle#begin(path)
 else
     set rtp+=$HOME/.vim/bundle/Vundle.vim/
