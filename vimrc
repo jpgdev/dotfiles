@@ -5,7 +5,7 @@
 
 " ======== Get current OS
 let os = ""
-if has("win32")
+if has("win32") || has("win64")
 	let os = "win"
 else
 	let os = substitute(system('uname'), "\n", "", "")
@@ -17,8 +17,7 @@ set nocompatible
 filetype off
 
 if os == "win"
-	set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-	let path=$HOME.'~/vimfiles/bundle'
+	let path=$HOME.'/vimfiles/bundle'
 	call vundle#begin(path)
 else
 	set rtp+=$HOME/.vim/bundle/Vundle.vim/
@@ -120,7 +119,6 @@ au Syntax * RainbowParenthesesLoadBraces
 " vim-dispatch
 " Set the compiler for vim-dispatch from the language
 autocmd FileType javascript let b:dispatch = 'node %'
-
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -268,15 +266,24 @@ endif
 
 " ======== Set theme and colorscheme
 
-if os == "win"
-	set term=xterm
-	let &t_AB="\e[48;5;%dm"
-	let &t_AF="\e[38;5;%dm"
+" Options for gVim gui
+if has ("gui_running")
+	set guioptions-=T " remove toolbar
+	set guifont=Consolas:h10.5
+	" set encoding=utf8
+	" set termencoding=gbk
+else
+if os != "win"
+	" To be able to have 256 color scheme
+	set t_Co=256
+	let g:rehash256 = 1
 endif
-
-" To be able to have 256 color sceme
-set t_Co=256
-let g:rehash256 = 1
+	" if os == "win"
+"		set term=xterm
+"		let &t_AB="\e[48;5;%dm"
+"		let &t_AF="\e[38;5;%dm"
+	" endif
+endif
 
 
 syntax on
