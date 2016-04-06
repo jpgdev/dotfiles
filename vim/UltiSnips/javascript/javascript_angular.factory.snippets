@@ -1,0 +1,26 @@
+snippet ngfactory "Angular factory definition"
+(function (){
+	'use strict';
+
+	angular
+		.module('${1:module}')
+		.factory('${2:factory}', $2);
+
+	$2.$inject = ['${3:dependencies}']
+
+	function $2($3){
+		var service = {
+			${4:func} : $4
+		};
+
+		return service;
+
+		//////////////
+
+		function $4(){
+
+		}
+	}
+
+})();
+endsnippet

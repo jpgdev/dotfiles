@@ -1,0 +1,21 @@
+snippet ngservice "Angular service definition"
+(function (){
+	'use strict';
+
+	angular
+		.module('${1:module}')
+		.factory('${2:Service}', $2);
+
+	$2.$inject = ['${3:dependencies}']
+
+	function $2($3){
+		this.${4:func} = $4;
+
+		//////////////
+
+		function $4(){
+		}
+	}
+
+})();
+endsnippet

@@ -1,0 +1,25 @@
+snippet ngcontroller "Angular controller definition"
+(function (){
+	'use strict';
+
+	angular
+		.module('${1:module}')
+		.controller('${2:Controller}Controller', $2Controller);
+
+	$2Controller.$inject = ['${3:dependencies}']
+
+	function $2Controller($3){
+		var vm = this;
+
+		$0
+
+		activate();
+
+		//////////////
+
+		function activate(){
+		}
+	}
+
+})();
+endsnippet
