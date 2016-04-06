@@ -56,7 +56,7 @@ endif
 Plugin 'scrooloose/syntastic' " linting plugin. Uses external linters (ex. jshint) to work
 Plugin 'drn/zoomwin-vim' " tool to enable focusing a single split
 Plugin 'majutsushi/tagbar' " Browse a file tags (class layout etc..)
-Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-dispatch'
 
 " Themes
 Plugin 'flazz/vim-colorschemes' " Adds lots of themes
@@ -66,10 +66,10 @@ Plugin 'flazz/vim-colorschemes' " Adds lots of themes
 " Language specific plugins
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ntpeters/vim-better-whitespace' " Show & Remove Whitespaces command
-Plugin 'moll/vim-node' " Node.js
+" Plugin 'moll/vim-node' " Node.js
 Plugin 'tmux-plugins/vim-tmux' " offers syntax highlight in tmux.conf file
 Plugin 'heavenshell/vim-jsdoc' " helper to generate JSDoc comments
-Plugin 'lervag/vimtex'
+Plugin 'lervag/vimtex' " Latex
 Plugin 'slim-template/vim-slim' " Syntax highlight for 'slim'
 
 " Markdown specific
@@ -111,7 +111,7 @@ let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers at the
 let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
 " let g:airline#extensions#tabline#buffer_idx_mode = 1 " Adds a tab number
 " let g:airline_theme='onedark'
-let g:airline_powerline_fonts = 1 " Enable the patched fonts
+" let g:airline_powerline_fonts = 1 " Enable the patched fonts
 
 " Enable Rainbow Parentheses at startup
 au VimEnter * RainbowParenthesesToggle
@@ -121,7 +121,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " vim-dispatch
 " Set the compiler for vim-dispatch from the language
-autocmd FileType javascript let b:dispatch = 'node %'
+" autocmd FileType javascript let b:dispatch = 'node %'
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -179,6 +179,7 @@ inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "
 
 "}{============ Generic Settings ============
 
+" Note : may cause lag when on?
 set cursorline " Highlight the current line
 
 " Tabulation related settings
