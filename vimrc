@@ -71,6 +71,7 @@ Plugin 'tmux-plugins/vim-tmux' " offers syntax highlight in tmux.conf file
 Plugin 'heavenshell/vim-jsdoc' " helper to generate JSDoc comments
 Plugin 'lervag/vimtex' " Latex
 Plugin 'slim-template/vim-slim' " Syntax highlight for 'slim'
+Plugin 'ap/vim-css-color' " Add color to CSS files
 
 " Markdown specific
 Plugin 'plasticboy/vim-markdown'
@@ -214,10 +215,14 @@ set number
 set lazyredraw
 set ttyfast
 
-set mouse=a " enable the mouse (usefull to copy & paste out of vim)
+" Reduce the delay on key press to wait for other commands with the same key
+" (ex. <ESC> vs <ESC>a, it would wait this amount of time to check if we click
+" 'a' after the ESC.
+" Source : https://www.johnhawthorn.com/2012/09/vi-escape-delays/ 
+set timeoutlen=400
+set ttimeoutlen=0
 
-" Highlight trailing whitespace
-" match ErrorMsg '\s\+$'
+set mouse=a " enable the mouse (useful to copy & paste out of vim)
 
 " When opening a new split, it opens below & on the right
 set splitbelow
@@ -238,7 +243,7 @@ endif
 set hidden
 
 " To open a new empty buffer instead of a tab
-" This replaces :tabnew which I used to bind to this mapping
+" This replaces :tabnew
 nmap <leader>t :enew<cr>
 
 " Move to the next buffer
@@ -247,7 +252,7 @@ nmap <leader>l :bnext<CR>
 " Move to the previous buffer
 nmap <leader>L :bprevious<CR>
 
-" Move toe current buffer and move to the previous one
+" Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
 
@@ -261,10 +266,16 @@ nmap <leader>bl :ls<CR>
 
 " Splits
 " Moving around splits
-noremap <C-J> <C-W><C-J>
-noremap <C-K> <C-W><C-K>
-noremap <C-L> <C-W><C-L>
-noremap <C-H> <C-W><C-H>
+noremap <C-j> <C-W><C-J>
+noremap <C-k> <C-W><C-K>
+noremap <C-l> <C-W><C-L>
+noremap <C-h> <C-W><C-H>
+
+" Resize split faster
+" nnoremap <silent> <C-Down> :resize +5<cr>
+" nnoremap <silent> <C-Up> :resize -5<cr>
+" nnoremap <silent> <C-Right> :vertical resize +5<cr>
+" nnoremap <silent> <C-Left> :vertical resize -5<cr>
 
 " Move vertically by column
 nnoremap j gj
@@ -272,25 +283,33 @@ nnoremap k gk
 
 " Nerdtree shortcut
 nmap <leader>k :NERDTreeToggle<cr>
+nmap <leader>f :NERDTreeFind<cr>
 
 " Reload the vimrc
 nnoremap <leader>sr <ESC>:so $MYVIMRC<cr>
 
 " vim-dispatch
-nnoremap <F5> :Dispatch<cr>
+" nnoremap <F5> :Dispatch<cr>
 
 " Search and replace word under cursor using F4
 " Source : http://stackoverflow.com/a/5543793
-nnoremap <F4> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
+" nnoremap <F4> :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
+
+" Search and replace word under cursor
+" Source : https://github.com/cabouffard/dotfiles/blob/master/.vimrc
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 " vim-fugitive
 nnoremap <leader>gd :Gdiff<cr>
-
 " close the left-most split (normally the diff file)
 nnoremap <leader>gD <c-w>h<c-w>c
-"
+
 " un-map the Q key which opens the not used exec mode
 map Q <Nop>
+
+" Reopen the last buffer
+" Source : https://github.com/cabouffard/dotfiles/blob/master/.vimrc
+nmap <Leader>e :e#<CR>
 
 " toggle pastemode easily
 set pastetoggle=<F2>
@@ -298,14 +317,14 @@ set pastetoggle=<F2>
 "}{============ Grep & Ag commands ============
 
 " search for the current word in the current directory
-nnoremap <leader>J :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" nnoremap <leader>J :lgrep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 if executable('ag')
-    nnoremap \ :Ag <cword><SPACE>
-    " search for the current word in the current file & open in the location-list
-    nnoremap <leader>j :LAg <cword> % <cr>
-    " map <silent><leader>j :Ag <cword><cr>
-    " nmap <leader>j :grep <cword> %<cr>
+    nnoremap \ :Ag <C-R><C-W><SPACE>
+    " search for the current word in the current file 
+    nnoremap <leader>j :Ag <cword> % <cr>
+    " search for the current word in the project
+    nnoremap <leader>J :Ag <cword><cr>
 endif
 
 "}{============ Set theme and colorscheme ============
@@ -341,9 +360,9 @@ set background=dark
 " colorscheme molokai
 colorscheme gruvbox
 
-" Transparent background
-" highlight Normal ctermbg=none
-" highlight NonText ctermbg=none
+" Transparent background fix (don't add a background to text)
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
 
 filetype indent plugin on
 
