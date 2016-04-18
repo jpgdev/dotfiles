@@ -59,8 +59,9 @@ Plugin 'majutsushi/tagbar' " Browse a file tags (class layout etc..)
 " Plugin 'tpope/vim-dispatch'
 
 " Themes
+" Plugin 'morhetz/gruvbox'
 Plugin 'flazz/vim-colorschemes' " Adds lots of themes
-" Plugin 'joshdick/onedark.vim' " Atom's One dark theme
+Plugin 'joshdick/onedark.vim' " Atom's One dark theme
 " Plugin 'joshdick/airline-onedark.vim' " Atom's One dark airline theme
 
 " Language specific plugins
@@ -72,6 +73,7 @@ Plugin 'heavenshell/vim-jsdoc' " helper to generate JSDoc comments
 Plugin 'lervag/vimtex' " Latex
 Plugin 'slim-template/vim-slim' " Syntax highlight for 'slim'
 Plugin 'ap/vim-css-color' " Add color to CSS files
+Plugin 'elixir-lang/vim-elixir' " Add support for elixir language
 
 " Markdown specific
 Plugin 'plasticboy/vim-markdown'
@@ -112,7 +114,7 @@ let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers at the
 let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
 " let g:airline#extensions#tabline#buffer_idx_mode = 1 " Adds a tab number
 " let g:airline_theme='onedark'
-let g:airline_powerline_fonts = 1 " Enable the patched fonts
+" let g:airline_powerline_fonts = 1 " Enable the patched fonts
 
 " Enable Rainbow Parentheses at startup
 au VimEnter * RainbowParenthesesToggle
@@ -354,11 +356,11 @@ set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10.5
 syntax on
 set background=dark
 
-" colorscheme onedark
+colorscheme onedark
 " colorscheme Tomorrow-Night-Eighties
 " colorscheme Tomorrow-Night
 " colorscheme molokai
-colorscheme gruvbox
+" colorscheme gruvbox
 
 " Transparent background fix (don't add a background to text)
 highlight Normal ctermbg=none
