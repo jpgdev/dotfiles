@@ -114,7 +114,7 @@ let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers at the
 let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
 " let g:airline#extensions#tabline#buffer_idx_mode = 1 " Adds a tab number
 " let g:airline_theme='onedark'
-" let g:airline_powerline_fonts = 1 " Enable the patched fonts
+let g:airline_powerline_fonts = 1 " Enable the patched fonts
 
 " Enable Rainbow Parentheses at startup
 au VimEnter * RainbowParenthesesToggle
