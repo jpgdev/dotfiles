@@ -7,7 +7,7 @@
 
 let os = ""
 if has("win32") || has("win64")
-	let os = "win"
+    let os = "win"
 else
     let os = substitute(system('uname'), "\n", "", "")
 endif
@@ -46,6 +46,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround' " adds commands to modify surrounding characters
 Plugin 'godlygeek/tabular' " toll to align text
 Plugin 'Chiel92/vim-autoformat' " Auto-format code
+Plugin 'christoomey/vim-tmux-navigator' " Plugin to integrate tmux & vim together, to navigate easily
 
 " if ag (the_silver_searcher) is installed
 if executable('ag')
@@ -61,7 +62,7 @@ Plugin 'majutsushi/tagbar' " Browse a file tags (class layout etc..)
 " Themes
 " Plugin 'morhetz/gruvbox'
 Plugin 'flazz/vim-colorschemes' " Adds lots of themes
-Plugin 'joshdick/onedark.vim' " Atom's One dark theme
+" Plugin 'joshdick/onedark.vim' " Atom's One dark theme
 " Plugin 'joshdick/airline-onedark.vim' " Atom's One dark airline theme
 
 " Language specific plugins
@@ -109,12 +110,17 @@ let g:instant_markdown_autostart = 0 " Don't open a preview on file open, use :I
 " vim-airline
 set laststatus=2 "Is required or the status bar does not appear in the first vim split opened
 
-let g:airline#extensions#tagbar#enabled = 0 "Disable tagbar integration (show current function) 
+let g:airline#extensions#tagbar#enabled = 0 "Disable tagbar integration (show current function)
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers at the top
 let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
 " let g:airline#extensions#tabline#buffer_idx_mode = 1 " Adds a tab number
+let g:airline#extensions#hunks#enabled = 0 " Remove the file diffs informations (+, -, ~)
 " let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1 " Enable the patched fonts
+
+" vim-gitgutter
+let g:gitgutter_eager = 0 " Should improve speed when switching buffers
+let g:gitgutter_map_keys = 0 " remove the default vim-gitgutter key mappings
 
 " Enable Rainbow Parentheses at startup
 au VimEnter * RainbowParenthesesToggle
@@ -220,7 +226,7 @@ set ttyfast
 " Reduce the delay on key press to wait for other commands with the same key
 " (ex. <ESC> vs <ESC>a, it would wait this amount of time to check if we click
 " 'a' after the ESC.
-" Source : https://www.johnhawthorn.com/2012/09/vi-escape-delays/ 
+" Source : https://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set timeoutlen=400
 set ttimeoutlen=0
 
@@ -252,7 +258,7 @@ nmap <leader>t :enew<cr>
 nmap <leader>l :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>L :bprevious<CR>
+nmap <leader>h :bprevious<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -323,7 +329,7 @@ set pastetoggle=<F2>
 
 if executable('ag')
     nnoremap \ :Ag <C-R><C-W><SPACE>
-    " search for the current word in the current file 
+    " search for the current word in the current file
     nnoremap <leader>j :Ag <cword> % <cr>
     " search for the current word in the project
     nnoremap <leader>J :Ag <cword><cr>
@@ -333,34 +339,34 @@ endif
 
 " Options for gVim gui
 if has ("gui_running")
-	set guioptions-=T " remove toolbar
-	set guifont=Consolas:h10.5
-	" set encoding=utf8
-	" set termencoding=gbk
+    set guioptions-=T " remove toolbar
+    set guifont=Consolas:h10.5
+    " set encoding=utf8
+    " set termencoding=gbk
 else
-if os != "win"
-	" To be able to have 256 color scheme
-	set t_Co=256
-	let g:rehash256 = 1
-endif
-	" if os == "win"
-"		set term=xterm
-"		let &t_AB="\e[48;5;%dm"
-"		let &t_AF="\e[38;5;%dm"
-	" endif
+    if os != "win"
+        " To be able to have 256 color scheme
+        set t_Co=256
+        let g:rehash256 = 1
+    endif
+    " if os == "win"
+    "       set term=xterm
+    "       let &t_AB="\e[48;5;%dm"
+    "       let &t_AF="\e[38;5;%dm"
+    " endif
 endif
 
 " The patched font to add symbols to powerline
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10.5
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 
 syntax on
 set background=dark
 
-colorscheme onedark
+" colorscheme onedark
 " colorscheme Tomorrow-Night-Eighties
 " colorscheme Tomorrow-Night
 " colorscheme molokai
-" colorscheme gruvbox
+colorscheme gruvbox
 
 " Transparent background fix (don't add a background to text)
 highlight Normal ctermbg=none
