@@ -47,6 +47,7 @@ Plugin 'tpope/vim-surround' " adds commands to modify surrounding characters
 Plugin 'godlygeek/tabular' " toll to align text
 Plugin 'Chiel92/vim-autoformat' " Auto-format code
 Plugin 'christoomey/vim-tmux-navigator' " Plugin to integrate tmux & vim together, to navigate easily
+Plugin 'Shougo/vimproc.vim' " Adds async capabilities (required by tsuquyomi)
 
 " if ag (the_silver_searcher) is installed
 if executable('ag')
@@ -58,6 +59,7 @@ Plugin 'scrooloose/syntastic' " linting plugin. Uses external linters (ex. jshin
 Plugin 'drn/zoomwin-vim' " tool to enable focusing a single split
 Plugin 'majutsushi/tagbar' " Browse a file tags (class layout etc..)
 " Plugin 'tpope/vim-dispatch'
+Plugin 'mtth/scratch.vim'
 
 " Themes
 " Plugin 'morhetz/gruvbox'
@@ -75,6 +77,8 @@ Plugin 'lervag/vimtex' " Latex
 Plugin 'slim-template/vim-slim' " Syntax highlight for 'slim'
 Plugin 'ap/vim-css-color' " Add color to CSS files
 Plugin 'elixir-lang/vim-elixir' " Add support for elixir language
+Plugin 'leafgarland/typescript-vim' " Add typescript filetype support
+Plugin 'Quramy/tsuquyomi' " Add Typescript utilities
 
 " Markdown specific
 Plugin 'plasticboy/vim-markdown'
@@ -137,6 +141,11 @@ nmap <F8> :TagbarToggle<CR>
 
 " scrooloose/syntastic (linting)
 let g:syntastic_check_on_open=1 "Run linting on file open on top of when the file is saved
+" let g:syntastic_typescript_checkers=[]
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " Use the tsuquyomi checker, instead of `tsc` checker
+
+" vim tsuquyomi options (typescript tools)
+let g:tsuquyomi_disable_quickfix = 1
 
 " vim-autoformat
 " let g:autoformat_autoindent = 0 " Don't defaults back to vim indent
