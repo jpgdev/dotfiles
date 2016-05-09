@@ -58,7 +58,7 @@ endif
 Plugin 'scrooloose/syntastic' " linting plugin. Uses external linters (ex. jshint) to work
 Plugin 'drn/zoomwin-vim' " tool to enable focusing a single split
 Plugin 'majutsushi/tagbar' " Browse a file tags (class layout etc..)
-" Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-dispatch'
 Plugin 'mtth/scratch.vim'
 
 " Themes
@@ -134,14 +134,19 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " vim-dispatch
 " Set the compiler for vim-dispatch from the language
-" autocmd FileType javascript let b:dispatch = 'node %'
+autocmd FileType javascript let b:dispatch = 'node %'
+autocmd FileType typescript let b:dispatch = 'tsc *.ts'
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" scrooloose/syntastic (linting)
-let g:syntastic_check_on_open=1 "Run linting on file open on top of when the file is saved
-" let g:syntastic_typescript_checkers=[]
+" Syntastic (linting)
+let g:syntastic_mode_map = { 'mode': 'passive' } " Set syntastic to be passive
+let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1 "Run linting on file open on top of when the file is saved
+
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " Use the tsuquyomi checker, instead of `tsc` checker
 
 " vim tsuquyomi options (typescript tools)
@@ -182,6 +187,7 @@ let g:ycm_key_list_previous_completion=["<S-tab>"]
 
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsExpandTrigger="<nop>"
 let g:ulti_expand_or_jump_res = 0
 
@@ -209,6 +215,9 @@ set tabstop=4
 
 " Language specific tab settings
 au FileType ruby setl shiftwidth=2 tabstop=2
+
+" Autocompletion autocmd
+autocmd CompleteDone * pclose " Automatically closes the scratchpad with the function info when the function is selected
 
 " Case related settings
 set ignorecase " ignore case by default
@@ -261,25 +270,26 @@ set hidden
 
 " To open a new empty buffer instead of a tab
 " This replaces :tabnew
-nmap <leader>t :enew<cr>
+nnoremap <leader>t :enew<cr>
 
 " Move to the next buffer
-nmap <leader>l :bnext<CR>
+nnoremap <leader>l :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>h :bprevious<CR>
+nnoremap <leader>h :bprevious<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+nnoremap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
-nmap <leader>bl :ls<CR>
+nnoremap <leader>bl :ls<CR>
 
 "}{============ Custom Keybind mapping ============
 
 " Easier to press ESC with 'jj'
 :imap jj <Esc>
+:imap jk <Esc>:Autoformat<cr>
 
 " Splits
 " Moving around splits
@@ -299,14 +309,20 @@ nnoremap j gj
 nnoremap k gk
 
 " Nerdtree shortcut
-nmap <leader>k :NERDTreeToggle<cr>
-nmap <leader>f :NERDTreeFind<cr>
+nnoremap <leader>k :NERDTreeToggle<cr>
+nnoremap <leader>f :NERDTreeFind<cr>
 
 " Reload the vimrc
 nnoremap <leader>sr <ESC>:so $MYVIMRC<cr>
 
 " vim-dispatch
-" nnoremap <F5> :Dispatch<cr>
+nnoremap <F5> :Dispatch<cr>
+
+" vim-autoformat
+nnoremap <leader>af :Autoformat<cr>
+
+" syntastic
+nnoremap <leader>c :SyntasticCheck<cr>
 
 " Search and replace word under cursor using F4
 " Source : http://stackoverflow.com/a/5543793
