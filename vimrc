@@ -365,8 +365,8 @@ endif
 " Options for gVim gui
 if has ("gui_running")
     set guioptions-=T " remove toolbar
-    set guifont=Consolas:h10.5
-    " set encoding=utf8
+    set guifont=Consolas:h10
+    set encoding=utf8
     " set termencoding=gbk
 else
     if os != "win"
