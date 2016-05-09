@@ -6,11 +6,11 @@ snippet facadefactory "Generate a ResourceFacadeFactory"
 		.module('${1:module}')
 		.factory('${2:factory}Service', $2Service);
 
-    $2Service.$inject = ['ResourceFacadeFactory', '$2', 'logger'];
+	$2Service.$inject = ['ResourceFacadeFactory', '$2', 'logger'];
 
 	function $2Service(ResourceFacadeFactory, $2, logger){
 
-        var service = ResourceFacadeFactory.generate($2, '${2/(^[A-Z])([a-zA-Z]*)(s$)/\l$1$2/g}');
+		var service = ResourceFacadeFactory.generate($2, '${2/(^[A-Z])([a-zA-Z]*)(s$)/\l$1$2/g}');
 
 		$0
 
@@ -18,4 +18,8 @@ snippet facadefactory "Generate a ResourceFacadeFactory"
 	}
 
 })();
+endsnippet
+
+snippet catchlogger "Catch logger reject promise" b
+.catch(logger.rejectPromiseResponse('$1'));
 endsnippet
