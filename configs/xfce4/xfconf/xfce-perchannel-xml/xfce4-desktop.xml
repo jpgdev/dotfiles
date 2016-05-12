@@ -30,7 +30,7 @@
             <value type="uint" value="65535"/>
           </property>
           <property name="image-style" type="int" value="3"/>
-          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/dark_souls.jpg"/>
         </property>
         <property name="workspace1" type="empty">
           <property name="color-style" type="int" value="1"/>
@@ -40,8 +40,8 @@
             <value type="uint" value="33443"/>
             <value type="uint" value="65535"/>
           </property>
-          <property name="image-style" type="int" value="3"/>
-          <property name="last-image" type="string" value="/home/jp/.config/xfce4/desktop/backdrop.list"/>
+          <property name="image-style" type="int" value="6"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/Blue-Line-a-black-background-vladstudio.jpg"/>
         </property>
         <property name="workspace2" type="empty">
           <property name="color-style" type="int" value="1"/>
@@ -70,6 +70,26 @@
         <property name="image-path" type="string" value="/home/jp/Images/backgrounds/space.jpg"/>
         <property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-blue.jpg"/>
         <property name="last-single-image" type="string" value="/home/jp/Images/backgrounds/space.jpg"/>
+        <property name="workspace0" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="1"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/space.jpg"/>
+        </property>
+        <property name="workspace1" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/dark_souls.jpg"/>
+        </property>
+        <property name="workspace2" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/jp/Images/backgrounds/space.jpg"/>
+        </property>
+        <property name="workspace3" type="empty">
+          <property name="color-style" type="int" value="0"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="last-image" type="string" value="/home/jp/Images/backgrounds/space.jpg"/>
+        </property>
       </property>
       <property name="monitorLVDS1" type="empty">
         <property name="workspace0" type="empty">
@@ -81,7 +101,7 @@
             <value type="uint" value="65535"/>
           </property>
           <property name="image-style" type="int" value="3"/>
-          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/Los_Pollos_Hermanos.jpg"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/black-blue-squares.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="true"/>
           <property name="backdrop-cycle-random-order" type="bool" value="true"/>
         </property>
@@ -96,6 +116,8 @@
           <property name="image-style" type="int" value="3"/>
           <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/Blue-Line-a-black-background-vladstudio.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="false"/>
+          <property name="backdrop-cycle-timer" type="uint" value="1"/>
+          <property name="backdrop-cycle-period" type="int" value="2"/>
         </property>
         <property name="workspace2" type="empty">
           <property name="color-style" type="int" value="1"/>
@@ -498,7 +520,7 @@
         <property name="workspace0" type="empty">
           <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/arch-theme-osx-wallpaper.jpg"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/walterwhite.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="true"/>
           <property name="color1" type="array">
             <value type="uint" value="0"/>
@@ -589,7 +611,7 @@
       </property>
     </property>
     <property name="single-workspace-mode" type="bool" value="true"/>
-    <property name="single-workspace-number" type="int" value="1"/>
+    <property name="single-workspace-number" type="int" value="0"/>
   </property>
   <property name="desktop-icons" type="empty">
     <property name="icon-size" type="uint" value="32"/>
@@ -610,6 +632,6 @@
   </property>
   <property name="last" type="empty">
     <property name="window-width" type="int" value="750"/>
-    <property name="window-height" type="int" value="713"/>
+    <property name="window-height" type="int" value="665"/>
   </property>
 </channel>

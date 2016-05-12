@@ -7,16 +7,16 @@ Scale=0
 Font_Size=medium
 Font_Size_Numerical=2
 Font=Sans 12
-Lines_Size=2
+Lines_Size=1
 Update_Interval=60
 Exec_Command=true
-Show_Units=true
+Show_Units=false
 Small_Spacings=true
 Command_Name=xfce4-sensors
 Number_Chips=3
 Suppress_Hddtemp_Message=false
 Suppress_Tooltip=true
-Preferred_Width=386
+Preferred_Width=567
 Preferred_Height=543
 
 [Chip0]
@@ -26,15 +26,6 @@ Number=0
 [Chip1]
 Name=coretemp-0
 Number=1
-
-[Chip1_Feature0]
-Id=0
-Address=0
-Name=Physical id 0
-Color=#00B000
-Show=true
-Min=0.00
-Max=61.00
 
 [Chip1_Feature1]
 Id=-1
@@ -62,6 +53,15 @@ Color=#00B000
 Show=true
 Min=0.00
 Max=60.00
+
+[Chip1_Feature4]
+Id=1
+Address=4
+Name=Core 3
+Color=#00B000
+Show=true
+Min=0.00
+Max=56.00
 
 [Chip2]
 Name=ACPI
