@@ -19,6 +19,7 @@
         <value type="int" value="22"/>
         <value type="int" value="17"/>
         <value type="int" value="15"/>
+        <value type="int" value="2"/>
         <value type="int" value="11"/>
         <value type="int" value="13"/>
         <value type="int" value="14"/>
@@ -72,15 +73,16 @@
         <value type="string" value="vlc"/>
         <value type="string" value="docky"/>
         <value type="string" value="grive-indicator"/>
-        <value type="string" value="google-chrome"/>
+        <value type="string" value="discordcanary"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="task manager"/>
+        <value type="string" value="google-chrome"/>
         <value type="string" value="discord"/>
         <value type="string" value="skype"/>
         <value type="string" value="steam"/>
         <value type="string" value="orage"/>
-        <value type="string" value="synapse"/>
         <value type="string" value="deadbeef"/>
+        <value type="string" value="synapse"/>
         <value type="string" value="copyagent"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="synergy"/>
@@ -89,6 +91,8 @@
         <value type="string" value="notes"/>
       </property>
       <property name="show-frame" type="bool" value="false"/>
+      <property name="names-hidden" type="array">
+      </property>
     </property>
     <property name="plugin-13" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
@@ -108,5 +112,6 @@
       <property name="style" type="uint" value="1"/>
     </property>
     <property name="plugin-4" type="string" value="battery"/>
+    <property name="plugin-2" type="string" value="weather"/>
   </property>
 </channel>
