@@ -50,10 +50,10 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/dotfiles/aliases
 source $HOME/dotfiles/functions
+source $HOME/dotfiles/autostart
 
 # Adds autocompletion for grunt
 if [ -x "$(command -v grunt)" ]; then
-	eval "$(grunt --completion=zsh)"
+    eval "$(grunt --completion=zsh)"
 fi
-# source $HOME/dotfiles/autostart
 
