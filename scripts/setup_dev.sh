@@ -26,7 +26,7 @@ initdb -D "$pg_root/data"
 
 # Enable and start the service
 # Note : If this does not work, may require to modify the file copied with the enable call to change the PG_ROOT location
-# Troubleshooting : Go change the 'Environment=PGROOT=/var/lib/postgres' line manually
+# Troubleshooting : Go change the 'Environment=PGROOT=/var/lib/postgres' line manually to '....=/home/postgres'
 # File : /usr/lib/systemd/system/postgresql.service
 sudo systemctl enable postgresql.service
 sudo systemctl start postgresql.service
