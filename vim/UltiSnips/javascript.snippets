@@ -5,3 +5,15 @@ endsnippet
 snippet jshintglobal "JsHint global ignore" b
 /* global $1 */
 endsnippet
+
+snippet log "Console log" b
+console.log($1);
+endsnippet
+
+snippet logvar "Console log a variable" b
+console.log('$1 : ', $1);
+endsnippet
+
+snippet logjson "Console log an object properties" b
+console.log('$1 : ', JSON.stringify($1, null, 4));
+endsnippet
