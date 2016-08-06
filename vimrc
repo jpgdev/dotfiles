@@ -5,7 +5,6 @@
 
 "============ Get current OS ============
 
-let os = ""
 if has("win32") || has("win64")
     let os = "win"
 else
@@ -26,7 +25,7 @@ else
     call vundle#begin()
 endif
 
-"============ Add plugins here ============
+"============ Plugins ============
 
 " Vim config plugins
 " ===========================
@@ -44,7 +43,6 @@ if os == "Linux"
     Plugin 'marijnh/tern_for_vim' " JS smarter autocompletion with YCM
 endif
 
-" Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'             " adds commands to modify surrounding characters
 Plugin 'godlygeek/tabular'              " tool to align text
@@ -63,17 +61,17 @@ Plugin 'scrooloose/syntastic' " linting plugin. Uses external linters (ex. jshin
 Plugin 'drn/zoomwin-vim'      " tool to enable focusing a single split
 Plugin 'majutsushi/tagbar'    " Browse a file tags (class layout etc..)
 Plugin 'tpope/vim-dispatch'
-Plugin 'mtth/scratch.vim'
-
+Plugin 'mtth/scratch.vim' " Add a scratch pad to take temporary notes (with 'gs')
+Plugin 'tpope/vim-repeat' " Enable using '.' for some other plugins (ex. surround.vim)
 
 " Themes
 " ===========================
 " Plugin 'morhetz/gruvbox' " Adds the gruvbox theme
-Plugin 'flazz/vim-colorschemes' " Adds lots of themes
-" Plugin 'joshdick/onedark.vim' " Atom's One dark theme
+Plugin 'flazz/vim-colorschemes'     " Adds lots of themes
+" Plugin 'joshdick/onedark.vim'     " Atom's One dark theme
 " Plugin 'joshdick/airline-onedark.vim' " Atom's One dark airline theme
 Plugin 'chriskempson/base16-vim'
-" Plugin 'ryanoasis/vim-devicons' " Adds icons to files names (NERDTree, Powerline, CtrlP, etc...)
+" Plugin 'ryanoasis/vim-devicons'   " Adds icons to files names (NERDTree, Powerline, CtrlP, etc...)
 
 " Language specific plugins
 " ===========================
@@ -85,7 +83,7 @@ Plugin 'tmux-plugins/vim-tmux'      " offers syntax highlight in tmux.conf file
 Plugin 'heavenshell/vim-jsdoc'      " helper to generate JSDoc comments
 Plugin 'lervag/vimtex'              " Latex
 Plugin 'slim-template/vim-slim'     " Syntax highlight for 'slim'
-Plugin 'ap/vim-css-color'           " Add color to CSS files
+Plugin 'ap/vim-css-color'           " Add colored background to CSS files colors
 Plugin 'elixir-lang/vim-elixir'     " Add support for elixir language
 Plugin 'leafgarland/typescript-vim' " Add typescript filetype support
 Plugin 'Quramy/tsuquyomi'           " Add Typescript utilities
@@ -157,7 +155,7 @@ let g:gitgutter_map_keys = 0 " remove the default vim-gitgutter key mappings
 " ==================
 augroup rainbow_parentheses
     autocmd!
-    autocmd FileType * RainbowParentheses " Enable Rainbow Parentheses at startup
+    autocmd FileType javascript,cs RainbowParentheses " Enable Rainbow Parentheses at startup
 augroup END
 
 let g:rainbow#max_level = 16 " stop after X layers deep
@@ -288,6 +286,14 @@ let test#strategy = "dispatch"
 
 " Note : may cause lag when on?
 set cursorline   " Highlight the current line
+
+augroup vim_resize
+    autocmd!
+
+    " Source : https://github.com/cabouffard/dotfiles/blob/master/.vimrc
+    autocmd VimResized * wincmd =  " Automaticaly resize the panes on resize (calls 'CTRL + W + =')
+
+augroup END
 
 " Tabulation related settings
 " ==================
@@ -497,7 +503,6 @@ nnoremap <leader>gd :Gdiff<cr>
 " close the left-most split (normally the diff file)
 nnoremap <leader>gD <c-w>h<c-w>c
 
-
 " Ag.vim
 " ==================
 if executable('ag')
@@ -577,7 +582,6 @@ else
     "       let &t_AF="\e[38;5;%dm"
     " endif
 endif
-
 
 set encoding=utf8
 
