@@ -95,7 +95,7 @@ fi
 
 echo "Compiling YouCompleteMe..."
 # See documentation at : http://github.com/Valloric/YouCompleteMe#installation
-$py2 $HOME/.vim/bundle/YouCompleteMe/install.py
+$py2 $HOME/.vim/bundle/YouCompleteMe/install.py --tern-completer
 
 ###########################################
 # Install 'jshint' globally with NPM for linting
