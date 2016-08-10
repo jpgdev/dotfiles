@@ -89,6 +89,7 @@ Plugin 'leafgarland/typescript-vim' " Add typescript filetype support
 Plugin 'Quramy/tsuquyomi'           " Add Typescript utilities
 Plugin 'mattn/emmet-vim'            " Add Emmet to vim to write faster HTML & CSS
 Plugin 'OmniSharp/omnisharp-vim'    " Add omnisharp for good c# support
+Plugin 'elentok/plaintasks.vim'     " Add plaintasks filetype and support (for TODO list)
 
 " Markdown specific
 " ===========================
