@@ -1,4 +1,4 @@
-#/!/bin/sh
+#!/bin/sh
 # setup_dev.sh - Script to install some dev tools and librairies
 
 pkgs="nodejs npm postgresql postgresql-libs pgadmin3 redis synapse synergy the_silver_surfer"
@@ -26,7 +26,9 @@ initdb -D "$pg_root/data"
 
 # Enable and start the service
 # Note : If this does not work, may require to modify the file copied with the enable call to change the PG_ROOT location
-# Troubleshooting : Go change the 'Environment=PGROOT=/var/lib/postgres' line manually to '....=/home/postgres'
+# Troubleshooting :
+# - Go change the 'Environment=PGROOT=/var/lib/postgres' line manually to '....=/home/postgres'
+# - Maybe change the 'ProtectHome' line from 'true' to 'false'
 # File : /usr/lib/systemd/system/postgresql.service
 sudo systemctl enable postgresql.service
 sudo systemctl start postgresql.service
