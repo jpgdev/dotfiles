@@ -3,15 +3,15 @@
 
 " Inspired by : https://github.com/cabouffard/dotfiles
 
-"============ Get current OS ============
+"============ Get current OS ============{{{
 
 if has("win32") || has("win64")
     let os = "win"
 else
     let os = substitute(system('uname'), "\n", "", "")
 endif
-
-"============ Plugins (with Vundle) ============
+" }}}
+"============ Plugins (with Vundle) ============{{{
 
 set nocompatible
 filetype off
@@ -24,13 +24,14 @@ else
     set rtp+=$HOME/.vim/bundle/Vundle.vim/
     call vundle#begin()
 endif
-
+" }}}
 "============ Plugins ============
 
 " Vim config plugins
 " ===========================
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'   " The statusbar plugin
+Plugin 'vim-airline/vim-airline-themes' " Themes for vim-airline plugins
 " Plugin 'mkitt/tabline.vim' " Better tab line (top)
 Plugin 'scrooloose/nerdtree' " File explorer
 Plugin 'ctrlpvim/ctrlp.vim'  " fuzzy find a file in the current folder
@@ -63,6 +64,8 @@ Plugin 'majutsushi/tagbar'    " Browse a file tags (class layout etc..)
 Plugin 'tpope/vim-dispatch'
 Plugin 'mtth/scratch.vim' " Add a scratch pad to take temporary notes (with 'gs')
 Plugin 'tpope/vim-repeat' " Enable using '.' for some other plugins (ex. surround.vim)
+Plugin 'jiangmiao/auto-pairs' " Automatically add ending '', {}, (), ...
+Plugin 'alvan/vim-closetag' " Automatically close (x)html tags
 
 " Themes
 " ===========================
@@ -70,7 +73,7 @@ Plugin 'tpope/vim-repeat' " Enable using '.' for some other plugins (ex. surroun
 Plugin 'flazz/vim-colorschemes'     " Adds lots of themes
 " Plugin 'joshdick/onedark.vim'     " Atom's One dark theme
 " Plugin 'joshdick/airline-onedark.vim' " Atom's One dark airline theme
-Plugin 'chriskempson/base16-vim'
+" Plugin 'chriskempson/base16-vim'
 " Plugin 'ryanoasis/vim-devicons'   " Adds icons to files names (NERDTree, Powerline, CtrlP, etc...)
 
 " Language specific plugins
@@ -90,6 +93,10 @@ Plugin 'Quramy/tsuquyomi'           " Add Typescript utilities
 Plugin 'mattn/emmet-vim'            " Add Emmet to vim to write faster HTML & CSS
 Plugin 'OmniSharp/omnisharp-vim'    " Add omnisharp for good c# support
 Plugin 'elentok/plaintasks.vim'     " Add plaintasks filetype and support (for TODO list)
+
+" Text objects
+" ===========================
+Plugin 'michaeljsmith/vim-indent-object' " Add indent text object (using : ii, iI, ai, aI)
 
 " Markdown specific
 " ===========================
@@ -143,12 +150,12 @@ let g:airline#extensions#tabline#enabled = 1     " Enable the list of buffers at
 let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
 " let g:airline#extensions#tabline#buffer_idx_mode = 1 " Adds a tab number
 let g:airline#extensions#hunks#enabled = 0       " Remove the file diffs informations (+, -, ~)
-" let g:airline_theme='onedark'
+let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts = 1                " Enable the patched fonts
 
 " vim-gitgutter
 " ==================
-let g:gitgutter_enabled  = 0 " disable gitgutter by default
+" let g:gitgutter_enabled  = 0 " disable gitgutter by default
 let g:gitgutter_eager    = 0 " Should improve speed when switching buffers
 let g:gitgutter_map_keys = 0 " remove the default vim-gitgutter key mappings
 
@@ -190,7 +197,13 @@ nmap <F8> :TagbarToggle<CR>
 
 " Syntastic (linting)
 " ==================
-let g:syntastic_mode_map = { 'mode': 'passive' } " Set syntastic to be passive
+" Set syntastic to be passive by default
+let g:syntastic_mode_map = {
+            \'mode': 'passive',
+            \'active_filetypes': [
+            \    'python'
+            \],
+            \'passive_filetypes': [] }
 let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1 "Run linting on file open on top of when the file is saved
@@ -227,7 +240,7 @@ endif
 let g:jsdoc_allow_input_prompt=1 " helper prompt to generate the JSDoc
 let g:jsdoc_input_description=1  " include descritpion generation with the helper
 
-" latex
+" vimtex
 " ==================
 let g:tex_flavor='latex'         " to set the .tex files as latex and not plaintext
 
@@ -283,6 +296,16 @@ augroup END
 " make test commands execute using dispatch.vim
 let test#strategy = "dispatch"
 
+" vim-colorschemes
+" =================
+" Source: https://github.com/altercation/vim-colors-solarized
+" let g:solarized_contrast="high" " Set a 'high|low|normal' contrast between the colors
+" let g:solarized_termcolors=256 " Set the colors from 16 to 256 for the Solarized theme
+
+" NERDTree
+" ================
+let NERDTreeIgnore = ['\.pyc$', '__pycache__'] " files & folders to ignore/hide
+
 "============ Generic Settings ============
 
 " Note : may cause lag when on?
@@ -291,7 +314,7 @@ set cursorline   " Highlight the current line
 augroup vim_resize
     autocmd!
 
-    " Source : https://github.com/cabouffard/dotfiles/blob/master/.vimrc
+    " Source: https://github.com/cabouffard/dotfiles/blob/master/.vimrc
     autocmd VimResized * wincmd =  " Automaticaly resize the panes on resize (calls 'CTRL + W + =')
 
 augroup END
@@ -375,10 +398,16 @@ if os == "Linux"
     set undodir=$HOME/.vim_undo/ " set a directory to store the undo history
 endif
 
+" NOTE : yajs + foldmethod=syntax cause HUGE lags on opening a big file
+" (10-15 sec loading times)
+set foldmethod=indent " folds by following the language syntax
+set foldlevel=1
+set nofoldenable " disable the folds from the start
+
 "============ Custom Keybind mappings ============
 
 " Easier to press ESC with 'jj'
-:imap jj <Esc>
+imap jj <Esc>
 
 " Joins the current and previous line
 nmap K kJ
@@ -436,9 +465,6 @@ noremap L $
 " Source: https://github.com/cabouffard/dotfiles/blob/master/.vimrc
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
-" Search the current word under cursor
-nnoremap <Leader>S /\<<C-r><C-w>\>/<CR>
-
 " search for the current word in the current directory
 " nnoremap <leader>J :lgrep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
@@ -474,6 +500,9 @@ nnoremap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nnoremap <leader>bl :ls<CR>
+
+" Toggle between the last & current buffer 
+nnoremap <leader>q :b#<cr>
 
 "============ Custom Plugin Keybind mappings ============
 
@@ -587,7 +616,7 @@ endif
 set encoding=utf8
 
 " The patched font to add symbols to powerline
-set guifont=Hack\ 10
+set guifont=Hack\ 10.5
 
 syntax on
 set background=dark
@@ -596,10 +625,12 @@ set background=dark
 " colorscheme Tomorrow-Night-Eighties
 " colorscheme Tomorrow-Night
 " colorscheme molokai
-colorscheme gruvbox
+" colorscheme gruvbox
+" colorscheme solarized
+colorscheme badwolf
 
 " Disable the transparent background in tmux
-" set term=screen-256color
+set term=screen-256color
 
 " Transparent background fix (don't add a background to text)
 highlight Normal ctermbg=none
