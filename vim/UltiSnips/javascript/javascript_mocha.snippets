@@ -1,0 +1,47 @@
+
+snippet testbeforeeach "mocha beforeEach" b
+beforeEach((${1}) => {
+	$0
+}));
+endsnippet
+
+snippet testaftereach "mocha afterEach" b
+afterEach((${1}) => {
+	$0
+});
+endsnippet
+
+snippet testdescribe "mocha module (describe)" b
+describe('${1:module name}', (${2}) => {
+	$0
+});
+endsnippet
+
+snippet it|testcase "mocha test case" b
+it('should ${1}', (${2}) => {
+	$0
+});
+endsnippet
+
+snippet testfile "mocha test file" b
+'use strict';
+
+const should = require('should');
+
+describe('${1:moduleName}', () => {
+
+	describe('#${2:funtionName}()', () => {
+		beforeEach(() => {
+			${3}
+		});
+
+		afterEach(() => {
+			${4}
+		});
+
+		it('should ${5}', () => {
+			$0
+		});
+	});
+});
+endsnippet
