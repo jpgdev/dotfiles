@@ -1,5 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
+    // Controls the font size.
+    "editor.fontSize": 13,
+    
     // Wraps with the editor width
     "editor.wrappingColumn": 0,
     // Better fuzzy search
@@ -10,5 +13,17 @@
     // Missing semicolon.
     "javascript.validate.lint.missingSemicolon": "warning",
     // Use '!==' and '===' instead of '!=' and '=='.
-    "javascript.validate.lint.comparisonOperatorsNotStrict": "warning"
+    "javascript.validate.lint.comparisonOperatorsNotStrict": "warning",
+    
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<escape>"
+            ]
+        }
+    ]
 }
