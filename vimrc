@@ -10,8 +10,9 @@ if has("win32") || has("win64")
 else
     let os = substitute(system('uname'), "\n", "", "")
 endif
+
 " }}}
-"============ Plugins (with Vundle) ============{{{
+"============ Plugins (Vundle setup) ============{{{
 
 set nocompatible
 filetype off
@@ -24,8 +25,9 @@ else
     set rtp+=$HOME/.vim/bundle/Vundle.vim/
     call vundle#begin()
 endif
+
 " }}}
-"============ Plugins ============
+"============ Plugins (list) ============ {{{
 
 " Vim config plugins
 " ===========================
@@ -66,6 +68,7 @@ Plugin 'mtth/scratch.vim' " Add a scratch pad to take temporary notes (with 'gs'
 Plugin 'tpope/vim-repeat' " Enable using '.' for some other plugins (ex. surround.vim)
 Plugin 'jiangmiao/auto-pairs' " Automatically add ending '', {}, (), ...
 Plugin 'alvan/vim-closetag' " Automatically close (x)html tags
+Plugin 'AndrewRadev/splitjoin.vim'  " Enable the gS (split) & gJ (join) smart commands
 
 " Themes
 " ===========================
@@ -125,7 +128,8 @@ if !exists('g:loaded_matchit') && findfile('bundle/matchit.vim', &rtp) ==# ''
     runtime! macros/matchit.vim
 endif
 
-"============ Plugins configs ============
+"}}}
+"============ Plugins configs ============ {{{
 
 augroup markdown
     autocmd!
@@ -306,7 +310,8 @@ let test#strategy = "dispatch"
 " ================
 let NERDTreeIgnore = ['\.pyc$', '__pycache__'] " files & folders to ignore/hide
 
-"============ Generic Settings ============
+"}}}
+"============ Generic Settings ============ {{{
 
 " Note : may cause lag when on?
 set cursorline   " Highlight the current line
@@ -332,19 +337,20 @@ set fileformat=unix
 " ==================
 augroup tabs_settings
     autocmd!
-
     autocmd FileType ruby       setl shiftwidth=2 tabstop=2
     autocmd FileType javascript setl shiftwidth=4 tabstop=4
     autocmd FileType python     setl shiftwidth=4 tabstop=4 textwidth=79
+augroup END
 
+augroup fold_methods
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
 augroup autocompletion
     autocmd!
-
     " Automatically closes the scratchpad with the function info when the function is selected
     autocmd CompleteDone * pclose
-
 augroup END
 
 " Case related settings
@@ -404,7 +410,8 @@ set foldmethod=indent " folds by following the language syntax
 set foldlevel=1
 set nofoldenable " disable the folds from the start
 
-"============ Custom Keybind mappings ============
+" }}}
+"============ Custom Keybind mappings ============ {{{
 
 " Easier to press ESC with 'jj'
 imap jj <Esc>
@@ -501,8 +508,11 @@ nnoremap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nnoremap <leader>bl :ls<CR>
 
-" Toggle between the last & current buffer 
+" Toggle between the last & current buffer
 nnoremap <leader>q :b#<cr>
+
+" Keybind to sort the words in the current Visual selection
+vnoremap <F3> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>
 
 "============ Custom Plugin Keybind mappings ============
 
@@ -593,7 +603,8 @@ augroup omnisharp_mappings
 
 augroup END
 
-"============ Set theme and colorscheme ============
+" }}}
+"============ Theme and colorscheme ============ {{{
 
 " Options for gVim gui
 if has ("gui_running")
@@ -638,4 +649,4 @@ highlight NonText ctermbg=none
 
 filetype indent plugin on
 
-"=============================
+"============================= }}}
