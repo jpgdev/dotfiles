@@ -1,0 +1,39 @@
+## Setup Scripts
+
+☐ Add a script to init PYTHON & PIP to be able to use the CLI app
+☐ Add a CLI app in front of the scripts
+☐ Add the packages names to YML/JSON/other files
+    ☐ Ex : xserver_pkg.yml, base_pkg.yml (git, vim, python2/3, cmake, zsh/fish, ranger, openssh)
+☐ Add options to install all (like the current SETUP_ARCH.sh)
+☐ Add options to install 1 by 1
+    ☐ Add requirements for scripts ex: `lightdm` setup requires `xserver` setup
+
+## Scripts
+
+☐ Setup arch
+☐ Setup xserver
+☐ Setup Bumblebee
+☐ Setup base AUR packages
+☐ Setup Dev env
+
+## Packages lists (yml files?)
+
+☐ Setup arch (base_pkg.yml)
+    "git vim python2 cmake zsh ranger openssh"
+
+☐ Setup xserver (xserver_pkg.yml)
+    "blueman bluez bluez-utils gnome-keyring gvfs gvfs-mtp lib32-alsa-plugins lib32-libpulse lib32-mesa-libgl mesa-libgl ncdu network-manager-applet networkmanager p7zip pavucontrol pulseaudio pulseaudio-alsa skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xorg-xrefresh xterm"
+
+☐ Setup Bumblebee (bumblebee_pkg.yml)
+    "bumblebee bbswitch nvidia mesa xf86-video-intel lib32-virtualgl lib32-nvidia-utils lib32-mesa-libgl"
+
+☐ Setup base AUR packages (base_aur_pkg.yml)
+     "dockbarx fzf grive grive-tools google-chrome spotify visual-studio-code xfce4-volumed xfce4-dockbarx-plugin-git xfce4-pulseaudio-plugin xfce4-indicator-plugin"
+
+☐ Setup Dev env (dev_pkg.yml, dev_aur_pkg.yml, deb_npm_pkg.yml)
+    pkgs: "nodejs npm postgresql postgresql-libs pgadmin3 redis synapse synergy the_silver_surfer"
+    aur packages: "visual-studio-code redis-desktop-manager-bin"
+    node packages: "bower grunt grunt-cli"
+
+☐ Setup VIM ()
+    patched fonts : "ttf-dejavu-sans-mono-powerline-git"
