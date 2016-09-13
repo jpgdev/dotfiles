@@ -50,7 +50,7 @@ fi
 
 
 # Setup X Server
-xpkgs="bluez bluez-utils blueman gnome-keyring gvfs gvfs-mtp networkmanager network-manager-applet mesa-libgl lib32-mesa-libgl p7zip pulseaudio pulseaudio-alsa pavucontrol lib32-alsa-plugins lib32-libpulse skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xorg-xrefresh xterm"
+xpkgs="blueman bluez bluez-utils gnome-keyring gvfs gvfs-mtp lib32-alsa-plugins lib32-libpulse lib32-mesa-libgl mesa-libgl ncdu network-manager-applet networkmanager p7zip pavucontrol pulseaudio pulseaudio-alsa skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xorg-xrefresh xterm"
 
 echo -e "${blue}Now downloading & installing packages for X Server.${end}"
 echo -e "Packages : ${green}$xpkgs${end}"
@@ -141,9 +141,6 @@ read -p "${yellow}Press a key to setup the development environment.${end} ($scri
 if [[ $option != n ]] && [[ $option != N ]]; then
 	$script_path/$script_dev
 fi
-
-
-
 
 # Restore packages from the backup
 read -p "${yellow}Press a key to restore pacman packages from backup.${end} ($script_pacman)(Y/n)" -n 1 option
