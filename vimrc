@@ -59,16 +59,15 @@ if executable('ag')
     Plugin 'rking/ag.vim' " Better search tool than grep (requires AG (the_silver_searcher) package installed)
 endif
 
-" Plugin 'neilagabriel/vim-geeknote' " Integrate geeknote with vim (not working currently)
-Plugin 'scrooloose/syntastic' " linting plugin. Uses external linters (ex. jshint) to work
-Plugin 'drn/zoomwin-vim'      " tool to enable focusing a single split
-Plugin 'majutsushi/tagbar'    " Browse a file tags (class layout etc..)
+" Plugin 'neilagabriel/vim-geeknote'                         " Integrate geeknote with vim (not working currently)
+Plugin 'scrooloose/syntastic'      " linting plugin. Uses external linters (ex. jshint) to work
+Plugin 'drn/zoomwin-vim'           " tool to enable focusing a single split
+Plugin 'majutsushi/tagbar'         " Browse a file tags (class layout etc..)
 Plugin 'tpope/vim-dispatch'
-Plugin 'mtth/scratch.vim' " Add a scratch pad to take temporary notes (with 'gs')
-Plugin 'tpope/vim-repeat' " Enable using '.' for some other plugins (ex. surround.vim)
-Plugin 'jiangmiao/auto-pairs' " Automatically add ending '', {}, (), ...
-Plugin 'alvan/vim-closetag' " Automatically close (x)html tags
-Plugin 'AndrewRadev/splitjoin.vim'  " Enable the gS (split) & gJ (join) smart commands
+Plugin 'tpope/vim-repeat'          " Enable using '.' for some other plugins (ex. surround.vim)
+Plugin 'jiangmiao/auto-pairs'      " Automatically add ending '', {}, (), ...
+Plugin 'alvan/vim-closetag'        " Automatically close (x)html tags
+Plugin 'AndrewRadev/splitjoin.vim' " Enable the gS (split) & gJ (join) smart commands
 
 " Themes
 " ===========================
@@ -84,18 +83,19 @@ Plugin 'flazz/vim-colorschemes'     " Adds lots of themes
 Plugin 'othree/yajs.vim' " javascript syntax
 " Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ntpeters/vim-better-whitespace' " Show & Remove Whitespaces command
-Plugin 'moll/vim-node' " Custom Node.js functions, like 'gf' to go to a package source (when on a path)
-Plugin 'tmux-plugins/vim-tmux'      " offers syntax highlight in tmux.conf file
-Plugin 'heavenshell/vim-jsdoc'      " helper to generate JSDoc comments
-Plugin 'lervag/vimtex'              " Latex
-Plugin 'slim-template/vim-slim'     " Syntax highlight for 'slim'
-Plugin 'ap/vim-css-color'           " Add colored background to CSS files colors
-Plugin 'elixir-lang/vim-elixir'     " Add support for elixir language
-Plugin 'leafgarland/typescript-vim' " Add typescript filetype support
-Plugin 'Quramy/tsuquyomi'           " Add Typescript utilities
-Plugin 'mattn/emmet-vim'            " Add Emmet to vim to write faster HTML & CSS
-Plugin 'OmniSharp/omnisharp-vim'    " Add omnisharp for good c# support
-Plugin 'elentok/plaintasks.vim'     " Add plaintasks filetype and support (for TODO list)
+Plugin 'moll/vim-node'                  " Custom Node.js functions, like 'gf' to go to a package source (when on a path)
+Plugin 'tmux-plugins/vim-tmux'          " offers syntax highlight in tmux.conf file
+Plugin 'heavenshell/vim-jsdoc'          " helper to generate JSDoc comments
+Plugin 'lervag/vimtex'                  " Latex
+Plugin 'slim-template/vim-slim'         " Syntax highlight for 'slim'
+Plugin 'ap/vim-css-color'               " Add colored background to CSS files colors
+Plugin 'elixir-lang/vim-elixir'         " Add support for elixir language
+Plugin 'leafgarland/typescript-vim'     " Add typescript filetype support
+Plugin 'Quramy/tsuquyomi'               " Add Typescript utilities
+Plugin 'mattn/emmet-vim'                " Add Emmet to vim to write faster HTML & CSS
+Plugin 'OmniSharp/omnisharp-vim'        " Add omnisharp for good c# support
+Plugin 'elentok/plaintasks.vim'         " Add plaintasks filetype and support (for TODO list)
+Plugin 'PotatoesMaster/i3-vim-syntax'   " Syntax highlight for i3 config file
 
 " Text objects
 " ===========================
@@ -411,7 +411,7 @@ set foldlevel=1
 set nofoldenable " disable the folds from the start
 
 " }}}
-"============ Custom Keybind mappings ============ {{{
+"============ Keybind mappings ============ {{{
 
 " Easier to press ESC with 'jj'
 imap jj <Esc>
@@ -514,7 +514,8 @@ nnoremap <leader>q :b#<cr>
 " Keybind to sort the words in the current Visual selection
 vnoremap <F3> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>
 
-"============ Custom Plugin Keybind mappings ============
+" }}}
+"============ Keybind mappings (Plugins) ============ {{{
 
 " Nerdtree
 " ==================
@@ -539,9 +540,10 @@ nnoremap <C-b> :CtrlPBuffer<CR>
 
 " vim-fugitive
 " ==================
-nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gd :Gvdiff<cr>
 " close the left-most split (normally the diff file)
 nnoremap <leader>gD <c-w>h<c-w>c
+nnoremap <leader>gs :Gstatus<cr>
 
 " Ag.vim
 " ==================
@@ -552,6 +554,10 @@ if executable('ag')
     " search for the current word in the project
     nnoremap <leader>J :Ag <cword><cr>
 endif
+
+" YouCompleteMe
+" =================
+" nmap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " OmniSharp
 " ==================
