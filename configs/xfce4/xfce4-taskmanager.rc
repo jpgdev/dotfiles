@@ -1,5 +1,5 @@
 [Settings]
-ShowAllProcesses=TRUE
+ShowAllProcesses=FALSE
 MorePrecision=FALSE
 FullCommandLine=FALSE
 ShowStatusIcon=FALSE
@@ -9,7 +9,7 @@ ShowApplicationIcons=TRUE
 ToolbarStyle=DEFAULT
 PromptTerminateTask=TRUE
 RefreshRate=750
-ColumnUID=FALSE
+ColumnUID=TRUE
 ColumnPID=TRUE
 ColumnPPID=FALSE
 ColumnState=FALSE
@@ -18,8 +18,8 @@ ColumnRSS=TRUE
 ColumnCPU=TRUE
 ColumnPriority=FALSE
 SortColumn=4
-SortType=1
+SortType=0
 WindowWidth=1920
-WindowHeight=968
+WindowHeight=1052
 HandlePosition=102
 ProcessTreeView=TRUE

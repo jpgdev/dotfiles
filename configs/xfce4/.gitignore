@@ -1,2 +1,4 @@
 desktop/
 xfce4-notes.*
+xfconf/xfce-perchannel-xml/displays.xml
+xfconf/xfce-perchannel-xml/xfce4-appfinder.xml
