@@ -14,16 +14,33 @@ alias open="xdg-open"
 
 alias dbdir="cd /mnt/data/Dropbox"
 alias docs="cd $HOME/Documents"
+
 alias pj="cd $HOME/Projects"
 alias pjl="cd $HOME/Projects ; ls -l"
+
+alias sb="cd $HOME/Sandbox"
+alias sbl="cd $HOME/Sandbox ; ls -l"
+
 alias gdr="cd '$HOME/Google Drive/'"
 alias uni="gdr ; cd Université"
 
 ##### APPLICATIONS SHORTCUTS
 
 alias archey="archey3"
-alias atom="/usr/share/atom/atom"
 alias mpad="mousepad"
-alias tmux="TERM=xterm-256color /usr/bin/tmux -2"
-alias sublime="/opt/sublime-text/sublime_text"
-alias sublime3="/opt/sublime_text_3/sublime_text"
+# Note : The `env` is not required for most shell, but it is for `fish` and does
+# not break the others
+alias tmux="env TERM=xterm-256color /usr/bin/tmux -2"
+
+##### MISC
+
+# Remove the libs coming with steam, so that steam uses the updated libs instead
+# Source: https://bbs.archlinux.org/viewtopic.php?id=211822#p1624603
+alias rmbadsteamlibs='find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" \) -print -delete'
+alias rmbadsteamlibslocal='find ~/.local/share/Steam/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" \) -print -delete'
+
+##### GIT
+
+alias gl="git log"
+alias gl1="git log --pretty=oneline"
+alias gs="git status"

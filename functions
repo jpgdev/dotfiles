@@ -1,32 +1,26 @@
 #!/bin/bash
 # Change directory and list it
-cdl()
-{
+cdl() {
     cd $1
     ls
 }
 
-
 # Change directory and lists it with hidden files
-cdla()
-{
+cdla() {
     cd $1
     ls -la
 }
 
-tarinc()
-{
+tarinc() {
     ssh $1@tarin.dinf.usherbrooke.ca
 }
 
-fixntfs()
-{
+fixntfs() {
     sudo ntfsfix $1
     sudo ntfs-3g $1 $2
 }
 
-refreshx()
-{
+refreshx() {
     xrefresh
 }
 
@@ -35,3 +29,38 @@ fzf-start() { xdg-open "$(fzf-locate)" ;}
 fzf-locate() { locate "*" | fzf -e;}
 
 vim-open() { vim "$(fzf-locate)"}
+
+# Usage : mksymlink `SOURCE` `TARGET` `[MODE]`
+#
+# Desc : Move the file to another directory and create a symlink to replace it
+#   The `SOURCE` is the initial file (which will be a symlink afterwards)
+#   The `TARGET` is the final location of the file
+#   The `MODE` if 'hard|h|--hard', it will make a hardlink, otherwise it will make a symlink
+#
+# Example : `mksymlink ~/.zshrc ~/dotfiles/zshrc`
+#   It will copy the ~/.zshrc into the dotfiles folder and create a symlink to it
+mksymlink(){
+    mv $1 $2
+
+    if  [ "$3" = "h" ] || [ "$3" = "-h" ]|| [ "$3" = "hard" ] || [ "$3" = "--hard" ]; then
+        ln $2 $1
+        echo "Hard link created: '$1' => '$2'"
+    else
+        ln -s $2 $1
+        echo "Symbolic link created: '$1' => '$2'"
+    fi
+}
+
+# Usage : revertsymlink `SOURCE` `TARGET`
+#
+# Desc : Move back the original file instead of the link (the inverse of `mksymlink`)
+#   The `SOURCE` is the link location (which will be the actual file afterwards)
+#   The `TARGET` is the file location
+#
+# Example : `reversymlink ~/.zshrc ~/dotfiles/zshrc`
+#   It will replace the ~/.zshrc link with the file at ~/dotfiles/zshrc
+revertsymlink(){
+    mv $2 $1
+
+    echo "Link removed and file moved back: '$2' => '$1'"
+}

@@ -3,12 +3,12 @@
 
 # Loads a script to use better colors with the gruvbox theme, mostly for vim
 # source : https://github.com/morhetz/gruvbox/wiki/Terminal-specific#a-256-color-gruvbox-palette-shellscript
-gruvbox_palette_path="$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-if [ -x $gruvbox_palette_path ]; then
-    source $gruvbox_palette_path
-else
-    echo 'WARNING : gruvbox script not found at' $gruvbox_palette_path' (source: '$0:A')'
-fi
+# gruvbox_palette_path="$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+# if [ -x $gruvbox_palette_path ]; then
+#     source $gruvbox_palette_path
+# else
+#     echo 'WARNING : gruvbox script not found at' $gruvbox_palette_path' (source: '$0:A')'
+# fi
 
 # To make nvm work, kinda ugly
 source /usr/share/nvm/init-nvm.sh

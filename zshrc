@@ -1,7 +1,5 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export EDITOR='vim'
-export VISUAL='vim'
 
 # Set name of the theme to load from ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
@@ -26,7 +24,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gibo)
+plugins=(git gibo pip python)
 
 # User configuration
 
@@ -51,9 +49,9 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/dotfiles/aliases
 source $HOME/dotfiles/functions
 source $HOME/dotfiles/autostart
+source $HOME/dotfiles/env_cfg.sh
 
 # Adds autocompletion for grunt
 if [ -x "$(command -v grunt)" ]; then
     eval "$(grunt --completion=zsh)"
 fi
-
