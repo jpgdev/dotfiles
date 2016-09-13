@@ -1,6 +1,6 @@
-layout=3
+layout=1
 date_font=Sans Bold 10
 time_font=Sans Bold 10
-date_format=%A, %d %B %Y
+date_format=%d/%m/%Y
 time_format=%H:%M:%S
 

@@ -1,7 +1,7 @@
 UpdateInterval=2
 TimeScale=0
 Size=30
-Mode=0
+Mode=1
 Frame=0
 Border=1
 Bars=0
@@ -11,7 +11,7 @@ InTerminal=0
 StartupNotification=1
 ColorMode=1
 Foreground1=#0000a7390000
-Foreground2=#ffff00000000
-Foreground3=#00000000ffff
-Background=#4f4f58585d5d
+Foreground2=#27272a2a3232
+Foreground3=#26262a2a3232
+Background=#27272a2a3232
 

@@ -30,7 +30,7 @@
             <value type="uint" value="65535"/>
           </property>
           <property name="image-style" type="int" value="3"/>
-          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/dark_souls.jpg"/>
+          <property name="last-image" type="string" value="/home/jp/Pictures/backgrounds/space.jpg"/>
         </property>
         <property name="workspace1" type="empty">
           <property name="color-style" type="int" value="1"/>

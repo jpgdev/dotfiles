@@ -1,9 +1,9 @@
 favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-mail-reader.desktop,exo-web-browser.desktop
-recent=xfce-keyboard-settings.desktop,gvim.desktop,DockX.desktop,xfce-settings-manager.desktop,xfce-wm-settings.desktop,DiscordCanary.desktop,xfce4-notifyd-config.desktop,atom.desktop,visual-studio-code.desktop,kde4-flow.desktop
+recent=xfce-ui-settings.desktop,pavucontrol.desktop,xfce4-mixer.desktop,libreoffice-base.desktop,uxterm.desktop,xfce4-dict.desktop,globaltime.desktop,cups.desktop,system-config-printer.desktop,firefox.desktop
 button-title=Applications
 button-icon=distributor-logo-archlinux
 button-single-row=false
-show-button-title=true
+show-button-title=false
 show-button-icon=true
 launcher-show-name=true
 launcher-show-description=true

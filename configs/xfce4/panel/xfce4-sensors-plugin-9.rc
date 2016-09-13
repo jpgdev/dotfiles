@@ -7,7 +7,7 @@ Scale=0
 Font_Size=medium
 Font_Size_Numerical=2
 Font=Sans 12
-Lines_Size=1
+Lines_Size=2
 Update_Interval=60
 Exec_Command=true
 Show_Units=false
@@ -15,7 +15,7 @@ Small_Spacings=true
 Command_Name=xfce4-sensors
 Number_Chips=3
 Suppress_Hddtemp_Message=false
-Suppress_Tooltip=true
+Suppress_Tooltip=false
 Preferred_Width=567
 Preferred_Height=543
 

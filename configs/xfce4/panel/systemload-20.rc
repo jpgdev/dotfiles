@@ -14,8 +14,8 @@ Text=cpu
 [SL_Mem]
 Enabled=true
 Use_Label=false
-Color=#FF8524
-Text=mem
+Color=#079709
+Text=ram
 
 [SL_Swap]
 Enabled=false
