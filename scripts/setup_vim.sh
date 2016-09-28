@@ -3,9 +3,21 @@
 
 
 #####################################
-# Create undo folder
+# Create tmp folder for undo & swap
 #####################################
-undo_path="$HOME/.vim_undo"
+
+tmp_path="$HOME/.vim/tmp"
+swap_path="$tmp_path/swap"
+undo_path="$tmp_path/undo"
+
+if [ ! -d $tmp_path ]; then
+    echo "Create the vim tmp directory ($tmp_path)."
+    mkdir $tmp_path
+fi
+if [ ! -d $swap_path ]; then
+    echo "Create the vim swap directory ($swap_path)."
+    mkdir $swap_path
+fi
 if [ ! -d $undo_path ]; then
     echo "Create the vim undo directory ($undo_path)."
     mkdir $undo_path
@@ -97,33 +109,6 @@ echo "Compiling YouCompleteMe..."
 # See documentation at : http://github.com/Valloric/YouCompleteMe#installation
 $py2 $HOME/.vim/bundle/YouCompleteMe/install.py --tern-completer
 
-###########################################
-# Install 'jshint' globally with NPM for linting
-###########################################
-
-if [ ! -x "$(command -v jshint)" ]; then
-    echo "Install JSHINT globally with npm for 'scrooloose/syntastic' linting"
-    sudo npm install -g jshint
-fi
-
-##########################################
-# Install the term_for_vim dependencies
-##########################################
-
-if [ ! -x "$(command -v npm)" ]; then
-    echo "'npm' not found, installing it via pacman..."
-    sudo pacman -S npm
-
-    if [ ! -x "$(command -v npm)" ]; then
-        echo "'npm' not installed correctly, need to install it to get tern_for_vim dependencies."
-        exit
-    fi
-fi
-
-echo "Instaling term_for_vim dependencies..."
-cd $HOME/.vim/bundle/tern_for_vim
-npm install
-
 ##########################################
 # Install ctags to use tagbar plugin
 ##########################################
@@ -144,4 +129,43 @@ if [ ! -x "$(command -v ctags)" ]; then
     fi
 fi
 
+###########################################
+# Install 'npm', if not already
+###########################################
+
+if [ ! -x "$(command -v npm)" ]; then
+    echo "'npm' not found, installing it via pacman..."
+    sudo pacman -S npm
+
+    if [ ! -x "$(command -v npm)" ]; then
+        echo "'npm' not installed correctly it is needed to continue."
+        exit
+    fi
+fi
+
+###########################################
+# Install 'jshint' globally with NPM for linting
+###########################################
+
+if [ ! -x "$(command -v jshint)" ]; then
+    echo "Install JSHINT globally with npm for 'scrooloose/syntastic' linting"
+    sudo npm install -g jshint
+fi
+
+###########################################
+# Install 'typescript' globally with NPM
+###########################################
+
+if [ ! -x "$(command -v tsc)" ]; then
+    echo "Install TypeScript globally with npm for lang support"
+    sudo npm install -g typescript #typescript-formatter
+fi
+
+##########################################
+# Install the term_for_vim dependencies
+##########################################
+
+echo "Instaling term_for_vim dependencies..."
+cd $HOME/.vim/bundle/tern_for_vim
+npm install
 

@@ -2,6 +2,7 @@
 " Jean-Philippe Goulet
 
 " Inspired by : https://github.com/cabouffard/dotfiles
+"               https://github.com/wincent/wincent/tree/master/roles/dotfiles/files/.vim
 
 "============ Get current OS ============{{{
 
@@ -11,18 +12,25 @@ else
     let os = substitute(system('uname'), "\n", "", "")
 endif
 
+" NOTE: Not yet tested
+if os == 'win'
+    let $VIMHOME = $VIM."/vimfiles"
+else
+    let $VIMHOME = $HOME."/.vim"
+endif
+
 " }}}
 "============ Plugins (Vundle setup) ============{{{
 
 set nocompatible
 filetype off
 
+set rtp+=$VIMHOME/bundle/Vundle.vim/
+
 if os == "win"
-    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-    let path=$HOME.'/vimfiles/bundle'
-    call vundle#begin(path)
+    " NOTE: Not yet tested
+    call vundle#begin($VIMHOME.'/bundle')
 else
-    set rtp+=$HOME/.vim/bundle/Vundle.vim/
     call vundle#begin()
 endif
 
@@ -34,12 +42,12 @@ endif
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'   " The statusbar plugin
 Plugin 'vim-airline/vim-airline-themes' " Themes for vim-airline plugins
-" Plugin 'mkitt/tabline.vim' " Better tab line (top)
 Plugin 'scrooloose/nerdtree' " File explorer
 Plugin 'ctrlpvim/ctrlp.vim'  " fuzzy find a file in the current folder
 Plugin 'tomtom/tcomment_vim' " shortcut to comment code
 " Plugin 'easymotion/vim-easymotion'      " movement that behaves like the chrome vim plugin (when F is clicked)
-Plugin 'tpope/vim-eunuch' " add UNIX utilities functions
+" Plugin 'tpope/vim-eunuch' " add UNIX utilities functions
+" Plugin 'terryma/vim-multiple-cursors' " Adds Sublime-like multiple cursors
 
 if os == "Linux"
     Plugin 'Valloric/YouCompleteMe' " auto-completion
@@ -48,54 +56,67 @@ endif
 
 Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'             " adds commands to modify surrounding characters
+Plugin 'tpope/vim-repeat'          " Enable using '.' for some other plugins (ex. surround.vim)
 Plugin 'godlygeek/tabular'              " tool to align text
 Plugin 'Chiel92/vim-autoformat'         " Auto-format code
-Plugin 'christoomey/vim-tmux-navigator' " Plugin to integrate tmux & vim together, to navigate easily
+
+" Run commands out of vim
+" ========================
 Plugin 'Shougo/vimproc.vim'             " Adds async capabilities (required by tsuquyomi for TypeScript)
+Plugin 'tpope/vim-dispatch'
 Plugin 'janko-m/vim-test'               " Test runner
+
+" tmux plugins
+" ========================
+if executable('tmux')
+    Plugin 'christoomey/vim-tmux-navigator' " Plugin to integrate tmux & vim together, to navigate easily
+    Plugin 'benmills/vimux'                 " Run commands in TMUX from vim
+endif
 
 " if ag (the_silver_searcher) is installed
 if executable('ag')
     Plugin 'rking/ag.vim' " Better search tool than grep (requires AG (the_silver_searcher) package installed)
 endif
 
-" Plugin 'neilagabriel/vim-geeknote'                         " Integrate geeknote with vim (not working currently)
 Plugin 'scrooloose/syntastic'      " linting plugin. Uses external linters (ex. jshint) to work
 Plugin 'drn/zoomwin-vim'           " tool to enable focusing a single split
 Plugin 'majutsushi/tagbar'         " Browse a file tags (class layout etc..)
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-repeat'          " Enable using '.' for some other plugins (ex. surround.vim)
 Plugin 'jiangmiao/auto-pairs'      " Automatically add ending '', {}, (), ...
 Plugin 'alvan/vim-closetag'        " Automatically close (x)html tags
 Plugin 'AndrewRadev/splitjoin.vim' " Enable the gS (split) & gJ (join) smart commands
+" Plugin 'ntpeters/vim-better-whitespace' " Show & Remove Whitespaces command
+" Plugin 'metakirby5/codi.vim'       " Interactive scratch buffer
 
 " Themes
 " ===========================
-" Plugin 'morhetz/gruvbox' " Adds the gruvbox theme
 Plugin 'flazz/vim-colorschemes'     " Adds lots of themes
+Plugin 'morhetz/gruvbox'            " Adds the gruvbox theme
 " Plugin 'joshdick/onedark.vim'     " Atom's One dark theme
 " Plugin 'joshdick/airline-onedark.vim' " Atom's One dark airline theme
 " Plugin 'chriskempson/base16-vim'
-" Plugin 'ryanoasis/vim-devicons'   " Adds icons to files names (NERDTree, Powerline, CtrlP, etc...)
+Plugin 'ryanoasis/vim-devicons'     " Adds icons to files names (NERDTree, Powerline, CtrlP, etc...)
+
+
+" Language syntax support
+" ===========================
+Plugin 'othree/yajs.vim'                " javascript  syntax
+" Plugin 'jelera/vim-javascript-syntax'
+Plugin 'tmux-plugins/vim-tmux'          " tmux.conf   syntax
+Plugin 'lervag/vimtex'                  " Latex       syntax
+Plugin 'slim-template/vim-slim'         " slim        syntax
+Plugin 'elixir-lang/vim-elixir'         " elixir      syntax
+Plugin 'PotatoesMaster/i3-vim-syntax'   " i3 config   syntax
+Plugin 'leafgarland/typescript-vim'     " typescript  syntax
+Plugin 'elentok/plaintasks.vim'         " plaintasks  syntax and utils (for TODO list)
 
 " Language specific plugins
 " ===========================
-Plugin 'othree/yajs.vim' " javascript syntax
-" Plugin 'jelera/vim-javascript-syntax'
-Plugin 'ntpeters/vim-better-whitespace' " Show & Remove Whitespaces command
 Plugin 'moll/vim-node'                  " Custom Node.js functions, like 'gf' to go to a package source (when on a path)
-Plugin 'tmux-plugins/vim-tmux'          " offers syntax highlight in tmux.conf file
 Plugin 'heavenshell/vim-jsdoc'          " helper to generate JSDoc comments
-Plugin 'lervag/vimtex'                  " Latex
-Plugin 'slim-template/vim-slim'         " Syntax highlight for 'slim'
-Plugin 'ap/vim-css-color'               " Add colored background to CSS files colors
-Plugin 'elixir-lang/vim-elixir'         " Add support for elixir language
-Plugin 'leafgarland/typescript-vim'     " Add typescript filetype support
-Plugin 'Quramy/tsuquyomi'               " Add Typescript utilities
 Plugin 'mattn/emmet-vim'                " Add Emmet to vim to write faster HTML & CSS
+Plugin 'Quramy/tsuquyomi'               " Add Typescript utilities
 Plugin 'OmniSharp/omnisharp-vim'        " Add omnisharp for good c# support
-Plugin 'elentok/plaintasks.vim'         " Add plaintasks filetype and support (for TODO list)
-Plugin 'PotatoesMaster/i3-vim-syntax'   " Syntax highlight for i3 config file
+Plugin 'ap/vim-css-color'               " Add colored background to CSS files color
 
 " Text objects
 " ===========================
@@ -147,12 +168,12 @@ augroup END
 
 " vim-airline
 " ==================
-set laststatus=2 "Is required or the status bar does not appear in the first vim split opened
 
 let g:airline#extensions#tagbar#enabled = 0      " Disable tagbar integration (show current function)
 let g:airline#extensions#tabline#enabled = 1     " Enable the list of buffers at the top
 let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
-" let g:airline#extensions#tabline#buffer_idx_mode = 1 " Adds a tab number
+let g:airline#extensions#tabline#buffer_idx_mode = 1 " Add a number to the tabs/buffer line (1-9), enables the <leader>NUMBER command
+
 let g:airline#extensions#hunks#enabled = 0       " Remove the file diffs informations (+, -, ~)
 let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts = 1                " Enable the patched fonts
@@ -187,6 +208,7 @@ augroup END
 " Emmet vim
 " ==================
 let g:user_emmet_install_global = 0
+" let g:user_emmet_leader_key='<C-Z>' " Replace the emmet leader key from Ctrl-Y
 
 augroup emmet
     autocmd!
@@ -195,22 +217,21 @@ augroup emmet
     autocmd FileType html,css EmmetInstall
 augroup END
 
-" tagbar
-" ==================
-nmap <F8> :TagbarToggle<CR>
 
 " Syntastic (linting)
 " ==================
 " Set syntastic to be passive by default
-let g:syntastic_mode_map = {
-            \'mode': 'passive',
-            \'active_filetypes': [
-            \    'python'
-            \],
-            \'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive'}
+" let g:syntastic_mode_map = {
+"             \'mode': 'passive',
+"             \'active_filetypes': [
+"             \    'python'
+"             \],
+"             \'passive_filetypes': [] }
 let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1 "Run linting on file open on top of when the file is saved
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2 " Will not open automatically the loc list, but will close it when there are no more errors
+let g:syntastic_check_on_open = 0 " Don't run linting on file open on top of when the file is saved
 
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " Use the tsuquyomi checker, instead of `tsc` checker
@@ -229,7 +250,7 @@ let g:tsuquyomi_disable_quickfix = 1
 if executable('ag')
 
     " Use Ag instead of grep
-    set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -273,6 +294,7 @@ function! <SID>ExpandSnippetOrReturn()
         return "\<CR>"
     endif
 endfunction
+
 inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
 
 " OmniSharp vim
@@ -303,6 +325,7 @@ let test#strategy = "dispatch"
 " vim-colorschemes
 " =================
 " Source: https://github.com/altercation/vim-colors-solarized
+" Fix the solarized theme
 " let g:solarized_contrast="high" " Set a 'high|low|normal' contrast between the colors
 " let g:solarized_termcolors=256 " Set the colors from 16 to 256 for the Solarized theme
 
@@ -313,45 +336,23 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__'] " files & folders to ignore/hide
 "}}}
 "============ Generic Settings ============ {{{
 
-" Note : may cause lag when on?
-set cursorline   " Highlight the current line
+" Basic settings
+" =================
+set hidden       " This allows buffers to be hidden if you've modified a buffer.
+set number
+" set relativenumber
+set scrolloff=10 " keeps lines over or under the cursor at all time
+set incsearch    " start searching before clicking ENTER
 
-augroup vim_resize
-    autocmd!
+set cursorline   " Highlight the current line (may cause lag when on?)
+set showcmd      " Show the current command on the lower right, like the  <leader> key
+set laststatus=2 " always shows the status line
 
-    " Source: https://github.com/cabouffard/dotfiles/blob/master/.vimrc
-    autocmd VimResized * wincmd =  " Automaticaly resize the panes on resize (calls 'CTRL + W + =')
+if has('wildmenu')
+    set wildmenu  " better autocompletion for : menu, adds a list of possible options on <TAB> press
+endif
 
-augroup END
-
-" Tabulation related settings
-" ==================
-set autoindent
-set expandtab    " use spaces instead of tab characters
-set smarttab
-set shiftwidth=4 " spaces for tabulations
-set tabstop=4
-set fileformat=unix
-
-" Language specific tab settings
-" ==================
-augroup tabs_settings
-    autocmd!
-    autocmd FileType ruby       setl shiftwidth=2 tabstop=2
-    autocmd FileType javascript setl shiftwidth=4 tabstop=4
-    autocmd FileType python     setl shiftwidth=4 tabstop=4 textwidth=79
-augroup END
-
-augroup fold_methods
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
-augroup autocompletion
-    autocmd!
-    " Automatically closes the scratchpad with the function info when the function is selected
-    autocmd CompleteDone * pclose
-augroup END
+let mapleader = "\<Space>"  " Set the <leader> to SPACE instead of \
 
 " Case related settings
 " ==================
@@ -359,22 +360,12 @@ set ignorecase   " ignore case by default
 set infercase
 set smartcase    " will go case-sensitive if there is caps
 
-set scrolloff=10 " keeps lines over or under the cursor at all time
-
-" set backspace=indent,eol,start
-set incsearch " start searching before clicking ENTER
-set wildmenu  " better autocompletion for : menu, adds a list of possible options on <TAB> press
-
 " Source: http://stackoverflow.com/a/30691754/4995329
-set clipboard^=unnamed,unnamedplus " link the vim clipboard with the OS (ex. "+yy => copies the current line)
-" set colorcolumn=80 " Adds a column at 80 characters
+set clipboard^=unnamed,unnamedplus " link the vim clipboard with the OS
 
-" Line numbering
-" ==================
-set number
-" set relativenumber
-
-" Faster redraw, for diffs mostly which are really slow without this
+" Optimization
+" =================
+" Faster redraw, for diffs & macros mostly which can be slow without this
 set lazyredraw
 set ttyfast
 
@@ -385,43 +376,144 @@ set ttyfast
 set timeoutlen=400
 set ttimeoutlen=0
 
-set mouse=a " enable the mouse (useful to copy & paste out of vim)
+" Look at 'fo-table' in the help for options
+set formatoptions+=n       " Automatically recognize lists for auto-indent
+set formatoptions+=j       " Remove comments leader when merging with J
 
 " When opening a new split, it opens below & on the right
 set splitbelow
 set splitright
 
-" This allows buffers to be hidden if you've modified a buffer.
-set hidden
+set mouse=a " enable the mouse (useful to copy & paste out of vim)
 
-" Show the current command on the lower right, like the  <leader> key
-set showcmd
-
-let mapleader = "\<Space>"  " Set the <leader> to SPACE instead of \
-
-if os == "Linux"
-    set undofile                 " tell it to use an undo file
-    set undodir=$HOME/.vim_undo/ " set a directory to store the undo history
+" Undo files
+" Source: https://www.youtube.com/watch?v=PYketjc9aus (wincent videos)
+" Source: https://github.com/wincent/wincent/blob/7f3f2717dad2c9bb7c14ad568d5b68babc2bf1a3/roles/dotfiles/files/.vim/plugin/settings.vim
+" =================
+if has('persistent_undo')
+    if exists('$SUDO_USER')
+        set noundofile " If current user is root, no undofile
+    else
+        set undodir=$VIMHOME/tmp/undo/ " set a directory to store the undo history
+        set undodir+=$VIMHOME/.vim_undo " set a backup directory if the other does not exist
+        set undodir+=.
+        set undofile    " tell it to use an undo file
+    endif
 endif
 
-" NOTE : yajs + foldmethod=syntax cause HUGE lags on opening a big file
-" (10-15 sec loading times)
-set foldmethod=indent " folds by following the language syntax
-set foldlevel=1
-set nofoldenable " disable the folds from the start
+" Swap files
+" Source: https://www.youtube.com/watch?v=PYketjc9aus (wincent videos)
+" =================
+if exists('$SUDO_USER')
+    set noswapfile " If current user is root, no swapfile
+else
+    " NOTE : the second / is important to use the complete path for the swap
+    " file name, so no collision
+    set directory=$VIMHOME/tmp/swap// " set a directory to store the swap file
+    set directory+=. " use the current location as backup if the other does not exist
+endif
+
+" viminfo file
+" Source: https://www.youtube.com/watch?v=BvjcW885uHw (wincent videos)
+" =================
+" This file saves informations about the last session
+" like the commands & etc.. Don't save it as root
+if has('viminfo')
+    if exists('$SUDO_USER')
+        set viminfo=
+    else
+        " Cannot set multiple path as backup paths, so must check by hand
+        if isdirectory($VIMHOME.'/tmp/viminfo')
+            set viminfo+=n$VIMHOME/tmp/viminfo
+        else
+            " is already the default, but just in case
+            set viminfo+=n$HOME/.viminfo
+        endif
+    endif
+endif
+
+" Folding
+" =================
+if has('folding')
+    if has('windows')
+        " requires both folding & windows setting enabled
+        " Change the vertical character used to in between splits
+        set fillchars=vert:┃            "BOX DRAWINGS HEAVY VERTICAL' (U+2503, UTF-8: E2 94 83)
+    endif
+
+    " NOTE : yajs + foldmethod=syntax cause HUGE lags on opening a big file
+    " (10-15 sec loading times)
+    set foldmethod=indent " folds by following the language syntax
+    set foldlevel=1
+    set nofoldenable " disable the folds from the start
+
+    augroup fold_settings_filetype
+        autocmd!
+        autocmd FileType vim setlocal foldmethod=marker
+    augroup END
+endif
+
+" Replace whitespace characters with visible ones
+" ===============================================
+set list                              " show whitespace
+set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
+" + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+" set listchars+=extends:»            " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+" set listchars+=precedes:«           " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
+
+" Tabulation related settings
+" ==================
+set autoindent
+set expandtab    " use spaces instead of tab characters
+set smarttab
+set shiftwidth=4 " spaces for tabulations
+set tabstop=4
+set fileformat=unix
+
+augroup tabs_settings
+    autocmd!
+    autocmd FileType ruby       setl shiftwidth=2 tabstop=2
+    autocmd FileType javascript setl shiftwidth=4 tabstop=4
+    autocmd FileType python     setl shiftwidth=4 tabstop=4 textwidth=79
+augroup END
+
+" Misc
+" =================
+
+augroup vim_resize
+    autocmd!
+    " Source: https://github.com/cabouffard/dotfiles/blob/master/.vimrc
+    autocmd VimResized * wincmd =  " Automaticaly resize the panes on resize (calls 'CTRL + W + =')
+augroup END
+
+augroup autocompletion
+    autocmd!
+    " Automatically closes the scratchpad with the function info when the function is selected
+    autocmd CompleteDone * pclose
+augroup END
 
 " }}}
 "============ Keybind mappings ============ {{{
 
+" un-map the Q key which opens the not used exec mode
+map Q <Nop>
+" un-map the K key, which open a man page for the current word
+map K <Nop>
+
+set pastetoggle=<F2> " toggle pastemode easily
+
+" Insert mode {{{
+" ----------------
+
 " Easier to press ESC with 'jj'
 imap jj <Esc>
 
-" Joins the current and previous line
-nmap K kJ
+" }}}
 
-" Split at the cursor location, the opposite of 'J'
-" source: https://www.reddit.com/r/vim/comments/4izk0n/vi_blunders/d32gw7y
-nmap S i<CR><Esc>d^==kg_lD
+" Normal mode binds {{{
+" ----------------
 
 " Splits
 " ==================
@@ -430,6 +522,16 @@ noremap <C-j> <C-W><C-J>
 noremap <C-k> <C-W><C-K>
 noremap <C-l> <C-W><C-L>
 noremap <C-h> <C-W><C-H>
+
+" Joins the current and previous line
+nmap <C-J> kJ
+
+" Now Y copies until the end of line. To have consistant behavior with D & C.
+nnoremap Y y$
+
+" Split at the cursor location, the opposite of 'J'
+" source: https://www.reddit.com/r/vim/comments/4izk0n/vi_blunders/d32gw7y
+nmap S i<CR><Esc>d^==kg_lD
 
 " Move vertically by column
 nnoremap j gj
@@ -456,10 +558,6 @@ nnoremap [q :cprevious<cr>
 nnoremap ]l :lnext<cr>
 nnoremap [l :lprevious<cr>
 
-" keep the selection after indent, so it is easily repeatable
-vnoremap < <gv
-vnoremap > >gv
-
 " Easier to access start & end of line
 noremap H ^
 noremap L $
@@ -475,21 +573,11 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " search for the current word in the current directory
 " nnoremap <leader>J :lgrep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" un-map the Q key which opens the not used exec mode
-map Q <Nop>
-
 nnoremap <leader>w :w<CR>
 
 " Allow faster access to window commands (ex. ss => split, sv => vsplit, sq =>
 " close split ....)
 nnoremap s <C-W>
-
-" Reopen the last buffer
-" Source: https://github.com/cabouffard/dotfiles/blob/master/.vimrc
-nmap <Leader>e :e#<CR>
-
-" toggle pastemode easily
-set pastetoggle=<F2>
 
 " toggle highlight search
 nmap <F4> :set hlsearch!<cr>
@@ -511,8 +599,31 @@ nnoremap <leader>bl :ls<CR>
 " Toggle between the last & current buffer
 nnoremap <leader>q :b#<cr>
 
+" Toggle splits
+nnoremap <leader>z za
+
+" }}}
+
+" Visual mode binds {{{
+" ----------------
+
 " Keybind to sort the words in the current Visual selection
 vnoremap <F3> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>
+
+" keep the selection after indent, so it is easily repeatable
+vnoremap < <gv
+vnoremap > >gv
+
+" }}}
+
+" Command mode binds {{{
+
+" Move in command mode (start & end of line)
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+" }}}
+
 
 " }}}
 "============ Keybind mappings (Plugins) ============ {{{
@@ -522,9 +633,51 @@ vnoremap <F3> d:execute 'normal i' . join(sort(split(getreg('"'))), ' ')<CR>
 nnoremap <leader>k :NERDTreeToggle<cr>
 nnoremap <leader>f :NERDTreeFind<cr>
 
+" tagbar
+" ==================
+nmap <F8> :TagbarToggle<CR>
+
 " vim-dispatch
 " ==================
 nnoremap <F5> :Dispatch<cr>
+
+" vimux
+" ==================
+
+augroup vimux
+    autocmd!
+    " Run the current file with pytest
+    autocmd FileType python     map <Leader>vt :call VimuxRunCommand("clear; pytest " . bufname("%"))<CR>
+    autocmd FileType javascript map <Leader>vt :call VimuxRunCommand("clear; npm test")<CR>
+
+augroup END
+
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+" Close vim tmux runner opened by VimuxRunCommand
+map <Leader>vq :VimuxCloseRunner<CR>
+" Interrupt any command running in the runner pane
+map <Leader>vx :VimuxInterruptRunner<CR>
+" Zoom the runner pane (use <bind-key> z to restore runner pane)
+map <Leader>vz :call VimuxZoomRunner()<CR>
+
+" airline
+" ==================
+
+" Select tab/buffers
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab2
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 " vim-autoformat
 " ==================
@@ -558,6 +711,18 @@ endif
 " YouCompleteMe
 " =================
 " nmap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" tern_for_vim
+" =================
+
+" Tern is only installed on linux
+if os == "Linux"
+    augroup tern_mappings
+        autocmd!
+
+        autocmd FileType javascript nnoremap gd :TernDef<cr>
+    augroup END
+endif
 
 " OmniSharp
 " ==================
@@ -642,9 +807,9 @@ set background=dark
 " colorscheme Tomorrow-Night-Eighties
 " colorscheme Tomorrow-Night
 " colorscheme molokai
-" colorscheme gruvbox
+colorscheme gruvbox
 " colorscheme solarized
-colorscheme badwolf
+" colorscheme badwolf
 
 " Disable the transparent background in tmux
 set term=screen-256color
