@@ -5,11 +5,23 @@
         "key": "ctrl+;",
         "command": "cursorEnd",
         "when": "editorTextFocus"
+
+
     },
     // Put the cursor at the end of the line
     {
         "key": "alt+;",
         "command": "cursorEnd",
         "when": "editorTextFocus"
+    },
+    {
+        // The default for this command is Ctrl+t, but VsCodeVim replaces it
+        "key": "ctrl+shift+S",
+        "command": "workbench.action.showAllSymbols"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "workbench.action.toggleZenMode"
     }
+
 ]

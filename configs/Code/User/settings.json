@@ -1,29 +1,52 @@
 // Place your settings in this file to overwrite the default settings
 {
+    // ----------------- Editor options
+
     // Controls the font size.
-    "editor.fontSize": 13,
-    
+    "editor.fontSize": 12,
     // Wraps with the editor width
     "editor.wrappingColumn": 0,
+    // Show indention guides
+    "editor.renderIndentGuides": true,
+    
     // Better fuzzy search
     "filePicker.alternateFileNameMatching": true,
-    
-    // Javascript validation settings
-    
+    // ----------------- Javascript validation settings
     // Missing semicolon.
     "javascript.validate.lint.missingSemicolon": "warning",
     // Use '!==' and '===' instead of '!=' and '=='.
     "javascript.validate.lint.comparisonOperatorsNotStrict": "warning",
-    
-    "vim.insertModeKeyBindings": [
+    // ----------------- Vim mode plugin 
+    "vim.insertModeKeyBindings": [{
+        "before": ["j", "j"],
+        "after": ["<escape>"]
+    }],
+
+    // BUG: It causes weird problems with Visual Line selection
+    // See: https://github.com/VSCodeVim/Vim/issues/908
+    "vim.otherModesKeyBindingsNonRecursive": [
+        // Move by line, even with wrapped lines
         {
-            "before": [
-                "j",
-                "j"
-            ],
-            "after": [
-                "<escape>"
-            ]
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        // Move by line, even with wrapped lines
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
         }
-    ]
+    ],
+    // Case related options
+    "vim.smartcase": true,
+    "vim.ignorecase": true,
+    "vim.autoindent": true,
+
+    "vim.useCtrlKeys": true, // Do I can use Ctrl-D & Ctrl-U 
+    "vim.useSystemClipboard": true,
+    // ---------------- Omnisharp 
+    "omnisharp.path": "/opt/omnisharp-roslyn/OmniSharp.exe",
+    "omnisharp.useMono": true,
+
+    // ----------------- Terminal 
+    "terminal.external.linuxExec": "xfce4-terminal"
 }

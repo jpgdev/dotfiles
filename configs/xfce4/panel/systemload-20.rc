@@ -8,19 +8,19 @@ Click_Command=xfce4-taskmanager
 [SL_Cpu]
 Enabled=false
 Use_Label=false
-Color=#1FACFF
+Color=rgb(31,172,255)
 Text=cpu
 
 [SL_Mem]
 Enabled=true
 Use_Label=false
-Color=#079709
+Color=rgb(7,151,9)
 Text=ram
 
 [SL_Swap]
-Enabled=false
-Use_Label=true
-Color=#F0F000
+Enabled=true
+Use_Label=false
+Color=rgb(240,240,0)
 Text=swap
 
 [SL_Uptime]

@@ -16,8 +16,10 @@ MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 BackgroundDarkness=0.900000
-BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 ShortcutsNoMenukey=TRUE
 ScrollingLines=10000
 FontName=Hack 10
+ScrollingBar=TERMINAL_SCROLLBAR_NONE
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+Encoding=UTF-8
 

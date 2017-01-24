@@ -4,13 +4,14 @@
 ##### COMMANDS
 
 alias reload="source ~/.zshrc"
-alias lsd="ls -ld */"
-alias ll="ls -l"
+alias lsd="ls -ldh */"
+alias ll="ls -lh"
 alias lf="ls | fzf"
 alias malias="$EDITOR $HOME/dotfiles/aliases"
 alias open="xdg-open"
 
 ##### NAVIGATION SHORTCUTS
+
 
 alias dbdir="cd /mnt/data/Dropbox"
 alias docs="cd $HOME/Documents"
@@ -21,8 +22,6 @@ alias pjl="cd $HOME/Projects ; ls -l"
 alias sb="cd $HOME/Sandbox"
 alias sbl="cd $HOME/Sandbox ; ls -l"
 
-alias gdr="cd '$HOME/Google Drive/'"
-alias uni="gdr ; cd Université"
 
 ##### APPLICATIONS SHORTCUTS
 

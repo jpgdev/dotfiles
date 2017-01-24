@@ -2,11 +2,11 @@
 Encoding=UTF-8
 Version=0.9.4
 Type=Application
-Name=Conky
-Comment=Desktop stats
-Exec=conky --pause=5
+Name=Steam
+Comment=
+Exec=steam -silent
 OnlyShowIn=XFCE;
 StartupNotify=false
 Terminal=false
-Hidden=true
+Hidden=false
 

@@ -43,11 +43,9 @@ mksymlink(){
     mv $1 $2
 
     if  [ "$3" = "h" ] || [ "$3" = "-h" ]|| [ "$3" = "hard" ] || [ "$3" = "--hard" ]; then
-        ln $2 $1
-        echo "Hard link created: '$1' => '$2'"
+        ln -v $2 $1
     else
-        ln -s $2 $1
-        echo "Symbolic link created: '$1' => '$2'"
+        ln -sv $2 $1
     fi
 }
 
@@ -60,7 +58,5 @@ mksymlink(){
 # Example : `reversymlink ~/.zshrc ~/dotfiles/zshrc`
 #   It will replace the ~/.zshrc link with the file at ~/dotfiles/zshrc
 revertsymlink(){
-    mv $2 $1
-
-    echo "Link removed and file moved back: '$2' => '$1'"
+    mv -v $2 $1
 }

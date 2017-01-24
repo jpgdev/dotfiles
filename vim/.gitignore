@@ -2,3 +2,4 @@
 /init.vim
 /bundle/
 !/bundle/Vundle.vim
+/tmp/

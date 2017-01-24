@@ -1,0 +1,16 @@
+/* Rofi settings */
+! Source command:
+! rofi -show run -lines 10 -eh 2 -width 100 -padding 400 -opacity "85" -bw 0 -bc "#2f343f" -bg "#2f343f" -fg "#f3f4f5" -hlbg "#2f343f" -hlfg "#9575cd"
+
+rofi.lines: 15
+rofi.eh: 2
+rofi.width: 80
+! rofi.padding: 400
+!Note: Using "" around the opacity value makes it not work. And opens Rofi invisible... so it looks like the keyboard and mouse are not working (cannot click or type anything until I press ESC)
+rofi.opacity: 85
+rofi.bw: 0
+rofi.bc: "#2f343f"
+rofi.bg: "#2f343f"
+rofi.fg: "#f3f4f5"
+rofi.hlbg: "#2f343f"
+rofi.hlfg: "#9575cd"

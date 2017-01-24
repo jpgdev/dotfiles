@@ -12,7 +12,7 @@ else
     let os = substitute(system('uname'), "\n", "", "")
 endif
 
-" NOTE: Not yet tested
+" NOTE: Not yet tested on Windows
 if os == 'win'
     let $VIMHOME = $VIM."/vimfiles"
 else
@@ -108,6 +108,7 @@ Plugin 'elixir-lang/vim-elixir'         " elixir      syntax
 Plugin 'PotatoesMaster/i3-vim-syntax'   " i3 config   syntax
 Plugin 'leafgarland/typescript-vim'     " typescript  syntax
 Plugin 'elentok/plaintasks.vim'         " plaintasks  syntax and utils (for TODO list)
+Plugin 'tpope/vim-git'                  " git         syntax
 
 " Language specific plugins
 " ===========================
@@ -346,6 +347,7 @@ set incsearch    " start searching before clicking ENTER
 
 set cursorline   " Highlight the current line (may cause lag when on?)
 set showcmd      " Show the current command on the lower right, like the  <leader> key
+
 set laststatus=2 " always shows the status line
 
 if has('wildmenu')
@@ -360,8 +362,14 @@ set ignorecase   " ignore case by default
 set infercase
 set smartcase    " will go case-sensitive if there is caps
 
-" Source: http://stackoverflow.com/a/30691754/4995329
-set clipboard^=unnamed,unnamedplus " link the vim clipboard with the OS
+" Source : https://github.com/spf13/spf13-vim/blob/3.0/.vimrc#L107-L113
+if has('clipboard')
+    if has('unnamedplus')  " When possible use + register for copy-paste
+        set clipboard=unnamed,unnamedplus
+    else                   " On mac and Windows, use * register for copy-paste
+        set clipboard=unnamed
+    endif
+endif
 
 " Optimization
 " =================
@@ -380,11 +388,17 @@ set ttimeoutlen=0
 set formatoptions+=n       " Automatically recognize lists for auto-indent
 set formatoptions+=j       " Remove comments leader when merging with J
 
-" When opening a new split, it opens below & on the right
-set splitbelow
-set splitright
+if has('windows')
+    set splitbelow " Open a new split below
+endif
+
+if has('vertsplit')
+    set splitright " Open a new split on the right
+endif
 
 set mouse=a " enable the mouse (useful to copy & paste out of vim)
+
+set encoding=utf8 ""
 
 " Undo files
 " Source: https://www.youtube.com/watch?v=PYketjc9aus (wincent videos)
@@ -441,8 +455,6 @@ if has('folding')
         set fillchars=vert:┃            "BOX DRAWINGS HEAVY VERTICAL' (U+2503, UTF-8: E2 94 83)
     endif
 
-    " NOTE : yajs + foldmethod=syntax cause HUGE lags on opening a big file
-    " (10-15 sec loading times)
     set foldmethod=indent " folds by following the language syntax
     set foldlevel=1
     set nofoldenable " disable the folds from the start
@@ -450,6 +462,10 @@ if has('folding')
     augroup fold_settings_filetype
         autocmd!
         autocmd FileType vim setlocal foldmethod=marker
+        autocmd FileType cs setlocal foldmethod=syntax
+        " NOTE : yajs + foldmethod=syntax cause HUGE lags on opening a big file
+        " (10-15 sec loading times)
+        autocmd FileType javascript setlocal foldmethod=indent
     augroup END
 endif
 
@@ -462,6 +478,15 @@ set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B
 " set listchars+=extends:»            " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
 " set listchars+=precedes:«           " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
 set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
+
+if has('linebreak')
+    " The symbol to show in front of a wrapped line
+    let &showbreak='⤷ '               " ARROW POINTING DOWNWARDS THEN CRUGING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
+endif
+
+if has('virtualedit')
+    set virtualedit=block       " Allow cursor to move where there is nothing in visualblock mode
+endif
 
 " Tabulation related settings
 " ==================
@@ -515,6 +540,14 @@ imap jj <Esc>
 " Normal mode binds {{{
 " ----------------
 
+" TODO : Move this into a REAL init.nvim instead
+if has('nvim')
+    " Fixes the nvim burlfeature that sees <C-h> as a <BS>
+    " Note : it is a terminal feature (backspace when you press <C-h>),
+    " but in vim it's annoying
+    nmap <BS> <C-h>
+endif
+
 " Splits
 " ==================
 " Moving around splits
@@ -561,6 +594,7 @@ nnoremap [l :lprevious<cr>
 " Easier to access start & end of line
 noremap H ^
 noremap L $
+
 
 " Search and replace word under cursor using F4
 " Source: http://stackoverflow.com/a/5543793
@@ -795,7 +829,6 @@ else
     " endif
 endif
 
-set encoding=utf8
 
 " The patched font to add symbols to powerline
 set guifont=Hack\ 10.5
@@ -803,20 +836,22 @@ set guifont=Hack\ 10.5
 syntax on
 set background=dark
 
-" colorscheme onedark
-" colorscheme Tomorrow-Night-Eighties
-" colorscheme Tomorrow-Night
-" colorscheme molokai
-colorscheme gruvbox
-" colorscheme solarized
-" colorscheme badwolf
+let theme_name = "gruvbox"
+" silent! colorscheme onedark
+" silent! colorscheme Tomorrow-Night-Eighties
+" silent! colorscheme Tomorrow-Night
+" silent! colorscheme molokai
+" silent! colorscheme solarized
+" silent! colorscheme badwolf
+silent! execute "colorscheme ".theme_name
+
 
 " Disable the transparent background in tmux
 set term=screen-256color
 
 " Transparent background fix (don't add a background to text)
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
+" highlight Normal ctermbg=none
+" highlight NonText ctermbg=none
 
 filetype indent plugin on
 

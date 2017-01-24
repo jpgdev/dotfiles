@@ -1,22 +1,22 @@
 <?xml encoding="UTF-8" version="1.0"?>
 <actions>
-<action>
-	<icon>utilities-terminal</icon>
-	<name>Open Terminal Here</name>
-	<unique-id>1419357268683671-1</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
-	<description>Example for a custom action</description>
-	<patterns>*</patterns>
-	<startup-notify/>
-	<directories/>
-</action>
-<action>
-	<icon>accessories-text-editor-symbolic</icon>
-	<name>Edit as root</name>
-	<unique-id>1424573413402480-6</unique-id>
-	<command>gksu xdg-open %n</command>
-	<description></description>
-	<patterns>*</patterns>
-	<text-files/>
-</action>
+    <action>
+        <icon>utilities-terminal</icon>
+        <name>Open Terminal Here</name>
+        <unique-id>1419357268683671-1</unique-id>
+        <command>exo-open --working-directory %f --launch TerminalEmulator</command>
+        <description>Open a terminal here.</description>
+        <patterns>*</patterns>
+        <startup-notify/>
+        <directories/>
+    </action>
+    <action>
+        <icon>accessories-text-editor-symbolic</icon>
+        <name>Edit as root</name>
+        <unique-id>1424573413402480-6</unique-id>
+        <command>gksu xdg-open %n</command>
+        <description>Open and edit the file as root.</description>
+        <patterns>*</patterns>
+        <text-files/>
+    </action>
 </actions>
