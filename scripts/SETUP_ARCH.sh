@@ -130,7 +130,7 @@ if [[ $option != n ]] && [[ $option != N ]]; then
 fi
 
 # Install some other required packages
-pkgs2="ntfs-3g"
+pkgs2="ntfs-3g tlp"
 read -p "${yellow}Press a key to install some other required packages.${end} ($pkgs2)(Y/n)" -n 1 option
 if [[ $option != n ]] && [[ $option != N ]]; then
 	sudo pacman -S $pkgs2 --needed --noconfirm
