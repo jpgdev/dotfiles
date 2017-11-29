@@ -3,9 +3,12 @@
     // ----------------- Editor options
 
     // Controls the font size.
-    "editor.fontSize": 12,
+    "editor.fontSize": 11.5,
+
     // Wraps with the editor width
-    "editor.wrappingColumn": 0,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
+
     // Show indention guides
     "editor.renderIndentGuides": true,
     
@@ -48,5 +51,8 @@
     "omnisharp.useMono": true,
 
     // ----------------- Terminal 
-    "terminal.external.linuxExec": "xfce4-terminal"
+    "terminal.external.linuxExec": "xfce4-terminal",
+    "workbench.colorTheme": "Gruvbox Dark (Medium Contrast)",
+    "workbench.iconTheme": "vs-seti",
+    "vim.disableAnnoyingNeovimMessage": true
 }
