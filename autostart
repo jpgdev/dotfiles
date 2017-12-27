@@ -11,4 +11,7 @@ else
 fi
 
 # To make nvm work, kinda ugly
-source /usr/share/nvm/init-nvm.sh
+nvm_script_path="/usr/share/nvm/init-nvm.sh"
+if [ -e $nvm_script_path ]; then
+    source $nvm_script_path 
+fi
