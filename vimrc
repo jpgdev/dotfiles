@@ -49,7 +49,7 @@ Plugin 'tomtom/tcomment_vim' " shortcut to comment code
 " Plugin 'tpope/vim-eunuch' " add UNIX utilities functions
 " Plugin 'terryma/vim-multiple-cursors' " Adds Sublime-like multiple cursors
 
-if os == "Linux"
+if os == "Linux" && has('python')
     Plugin 'Valloric/YouCompleteMe' " auto-completion
     Plugin 'marijnh/tern_for_vim' " JS smarter autocompletion with YCM
 endif
@@ -116,7 +116,10 @@ Plugin 'moll/vim-node'                  " Custom Node.js functions, like 'gf' to
 Plugin 'heavenshell/vim-jsdoc'          " helper to generate JSDoc comments
 Plugin 'mattn/emmet-vim'                " Add Emmet to vim to write faster HTML & CSS
 Plugin 'Quramy/tsuquyomi'               " Add Typescript utilities
-Plugin 'OmniSharp/omnisharp-vim'        " Add omnisharp for good c# support
+
+if has('python')
+    Plugin 'OmniSharp/omnisharp-vim'        " Add omnisharp for good c# support
+endif
 Plugin 'ap/vim-css-color'               " Add colored background to CSS files color
 
 " Text objects
@@ -138,8 +141,10 @@ Plugin 'mattn/webapi-vim'       " WEBAPI used by gist-vim
 
 " Ultisnips required plugins
 " ===========================
-Plugin 'sirver/ultisnips' " ultisnips engine
-Plugin 'honza/vim-snippets' " ultisnips default snippets
+if has('python')
+    Plugin 'sirver/ultisnips'   " ultisnips engine
+    Plugin 'honza/vim-snippets' " ultisnips default snippets
+endif
 
 call vundle#end()
 
