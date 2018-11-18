@@ -10,5 +10,3 @@ else
     echo 'WARNING : gruvbox script not found at' $gruvbox_palette_path' (source: '$0:A')'
 fi
 
-# To make nvm work, kinda ugly
-source /usr/share/nvm/init-nvm.sh

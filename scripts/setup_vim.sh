@@ -46,7 +46,7 @@ vim +PluginInstall +qall
 #######################################
 patchedFont="ttf-dejavu-sans-mono-powerline-git"
 echo "Installing the patched font for 'vim-airline' symbols ($patchedFont)"
-sudo yaourt -S $patchedFont --needed
+sudo yay -S $patchedFont --needed
 
 ###########################################
 # Compile YouCompleteMe

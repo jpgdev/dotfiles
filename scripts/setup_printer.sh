@@ -25,4 +25,4 @@ done
 #       - https://wiki.archlinux.org/index.php/CUPS
 #       - https://wiki.archlinux.org/index.php/CUPS/Printer-specific_problems
 
-# Example : For a brother printer : `yaourt brother-` will list all the brother printer packages
+# Example : For a brother printer : `yay brother-` will list all the brother printer packages

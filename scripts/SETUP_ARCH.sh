@@ -101,8 +101,8 @@ if [[ $option != n ]] && [[ $option != N ]]; then
 	sudo systemctl enable bumblebeed.service
 fi
 
-# Setup AUR (Yaourt)
-read -p "${yellow}Press a key to install Yaourt via pacman.${end} ($script_aur) (Y/n)" -n 1 option
+# Setup AUR (yay)
+read -p "${yellow}Press a key to install yay (get from git & build).${end} ($script_aur) (Y/n)" -n 1 option
 if [[ $option != n ]] && [[ $option != N ]]; then
 	$script_path/$script_aur
 fi
@@ -110,23 +110,23 @@ fi
 # Install AUR packages
 aur_pkgs="dockbarx fzf grive grive-tools google-chrome spotify visual-studio-code xfce4-volumed xfce4-dockbarx-plugin-git xfce4-pulseaudio-plugin xfce4-indicator-plugin "
 
-echo -e "${blue}Now downloading & installing packages from the AUR using Yaourt.${end}"
+echo -e "${blue}Now downloading & installing packages from the AUR using yay.${end}"
 echo -e "Packages : ${green}$aur_pkgs${end}"
 read -p "${yellow}Press a key to start.${end}(Y/n)" -n 1 option
 
 if [[ $option != n ]] && [[ $option != N ]]; then
-	yaourt -S  $aur_pkgs --needed --noconfirm
+	yay -S  $aur_pkgs --needed --noconfirm
 fi
 
 # Install Theme packages
 theme_pkgs="dorian-theme numix-icon-theme-git numix-circle-icon-theme-git"
 echo "Installing theme related packages ($theme_pkgs)"
-echo -e "${blue}Now downloading & installing theme related packages from the AUR using Yaourt.${end}"
+echo -e "${blue}Now downloading & installing theme related packages from the AUR using yay.${end}"
 echo -e "Packages : ${green}$theme_pkgs${end}"
 read -p "${yellow}Press a key to start.${end}(Y/n)n" -n 1 option
 
 if [[ $option != n ]] && [[ $option != N ]]; then
-	yaourt -S  $theme_pkgs --needed --noconfirm
+    yay -S  $theme_pkgs --needed --noconfirm
 fi
 
 # Install some other required packages

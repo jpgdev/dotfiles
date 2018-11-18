@@ -24,11 +24,11 @@ info=${bldwht}*${txtrst}
 pass=${bldblu}*${txtrst}
 warn=${bldred}!${txtrst}
 
-# If restoring, be sure yaourt is installed
-if [[ "$1" == 'r' ]] && [[ -z $(pacman -Qs yaourt) ]]; then
+# If restoring, be sure yay is installed
+if [[ "$1" == 'r' ]] && [[ -z $(pacman -Qs yay) ]]; then
 	echo ""
-	echo -e "$warn $prog requires ${txtund}}Yaourt${txtrst} to be installed."
-	echo -e "  ${txtcyn}http://wiki.archlinux.org/index.php/Yaourt${txtrst}"
+	echo -e "$warn $prog requires ${txtund}}yay${txtrst} to be installed."
+	echo -e "  ${txtcyn}http://wiki.archlinux.org/index.php/yay${txtrst}"
 	echo ""
 	exit
 fi
@@ -48,8 +48,8 @@ case $1 in
 		sudo pacman -Sy
 		# use -f to overwrite conflicting files
 		sudo pacman -S --needed $(cat "$pkglsoff")
-		# Yaourt doesn't have --needed check
-		yaourt -S $(cat "$pkglsloc" | grep -vx "$(pacman -Qqm)") ;;
+		# yay doesn't have --needed check
+		yay -S $(cat "$pkglsloc" | grep -vx "$(pacman -Qqm)") ;;
 	* ) echo -e " -b : build installed packages list. (dir:${txtund}"${pkglsoff%/*}"${txtrst})"
 		echo -e " -r : restore installed packages from package list." ;;
 esac

@@ -6,8 +6,8 @@ echo "Installing dev related packages using pacman ($pkgs)"
 sudo pacman -S $pkgs --needed
 
 aur_pkgs="visual-studio-code redis-desktop-manager-bin"
-echo "Installing dev related packages using Yaourt ($aur_pkgs)"
-sudo yaourt -S $aur_pkgs --needed --noconfirm
+echo "Installing dev related packages using yay ($aur_pkgs)"
+sudo yay -S $aur_pkgs --needed --noconfirm
 
 echo "Setup Node & NPM"
 # TODO : Validate that NPM & Node exist

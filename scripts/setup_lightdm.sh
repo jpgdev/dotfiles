@@ -31,13 +31,13 @@ sudo sed -i '/xscreensaver-command -lock/i  \    "light-locker-command --lock" \
 
 # Get a greeter
 greeter_name="lightdm-webkit-greeter"
-if [ ! -x "$(command -v yaourt)" ]; then
-	#TODO : Do it manually instead of Yaourt??
-	echo "Yaourt is required to get the '$greeter_name' from the AUR."
+if [ ! -x "$(command -v yay)" ]; then
+	#TODO : Do it manually instead of yay??
+	echo "yay is required to get the '$greeter_name' from the AUR."
 	exit
 fi
 
-yaourt -S $greeter_name --needed
+yay -S $greeter_name --needed
 
 # Set lightdm greeter
 conf_file="/etc/lightdm/lightdm.conf"

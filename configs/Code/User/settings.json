@@ -52,7 +52,8 @@
 
     // ----------------- Terminal 
     "terminal.external.linuxExec": "xfce4-terminal",
-    "workbench.colorTheme": "Gruvbox Dark (Medium Contrast)",
+    "workbench.colorTheme": "Monokai Dimmed",
     "workbench.iconTheme": "vs-seti",
-    "vim.disableAnnoyingNeovimMessage": true
+    "vim.disableAnnoyingNeovimMessage": true,
+    "window.zoomLevel": 0
 }
