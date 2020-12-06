@@ -1,12 +1,12 @@
 [user]
-	name = JP
-	email = jp.goulet17@gmail.com
+    name = JP
+    email = 1724600+jpgdev@users.noreply.github.com
 [push]
-	default = matching
+    default = matching
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
+    editor = vim
+    excludesfile = ~/.gitignore_global
 [github]
-	user = jpgdev
+    user = jpgdev
 #[url "https://"]
 #	insteadOf = git://
