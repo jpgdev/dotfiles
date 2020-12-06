@@ -1,0 +1,158 @@
+conky.config = {
+--#####################
+-- - Conky settings - #
+--#####################
+
+	update_interval = 1,
+	update_interval_on_battery = 10,
+	total_run_times = 0,
+	cpu_avg_samples = 2,--The number of samples to average for CPU monitoring.
+	net_avg_samples = 1,--The number of samples to average for net data
+
+	double_buffer = true,
+	no_buffers = true,--set to 'no' to show the RAM + cached memory
+
+	background = true,--Boolean value, if true, Conky will be forked to background when started.
+
+--####################
+-- - Text settings - #
+--####################
+
+	use_xft = true,
+	font = 'Arial:size=8',
+	xftalpha = 0.1,
+	override_utf8_locale = true,
+	text_buffer_size = 256,
+	uppercase = false,
+--use_spacer yes
+
+--############################
+-- - Window specifications - #
+--############################
+
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	alignment = 'top_right',
+	gap_x = 10,
+	gap_y = 20,
+	minimum_width = 250, minimum_height = 5,
+	maximum_width = 300,
+
+--########################
+-- - Graphics settings - #
+--########################
+
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,--yes
+
+	default_color = 'LightGray',
+
+	color0 = 'LightGray',
+	color1 = 'Tan1',
+	color2 = 'white',
+	color3 = '#33CCFF',
+	color4 = 'white',
+
+--#################
+-- - TEXT START - #
+--#################
+};
+
+conky.text = [[
+##############
+# - System - #
+##############
+# ${font Arial:bold:size=10}${color1}SYSTEM ${color0} ${hr 2}
+# $font${color0}Hostname $alignr  $nodename
+# $font${color0}$sysname $kernel $alignr $machine
+# $font${color0}Uptime $alignr${uptime}
+# $font${color0}Processes: $alignr $processes ($running_processes)
+# $font${color0}File System $alignr${fs_type}
+# ${font Arial:bold:size=10}${color Tan2}BATTERY ${color0}${hr 2}
+# ${battery BAT1}
+# ${color0}${battery_bar 10,0 BAT1}
+
+###########
+# - CPU - #
+###########
+${font Arial:bold:size=10}${color1}CPU ${color0}${hr 2}$font${color0}
+#${font Arial:bold:size=10}${color0}Intel Core i7-3630Q $alignr${freq_g cpu0}Ghz$font
+${font Arial:bold:size=10}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26} $alignr${freq_g cpu0}Ghz$font
+
+${cpugraph cpu1 10, 170} $alignc${hwmon temp 2}°C  $alignr${cpu cpu1}%
+${cpugraph cpu2 10, 170} $alignr${cpu cpu2}%
+${cpugraph cpu3 10, 170} $alignc${hwmon temp 3}°C  $alignr${cpu cpu3}%
+${cpugraph cpu4 10, 170} $alignr${cpu cpu4}%
+${cpugraph cpu5 10, 170} $alignc${hwmon temp 4}°C  $alignr${cpu cpu5}%
+${cpugraph cpu6 10, 170} $alignr${cpu cpu6}%
+${cpugraph cpu7 10, 170} $alignc${hwmon temp 5}°C  $alignr${cpu cpu7}%
+${cpugraph cpu8 10, 170} $alignr${cpu cpu8}%
+
+#################
+# - CPU Usage - #
+#################
+${color ddaa00}${top name 1} ${goto 120} ${top pid 1}${alignr}${top cpu 1}%
+${color0}${top name 2} ${goto 120} ${top pid 2}${alignr}${top cpu 2}%
+${color0}${top name 3} ${goto 120} ${top pid 3}${alignr}${top cpu 3}%
+${color0}${top name 4} ${goto 120} ${top pid 4}${alignr}${top cpu 4}%
+${color0}${top name 5} ${goto 120} ${top pid 5}${alignr}${top cpu 5}%
+
+###########
+# - RAM - #
+###########
+${font Arial:bold:size=10}${color1}MEMORY ${color0}${hr 2}
+
+$font${color0}RAM $alignc $mem / $memmax $alignr $memperc%
+# ${if_match $memperc > 80}${color red}$else${if_match $memperc > 60}${color Orange}$else${color0}${endif}${endif}${membar 10}
+${membar 10}
+
+${color ddaa00}$font${top_mem name 1} ${goto 120} ${top_mem pid 1} $alignr ${top_mem mem_res 1}
+${color0}${top_mem name 2} ${goto 120} ${top_mem pid 2} $alignr ${top_mem mem_res 2}
+${color0}${top_mem name 3} ${goto 120} ${top_mem pid 3} $alignr ${top_mem mem_res 3}
+${color0}${top_mem name 4} ${goto 120} ${top_mem pid 4} $alignr ${top_mem mem_res 4}
+${color0}${top_mem name 5} ${goto 120} ${top_mem pid 5} $alignr ${top_mem mem_res 5}
+
+###############
+# - Storage - #
+###############
+${font Arial:bold:size=10}${color1}STORAGE ${color0}${hr 2}
+
+$font${color0}/root $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${fs_bar /}
+/var $alignc ${fs_used /var} / ${fs_size /var} $alignr ${fs_used_perc /var}%
+${fs_bar /var}
+/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
+${fs_bar /home}
+/mnt/data $alignc ${fs_used /mnt/data} / ${fs_size /mnt/data} $alignr ${fs_used_perc /mnt/data}%
+${fs_bar /mnt/data}
+/mnt/jeux $alignc ${fs_used /mnt/jeux} / ${fs_size /mnt/jeux} $alignr ${fs_used_perc /mnt/jeux}%
+${fs_bar /mnt/jeux}
+
+###########
+# - GPU - #
+###########
+# ${font Arial:bold:size=10}${color Tan2}GPU ${color0}${hr 2}
+
+###############
+# - Network - #
+###############
+${font Arial:bold:size=10}${color Tan2}NETWORK ${color0}${hr 2}
+
+${font Arial:bold:size=10}${color2}wlp3s0: ${color0} $alignr ${addr wlp3s0}${color0}$font
+# ${if_match $wireless_link > 80}${color LightGreen}${else}${if_match $wireless_link > 50}${color Orange}${else}${color Red}${endif}­${endif}${wireless_link_bar 5, 0 wlp3s0}
+Connected to: ${wireless_essid wlp3s0}
+${wireless_link_bar 10, 0 wlp3s0}
+
+${font Arial:size=10}${color Tan2}▲ ${upspeedf wlp3s0} ${goto 65}${upspeedgraph wlp3s0 10,110} $alignr${totalup wlp3s0}
+${font Arial:size=10}${color3}▼ ${downspeedf wlp3s0} ${goto 65}${downspeedgraph wlp3s0 10,110} $alignr${totaldown wlp3s0}
+
+${font Arial:bold:size=10}${color2}enp2s0: ${color0} $alignr ${addr enp2s0}${color0}$font
+
+${font Arial:size=10}${color Tan2}▲ ${upspeedf enp2s0} ${goto 65}${upspeedgraph enp2s0 10,110} $alignr${totalup enp2s0}
+${font Arial:size=10}${color3}▼ ${downspeedf enp2s0} ${goto 65}${downspeedgraph enp2s0 10,110} $alignr${totaldown enp2s0}
+]];
