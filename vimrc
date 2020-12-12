@@ -844,6 +844,12 @@ endif
 " The patched font to add symbols to powerline
 set guifont=Hack\ 10.5
 
+
+" Disable the transparent background in tmux
+if !has("nvim")
+    set term=screen-256color
+endif
+
 syntax on
 set background=dark
 
@@ -857,8 +863,6 @@ let theme_name = "gruvbox"
 silent! execute "colorscheme ".theme_name
 
 
-" Disable the transparent background in tmux
-set term=screen-256color
 
 " Transparent background fix (don't add a background to text)
 " highlight Normal ctermbg=none
