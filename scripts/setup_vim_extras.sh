@@ -1,5 +1,5 @@
 #!/bin/bash
-# setup_vim - Download and install correctly all vim plugins using Vundle
+# setup_vim_extras - Download and install correctly all vim plugins using Vundle
 
 
 #####################################
