@@ -1,45 +1,5 @@
 #!/bin/bash
-# setup_vim - Download and install correctly all vim plugins using Vundle
-
-
-#####################################
-# Create tmp folder for undo & swap
-#####################################
-
-tmp_path="$HOME/.vim/tmp"
-swap_path="$tmp_path/swap"
-undo_path="$tmp_path/undo"
-
-if [ ! -d $tmp_path ]; then
-    echo "Create the vim tmp directory ($tmp_path)."
-    mkdir $tmp_path
-fi
-if [ ! -d $swap_path ]; then
-    echo "Create the vim swap directory ($swap_path)."
-    mkdir $swap_path
-fi
-if [ ! -d $undo_path ]; then
-    echo "Create the vim undo directory ($undo_path)."
-    mkdir $undo_path
-fi
-
-#####################################
-# Acquiring Vundle to setup our plugins
-#####################################
-
-# If Vundle has not been downloaded yet
-if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
-then
-    echo "Vundle was not found, getting it from github"
-    git clone https://github.com/VundleVim/vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-
-fi
-
-#################################
-# Install all the plugins
-#################################
-
-vim +PluginInstall +qall
+# setup_vim_extras - Download and install correctly all vim plugins using Vundle
 
 ########################################
 # Install the patched font

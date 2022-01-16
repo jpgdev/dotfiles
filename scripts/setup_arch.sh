@@ -4,7 +4,8 @@
 # Setup some scripts paths
 script_path="$(dirname $(readlink -f $0))"
 script_symlink="setup_dotfiles.sh"
-script_vim="setup_vim.sh"
+script_vim_base="setup_vim_base.sh"
+script_vim_extras="setup_vim_extras.sh"
 script_pacman="pacman-backup-tool.sh"
 script_aur="setup_aur.sh"
 script_lightdm="setup_lightdm.sh"
@@ -45,9 +46,14 @@ fi
 # Setup vim & plugins
 read -p "${yellow}Press a key to setup vim and its plugins.${end} ($script_vim)(Y/n)" -n 1 option
 if [[  $option != n ]] && [[ $option != N ]]; then
-	$script_path/$script_vim
+	$script_path/$script_vim_base
 fi
 
+# Setup vim extras settings & plugins
+read -p "${yellow}Press a key to setup vim and extras.${end} ($script_vim)(Y/n)" -n 1 option
+if [[  $option != n ]] && [[ $option != N ]]; then
+	$script_path/$script_vim_extras
+fi
 
 # Setup X Server
 xpkgs="blueman bluez bluez-utils gnome-keyring gvfs gvfs-mtp lib32-alsa-plugins lib32-libpulse lib32-mesa-libgl mesa-libgl ncdu network-manager-applet networkmanager p7zip pavucontrol pulseaudio pulseaudio-alsa skype unrar unzip vlc xarchiver xf86-input-synaptics xfce4 xfce4-goodies xfce4-screenshooter xorg-server xorg-xinit xorg-xrefresh xterm"
