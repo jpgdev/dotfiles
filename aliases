@@ -1,6 +1,7 @@
 #!/bin/zsh
 # Jean-Philippe Goulet
 
+
 ##### COMMANDS
 
 alias reload="source ~/.zshrc"
@@ -26,7 +27,6 @@ alias sbl="cd $HOME/Sandbox ; ls -l"
 ##### APPLICATIONS SHORTCUTS
 
 alias archey="archey3"
-alias mpad="mousepad"
 # Note : The `env` is not required for most shell, but it is for `fish` and does
 # not break the others
 alias tmux="env TERM=xterm-256color /usr/bin/tmux -2"
