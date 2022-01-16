@@ -49,8 +49,9 @@ Plugin 'tomtom/tcomment_vim' " shortcut to comment code
 " Plugin 'tpope/vim-eunuch' " add UNIX utilities functions
 " Plugin 'terryma/vim-multiple-cursors' " Adds Sublime-like multiple cursors
 
+
 if os == "Linux" && has('python')
-    Plugin 'Valloric/YouCompleteMe' " auto-completion
+    " Plugin 'Valloric/YouCompleteMe' " auto-completion
     Plugin 'marijnh/tern_for_vim' " JS smarter autocompletion with YCM
 endif
 
@@ -78,6 +79,7 @@ if executable('ag')
     Plugin 'rking/ag.vim' " Better search tool than grep (requires AG (the_silver_searcher) package installed)
 endif
 
+Plugin 'dense-analysis/ale' " ALE -> async linter
 Plugin 'scrooloose/syntastic'      " linting plugin. Uses external linters (ex. jshint) to work
 Plugin 'drn/zoomwin-vim'           " tool to enable focusing a single split
 Plugin 'majutsushi/tagbar'         " Browse a file tags (class layout etc..)
@@ -99,16 +101,17 @@ Plugin 'ryanoasis/vim-devicons'     " Adds icons to files names (NERDTree, Power
 
 " Language syntax support
 " ===========================
-Plugin 'othree/yajs.vim'                " javascript  syntax
+Plugin 'othree/yajs.vim'              " javascript  syntax
 " Plugin 'jelera/vim-javascript-syntax'
-Plugin 'tmux-plugins/vim-tmux'          " tmux.conf   syntax
-Plugin 'lervag/vimtex'                  " Latex       syntax
-Plugin 'slim-template/vim-slim'         " slim        syntax
-Plugin 'elixir-lang/vim-elixir'         " elixir      syntax
-Plugin 'PotatoesMaster/i3-vim-syntax'   " i3 config   syntax
-Plugin 'leafgarland/typescript-vim'     " typescript  syntax
-Plugin 'elentok/plaintasks.vim'         " plaintasks  syntax and utils (for TODO list)
-Plugin 'tpope/vim-git'                  " git         syntax
+Plugin 'tmux-plugins/vim-tmux'        " tmux.conf   syntax
+Plugin 'lervag/vimtex'                " Latex       syntax
+Plugin 'slim-template/vim-slim'       " slim        syntax
+Plugin 'elixir-lang/vim-elixir'       " elixir      syntax
+Plugin 'PotatoesMaster/i3-vim-syntax' " i3 config   syntax
+Plugin 'leafgarland/typescript-vim'   " typescript  syntax
+Plugin 'elentok/plaintasks.vim'       " plaintasks  syntax and utils (for TODO list)
+Plugin 'tpope/vim-git'                " git         syntax
+Plugin 'zigford/vim-powershell'       " powershell
 
 " Language specific plugins
 " ===========================
@@ -183,6 +186,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1 " Add a number to the tabs/
 let g:airline#extensions#hunks#enabled = 0       " Remove the file diffs informations (+, -, ~)
 let g:airline_theme='jellybeans'
 let g:airline_powerline_fonts = 1                " Enable the patched fonts
+let g:airline#extensions#ale#enabled = 1         " Enable ALE support
 
 " vim-gitgutter
 " ==================
@@ -344,11 +348,10 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__'] " files & folders to ignore/hide
 
 " Basic settings
 " =================
-set hidden       " This allows buffers to be hidden if you've modified a buffer.
-set number
-" set relativenumber
-set scrolloff=10 " keeps lines over or under the cursor at all time
-set incsearch    " start searching before clicking ENTER
+set hidden         " This allows buffers to be hidden if you've modified a buffer.
+set relativenumber " show relative line number from the current line
+set scrolloff=10   " keeps lines over or under the cursor at all time
+set incsearch      " start searching before clicking ENTER
 
 set cursorline   " Highlight the current line (may cause lag when on?)
 set showcmd      " Show the current command on the lower right, like the  <leader> key
