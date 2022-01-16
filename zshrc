@@ -24,7 +24,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gibo pip python)
+plugins=(git pip python)
 
 # User configuration
 
@@ -53,6 +53,6 @@ source $HOME/dotfiles/autostart
 source $HOME/dotfiles/env_cfg.sh
 
 # Adds autocompletion for grunt
-if [ -x "$(command -v grunt)" ]; then
-    eval "$(grunt --completion=zsh)"
-fi
+# if [ -x "$(command -v grunt)" ]; then
+#     eval "$(grunt --completion=zsh)"
+# fi
